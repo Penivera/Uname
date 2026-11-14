@@ -72,4 +72,7 @@ export const registry = {
   },
 
   changeDelayMs: () => view<number>(CONTRACT_METHODS.changeDelay, {}),
+
+  /** The contract's relayer account, which may claim without paying. */
+  relayer: () => view<{ relayer?: string | null }>("get_pricing_config", {}).then((c) => c.relayer ?? null),
 };

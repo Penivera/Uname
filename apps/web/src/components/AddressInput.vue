@@ -6,12 +6,11 @@
  *   typing, not yet valid      -> shrinks to "+"
  *   a valid address is entered -> hidden, until it stops being valid
  *
- * The button only appears for chains whose wallet this app can talk to
- * (EVM chains through an injected wallet such as MetaMask).
+ * Multi-chain support for EVM, NEAR, and Solana injected wallets.
  */
-import { isValidAddress, namespaceOf } from "@unam/shared";
+import { isValidAddress } from "@unam/shared";
 import { computed, ref } from "vue";
-import { connectEvm, hasEvmWallet } from "../lib/evm";
+import { getWalletForChain } from "../lib/wallets";
 
 const props = withDefaults(
   defineProps<{
@@ -32,7 +31,9 @@ const connecting = ref(false);
 const error = ref("");
 const input = ref<HTMLInputElement | null>(null);
 
-const canConnect = computed(() => props.wallet && namespaceOf(props.chain) === "eip155" && hasEvmWallet());
+const chainWallet = computed(() => getWalletForChain(props.chain));
+const canConnect = computed(() => props.wallet && chainWallet.value.hasWallet);
+
 const state = computed<"full" | "mini" | "hidden">(() => {
   if (!canConnect.value) return "hidden";
   if (!props.modelValue) return "full";
@@ -43,7 +44,8 @@ async function connect() {
   error.value = "";
   connecting.value = true;
   try {
-    emit("update:modelValue", await connectEvm());
+    const acc = await chainWallet.value.connect();
+    if (acc) emit("update:modelValue", acc);
   } catch (err) {
     error.value = (err as { message?: string }).message ?? "The wallet did not connect.";
   } finally {

@@ -117,13 +117,27 @@ export interface CheckoutSession {
   checkoutId: string;
   name: string;
   owner: string;
+  chain?: string;
   chainName: string;
   token: string;
+  /**
+   * How the payment reaches the contract. "INTENT_ROUTED_CHECKOUT" means the
+   * deposit address came from a live NEAR Intents 1Click quote. Any other value
+   * on a non-NEAR chain means a locally derived address nothing collects from.
+   */
+  settlementType?: string;
+  tokenContract?: string;
+  tokenDecimals?: number;
+  isStable?: boolean;
   priceUsd: number;
   slippageBufferUsd: number;
   totalBilledUsd: number;
+  amount?: string;
   amountFormatted: string;
+  depositAddress?: string;
+  depositMemo?: string | null;
   status: string;
+  instructions?: string;
   nearTxHash: string | null;
 }
 
@@ -315,6 +329,24 @@ export const api = {
       body: JSON.stringify({ checkout_id: checkoutId, event: "SUCCESS" }),
     });
     if (status !== 200) throw new Error(detailMessage(body, `Checkout failed (${status}).`));
+    return body as CheckoutSession;
+  },
+
+  /** Submits transaction hash for on-chain checkout fulfillment */
+  async submitCheckout(checkoutId: string, txHash: string): Promise<CheckoutSession> {
+    const { status, body } = await request("/v1/checkout/submit", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ checkout_id: checkoutId, tx_hash: txHash }),
+    });
+    if (status !== 200) throw new Error(detailMessage(body, `Checkout submission failed (${status}).`));
+    return body as CheckoutSession;
+  },
+
+  /** Retrieves checkout session details and live settlement state */
+  async getCheckoutSession(checkoutId: string): Promise<CheckoutSession> {
+    const { status, body } = await request(`/v1/checkout/session/${checkoutId}`);
+    if (status !== 200) throw new Error(detailMessage(body, `Failed to load checkout (${status}).`));
     return body as CheckoutSession;
   },
 

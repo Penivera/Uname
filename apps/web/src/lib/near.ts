@@ -126,3 +126,46 @@ export const registryWrite = {
     await send([{ method: CONTRACT_METHODS.setRecord, args: toConnectChainArgs(name, chain, address, proof) }]);
   },
 };
+
+/**
+ * Transfers NEP-141 tokens (e.g. USDC / USDT) to a contract using ft_transfer_call.
+ * Used for purchasing names or making direct on-chain NEAR payments.
+ */
+export async function payNearFtTransfer(args: {
+  tokenContract: string;
+  receiverId: string;
+  amount: string;
+  msg: string;
+}): Promise<string> {
+  if (!connector) throw new Error("NEAR wallet is not ready yet.");
+  if (!nearAccount.value) throw new Error("Connect your NEAR wallet first.");
+  const wallet = await connector.wallet();
+  const res = await wallet.signAndSendTransaction({
+    signerId: nearAccount.value,
+    receiverId: args.tokenContract,
+    actions: [
+      {
+        type: "FunctionCall" as const,
+        params: {
+          methodName: "ft_transfer_call",
+          args: {
+            receiver_id: args.receiverId,
+            amount: args.amount,
+            msg: args.msg,
+          },
+          gas: "100000000000000", // 100 TGas
+          deposit: "1", // 1 yoctoNEAR required by NEP-141 standard
+        },
+      },
+    ],
+  });
+  if (typeof res === "object" && res) {
+    if ("transaction" in res && (res as any).transaction?.hash) {
+      return (res as any).transaction.hash;
+    }
+    if ("transaction_outcome" in res && (res as any).transaction_outcome?.id) {
+      return (res as any).transaction_outcome.id;
+    }
+  }
+  return String(res ?? "");
+}

@@ -38,7 +38,7 @@ near_client = NearContractClient()
 cs_manager = ChainSignaturesManager()
 router = RouterAdapter(cs_manager)
 offramp = OffRampAdapter()
-checkout_adapter = CheckoutAdapter(near_client, cs_manager)
+checkout_adapter = CheckoutAdapter(near_client, cs_manager, router_adapter=router)
 
 # Tracks routed payment statuses for the Owner Dashboard (Spec Flows C, D, E)
 PAYMENT_DASHBOARD: dict[str, dict] = {}
@@ -572,7 +572,7 @@ async def create_checkout_session(req: CreateCheckoutRequest):
 @app.get("/v1/checkout/session/{checkout_id}")
 async def get_checkout_session(checkout_id: str):
     """Retrieves current checkout session details, payment status, and NEAR settlement info."""
-    session = checkout_adapter.get_checkout_session(checkout_id)
+    session = await checkout_adapter.get_checkout_session(checkout_id)
     if not session:
         raise HTTPException(status_code=404, detail={"error": "CHECKOUT_NOT_FOUND"})
     return session

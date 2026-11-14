@@ -429,3 +429,77 @@ def test_checkout_slippage_buffer_policy():
     assert sess_eth["slippageBufferUsd"] == 1.5
     assert sess_eth["totalBilledUsd"] == 6.5
     assert "Includes $1.50 slippage buffer" in sess_eth["instructions"]
+
+
+def test_cross_chain_intent_checkout_settlement(monkeypatch):
+    """
+    Verifies that when buying a domain from a foreign chain (e.g. Base),
+    submitting the deposit tx transitions to PROCESSING, and upon 1Click
+    reporting settlement, polling /v1/checkout/session/{checkout_id}
+    autonomously calls execute_claim_for and marks the checkout COMPLETED.
+    """
+    domain = "crosschain-intent.uni"
+    owner = "crossbuyer.testnet"
+
+    # 1. Create checkout session for Base USDC
+    resp_create = client.post(
+        "/v1/checkout/session",
+        json={
+            "name": domain,
+            "owner": owner,
+            "chain": "base",
+            "token": "USDC",
+        },
+    )
+    assert resp_create.status_code == 200
+    session = resp_create.json()
+    chk_id = session["checkoutId"]
+    assert session["status"] == "PENDING_PAYMENT"
+
+    # 2. Simulate live mode (USE_MOCK_CONTRACT=False)
+    monkeypatch.setattr(settings, "USE_MOCK_CONTRACT", False)
+
+    mock_1click_status = {"status": "PROCESSING"}
+
+    async def fake_submit_deposit_tx(*args, **kwargs):
+        return {"status": "KNOWN_DEPOSIT_TX"}
+
+    async def fake_get_execution_status(*args, **kwargs):
+        return mock_1click_status
+
+    executed_claim = {}
+
+    async def fake_execute_claim_for(name, owner, payment_ref):
+        executed_claim["name"] = name
+        executed_claim["owner"] = owner
+        executed_claim["payment_ref"] = payment_ref
+        return {"status": "SUCCESS", "tx_hash": "NearRelayerTxHash77777"}
+
+    if checkout_adapter.router_adapter:
+        monkeypatch.setattr(checkout_adapter.router_adapter, "submit_deposit_tx", fake_submit_deposit_tx)
+        monkeypatch.setattr(checkout_adapter.router_adapter, "get_execution_status", fake_get_execution_status)
+    monkeypatch.setattr(checkout_adapter.near_client, "execute_claim_for", fake_execute_claim_for)
+
+    # 3. Submit deposit tx
+    tx_hash = "0x9949f2b314a5160e1d89b027150c95ef2294125b2d713c77d6baad19c35b801b"
+    resp_submit = client.post(
+        "/v1/checkout/submit",
+        json={"checkout_id": chk_id, "tx_hash": tx_hash},
+    )
+    assert resp_submit.status_code == 200
+    assert resp_submit.json()["status"] == "PROCESSING"
+
+    # 4. Polling while still PROCESSING
+    resp_poll1 = client.get(f"/v1/checkout/session/{chk_id}")
+    assert resp_poll1.status_code == 200
+    assert resp_poll1.json()["status"] == "PROCESSING"
+
+    # 5. 1Click completes swap and settles funds on NEAR!
+    mock_1click_status = {"status": "SUCCESS", "swapDetails": {"amountOutFormatted": "5.0 USDC"}}
+    resp_poll2 = client.get(f"/v1/checkout/session/{chk_id}")
+    assert resp_poll2.status_code == 200
+    completed = resp_poll2.json()
+    assert completed["status"] == "COMPLETED"
+    assert completed["nearTxHash"] == "NearRelayerTxHash77777"
+    assert executed_claim["name"] == domain
+    assert executed_claim["owner"] == owner

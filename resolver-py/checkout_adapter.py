@@ -294,9 +294,15 @@ def _parse_ft_on_transfer_msg(raw_msg: str, default_owner: str) -> tuple[str, st
 
 
 class CheckoutAdapter:
-    def __init__(self, near_client: NearContractClient, cs_manager: ChainSignaturesManager):
+    def __init__(
+        self,
+        near_client: NearContractClient,
+        cs_manager: ChainSignaturesManager,
+        router_adapter: Any | None = None,
+    ):
         self.near_client = near_client
         self.cs_manager = cs_manager
+        self.router_adapter = router_adapter
         self.sessions: dict[str, dict[str, Any]] = {}
         self.used_tx_hashes: set[str] = set()
         self.in_flight_tx_hashes: set[str] = set()
@@ -443,20 +449,48 @@ class CheckoutAdapter:
         else:
             derived = self.cs_manager.derive_deposit_address(f"checkout:{clean_name}:{clean_owner}", norm_chain)
             deposit_address = derived["depositAddress"]
-            if is_stable:
+            oneclick_quote = None
+
+            if self.router_adapter and not settings.USE_MOCK_CONTRACT:
+                try:
+                    dest_chain_caip2 = "near:mainnet" if settings.NEAR_NETWORK == "mainnet" else "near:testnet"
+                    oneclick_quote = await self.router_adapter.resolve_route(
+                        name=clean_name,
+                        source_chain=norm_chain,
+                        source_token=asset_meta["symbol"],
+                        dest_chain=dest_chain_caip2,
+                        dest_asset_str="USDC",
+                        recipient_address=settings.REGISTRY_CONTRACT_ID,
+                        amount_in=str(amount_base),
+                        refund_to=refund_to,
+                        live_1click_quote=True,
+                    )
+                except Exception as exc:
+                    logger.warning(f"1Click checkout quote error, using CS deposit address: {exc}")
+
+            if oneclick_quote and oneclick_quote.get("depositAddress") and "error" not in oneclick_quote:
+                deposit_address = oneclick_quote["depositAddress"]
+                deposit_memo = oneclick_quote.get("depositMemo")
+                settlement_type = "INTENT_ROUTED_CHECKOUT"
                 instructions = (
-                    f"Send exactly {amount_formatted} to "
-                    f"{deposit_address} on {FRIENDLY_CHAIN_NAMES.get(norm_chain, norm_chain)}. "
-                    f"Includes ${buffer_usd:.2f} buffer for cross-chain execution; any surplus is refunded. "
-                    f"Domain {clean_name} will be claimed automatically for {owner} upon receipt."
+                    f"Send {amount_formatted} to {deposit_address} on {FRIENDLY_CHAIN_NAMES.get(norm_chain, norm_chain)}. "
+                    f"The Intent Router will settle to USDC on NEAR and automatically register {clean_name} for {owner}."
                 )
             else:
-                instructions = (
-                    f"Send {amount_formatted} (~${total_billed_usd:.2f} USD) to "
-                    f"{deposit_address} on {FRIENDLY_CHAIN_NAMES.get(norm_chain, norm_chain)}. "
-                    f"Includes ${buffer_usd:.2f} slippage buffer. "
-                    f"The Intent Router will swap and settle {usd_price:.2f} USDC on NEAR to claim {clean_name} for {owner}."
-                )
+                if is_stable:
+                    instructions = (
+                        f"Send exactly {amount_formatted} to "
+                        f"{deposit_address} on {FRIENDLY_CHAIN_NAMES.get(norm_chain, norm_chain)}. "
+                        f"Includes ${buffer_usd:.2f} buffer for cross-chain execution; any surplus is refunded. "
+                        f"Domain {clean_name} will be claimed automatically for {owner} upon receipt."
+                    )
+                else:
+                    instructions = (
+                        f"Send {amount_formatted} (~${total_billed_usd:.2f} USD) to "
+                        f"{deposit_address} on {FRIENDLY_CHAIN_NAMES.get(norm_chain, norm_chain)}. "
+                        f"Includes ${buffer_usd:.2f} slippage buffer. "
+                        f"The Intent Router will swap and settle {usd_price:.2f} USDC on NEAR to claim {clean_name} for {owner}."
+                    )
 
         session = {
             "checkoutId": checkout_id,
@@ -491,8 +525,42 @@ class CheckoutAdapter:
         self.sessions[checkout_id] = session
         return session
 
-    def get_checkout_session(self, checkout_id: str) -> dict[str, Any] | None:
-        return self.sessions.get(checkout_id)
+    async def get_checkout_session(self, checkout_id: str) -> dict[str, Any] | None:
+        session = self.sessions.get(checkout_id)
+        if not session:
+            return None
+
+        # If in-flight cross-chain session, poll 1Click status and complete if settled
+        if (
+            session.get("status") == "PROCESSING"
+            and not session.get("chain", "").startswith("near:")
+            and self.router_adapter
+        ):
+            try:
+                status_res = await self.router_adapter.get_execution_status(
+                    session["depositAddress"], session.get("depositMemo")
+                )
+                live_status = status_res.get("status", "PROCESSING")
+                session["swapDetails"] = status_res.get("swapDetails")
+
+                if live_status in ("SUCCESS", "SETTLED_TO_BANK"):
+                    # 1Click swap confirmed on NEAR! Trigger autonomous claim_for
+                    payment_ref = session.get("paymentRef") or f"{session['chain']}:{session['token']}:{session.get('txHash', checkout_id)}"
+                    result = await self.near_client.execute_claim_for(
+                        name=session["name"],
+                        owner=session["owner"],
+                        payment_ref=payment_ref,
+                    )
+                    session["status"] = "COMPLETED"
+                    session["nearTxHash"] = result.get("tx_hash")
+                    session["completedAt"] = int(time.time())
+                    session["receipt"] = result
+                elif live_status in ("REFUNDED", "FAILED"):
+                    session["status"] = live_status
+            except Exception as exc:
+                logger.warning(f"Error checking 1Click status in get_checkout_session: {exc}")
+
+        return session
 
     async def verify_payment_on_chain(self, session: dict[str, Any], tx_hash: str) -> None:
         """
@@ -647,34 +715,67 @@ class CheckoutAdapter:
         session["status"] = "PROCESSING"
 
         try:
-            if not settings.USE_MOCK_CONTRACT:
-                await self.verify_payment_on_chain(session, clean_tx)
-                record = await self.near_client.get_record(session["name"])
-                expected_owner = session["owner"].strip().lower()
-                actual_owner = str((record or {}).get("owner") or "").strip().lower()
-                if not record or actual_owner != expected_owner:
-                    raise ValueError(
-                        f"PAYMENT_UNVERIFIED: On-chain record for '{session['name']}' is not owned by '{session['owner']}' after ft_transfer_call."
+            payment_ref = f"{session['chain']}:{session['token']}:{clean_tx}"
+            session["txHash"] = clean_tx
+            session["paymentRef"] = payment_ref
+
+            if session["chain"].startswith("near:"):
+                if not settings.USE_MOCK_CONTRACT:
+                    await self.verify_payment_on_chain(session, clean_tx)
+                    record = await self.near_client.get_record(session["name"])
+                    expected_owner = session["owner"].strip().lower()
+                    actual_owner = str((record or {}).get("owner") or "").strip().lower()
+                    if not record or actual_owner != expected_owner:
+                        raise ValueError(
+                            f"PAYMENT_UNVERIFIED: On-chain record for '{session['name']}' is not owned by '{session['owner']}' after ft_transfer_call."
+                        )
+                    result = {
+                        "status": "SUCCESS",
+                        "tx_hash": clean_tx,
+                        "name": session["name"],
+                        "owner": session["owner"],
+                        "payment_ref": payment_ref,
+                    }
+                else:
+                    result = await self.near_client.execute_claim_for(
+                        name=session["name"],
+                        owner=session["owner"],
+                        payment_ref=payment_ref,
                     )
-                session["txHash"] = clean_tx
-                payment_ref = f"{session['chain']}:{session['token']}:{clean_tx}"
-                session["paymentRef"] = payment_ref
-                result = {
-                    "status": "SUCCESS",
-                    "tx_hash": clean_tx,
-                    "name": session["name"],
-                    "owner": session["owner"],
-                    "payment_ref": payment_ref,
-                }
             else:
-                session["txHash"] = clean_tx
-                payment_ref = f"{session['chain']}:{session['token']}:{clean_tx}"
-                session["paymentRef"] = payment_ref
-                result = await self.near_client.execute_claim_for(
-                    name=session["name"],
-                    owner=session["owner"],
-                    payment_ref=payment_ref,
-                )
+                # Cross-chain checkout payment (EVM, Solana, etc.)
+                if self.router_adapter:
+                    try:
+                        await self.router_adapter.submit_deposit_tx(
+                            deposit_address=session["depositAddress"],
+                            tx_hash=clean_tx,
+                            memo=session.get("depositMemo"),
+                        )
+                    except Exception as exc:
+                        logger.warning(f"1Click submit_deposit_tx error: {exc}")
+
+                live_status = "PROCESSING"
+                status_res = {}
+                if self.router_adapter:
+                    try:
+                        status_res = await self.router_adapter.get_execution_status(
+                            session["depositAddress"], session.get("depositMemo")
+                        )
+                        live_status = status_res.get("status", "PROCESSING")
+                        session["swapDetails"] = status_res.get("swapDetails")
+                    except Exception as exc:
+                        logger.warning(f"1Click get_execution_status error: {exc}")
+
+                if settings.USE_MOCK_CONTRACT or live_status in ("SUCCESS", "SETTLED_TO_BANK"):
+                    result = await self.near_client.execute_claim_for(
+                        name=session["name"],
+                        owner=session["owner"],
+                        payment_ref=payment_ref,
+                    )
+                else:
+                    self.used_tx_hashes.add(tx_key)
+                    session["status"] = "PROCESSING"
+                    return session
         except Exception:
             session["status"] = "PENDING_PAYMENT"
             raise

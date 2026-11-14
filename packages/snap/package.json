@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "node --test test/*.test.js"
+    "test": "npx tsx test/snap.test.ts"
   },
   "dependencies": {
     "@unam/shared": "workspace:*"

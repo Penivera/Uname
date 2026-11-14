@@ -1,27 +1,45 @@
-/**
- * Public settings. The defaults are the mainnet deployment and the hosted
- * resolver; Vite env or the embedding page can override them (see .env.example
- * for the testnet + local resolver values).
- */
+/** Public settings: Vite env defaults, overridable by the embedding page. */
+import { computed } from "vue";
+
 const env = import.meta.env;
 
+export type NearNetwork = "testnet" | "mainnet";
+
 export interface Settings {
-  /** Python resolver base URL. */
+  /** Resolver API base URL. */
   apiUrl: string;
   /** Registry contract account. */
   contractId: string;
-  network: "testnet" | "mainnet";
+  network: NearNetwork;
   rpcUrl: string;
   suffix: string;
+  /**
+   * Accounts that may claim without paying, besides the contract's relayer
+   * (which is read from the contract). The contract has no view for its admin,
+   * so it is configured here. Only decides whether the widget shows the button;
+   * the contract itself refuses everyone else.
+   */
+  adminAccounts: string[];
 }
 
+const network: NearNetwork = env.VITE_NEAR_NETWORK === "testnet" ? "testnet" : "mainnet";
+const defaultApiUrl = network === "mainnet" ? "https://api.unamereg.xyz" : "http://localhost:8000";
+const defaultContractId = network === "mainnet" ? "uname-registry.near" : "unam-registry.testnet";
+const defaultRpcUrl = network === "mainnet" ? "https://rpc.mainnet.near.org" : "https://rpc.testnet.near.org";
+
 export const settings: Settings = {
-  apiUrl: (env.VITE_API_URL ?? "https://api.unamereg.xyz").replace(/\/$/, ""),
-  contractId: env.VITE_CONTRACT_ID ?? "uname-registry.near",
-  network: env.VITE_NEAR_NETWORK === "testnet" ? "testnet" : "mainnet",
-  rpcUrl: env.VITE_NEAR_RPC_URL ?? "https://rpc.mainnet.near.org",
+  apiUrl: (env.VITE_API_URL ?? defaultApiUrl).replace(/\/$/, ""),
+  contractId: env.VITE_CONTRACT_ID ?? defaultContractId,
+  network,
+  rpcUrl: env.VITE_NEAR_RPC_URL ?? defaultRpcUrl,
   suffix: env.VITE_NAME_SUFFIX ?? ".uni",
+  adminAccounts: (env.VITE_ADMIN_ACCOUNTS ?? (network === "mainnet" ? "bernarditoro.near" : "unam-registry.testnet"))
+    .split(",")
+    .map((a: string) => a.trim())
+    .filter(Boolean),
 };
+
+export const isMainnet = computed(() => settings.network === "mainnet");
 
 export function configure(overrides: Partial<Settings>): void {
   Object.assign(settings, overrides);
