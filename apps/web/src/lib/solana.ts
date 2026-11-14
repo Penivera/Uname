@@ -5,16 +5,18 @@ import { ref } from "vue";
 
 export const solanaAccount = ref<string | null>(null);
 
-export function hasSolanaWallet(): boolean {
-  if (typeof window === "undefined") return false;
-  const w = window as any;
-  return Boolean(w.solana || w.phantom?.solana);
-}
-
+/**
+ * The injected provider of the first Solana wallet found. Phantom, Solflare and
+ * Backpack each inject their own object; several others also set `window.solana`.
+ */
 function solanaProvider(): any {
   if (typeof window === "undefined") return null;
   const w = window as any;
-  return w.phantom?.solana || w.solana || null;
+  return w.phantom?.solana ?? w.solflare ?? w.backpack ?? w.solana ?? null;
+}
+
+export function hasSolanaWallet(): boolean {
+  return Boolean(solanaProvider());
 }
 
 export async function connectSolana(): Promise<string> {

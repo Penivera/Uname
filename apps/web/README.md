@@ -1,10 +1,10 @@
 # Universal Name Web App & Embeddable Widget
 
-The **Universal Pay Portal** and **Domain Dashboard** for Universal Name (`.uni`), built as an embeddable widget and standalone web portal. It connects to the Universal Name Resolver API (`api.unamereg.xyz`) and reads the registry contract directly from NEAR Mainnet (`uname-registry.near`).
+The **pay** and **my names** screens for Universal Name (`.uni`), built as an embeddable widget and standalone web app. It connects to the Universal Name Resolver API (`api.unamereg.xyz`) and reads the registry contract directly from NEAR Mainnet (`uname-registry.near`).
 
 ## Key Features
 
-- **Universal Pay Portal:** Send cross-chain payments directly to any `.uni` name. Automatically binds your connected wallet (EVM, NEAR, Solana) as the sender and refund recipient—no manual address typing needed.
+- **Pay a name:** Send cross-chain payments directly to any `.uni` name. Automatically binds your connected wallet (EVM, NEAR, Solana) as the sender and refund recipient—no manual address typing needed.
 - **Multichain Checkout:** Purchase `.uni` domains directly from any supported chain (Ethereum, Base, Arbitrum, Optimism, Polygon, Solana, NEAR) using connected wallets.
 - **Dynamic Network Adapting:** Automatically adapts between Mainnet (`uname-registry.near`) and Testnet (`unam-registry.testnet`) based on environment configuration.
 - **Embeddable Modal:** Embed anywhere with a single script tag and `UniversalName.open()`.

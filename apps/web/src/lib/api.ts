@@ -120,6 +120,12 @@ export interface CheckoutSession {
   chain?: string;
   chainName: string;
   token: string;
+  /**
+   * How the payment reaches the contract. "INTENT_ROUTED_CHECKOUT" means the
+   * deposit address came from a live NEAR Intents 1Click quote. Any other value
+   * on a non-NEAR chain means a locally derived address nothing collects from.
+   */
+  settlementType?: string;
   tokenContract?: string;
   tokenDecimals?: number;
   isStable?: boolean;

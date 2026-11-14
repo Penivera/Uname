@@ -28,13 +28,11 @@ const chain = ref("eip155:8453");
 const token = ref("USDC");
 const amount = ref("");
 const refundAddress = ref("");
-const showManualRefund = ref(false);
 
 const tokens = ref<TokenInfo[]>([]);
 const loadError = ref("");
 
 const busy = ref(false);
-const connectingWallet = ref(false);
 const error = ref("");
 const result = ref<ResolveResponse | null>(null);
 const qr = ref("");
@@ -75,13 +73,14 @@ const refundOk = computed(() => isValidAddress(chain.value, refundAddress.value)
 const canSend = computed(() => Boolean(ok.value?.address) && !expired.value && !payment.value?.txHash);
 const tracked = computed(() => Boolean(payment.value && (payment.value.txHash || payment.value.status !== "PENDING_DEPOSIT")));
 
-// Synchronize refundAddress with the connected wallet for the active chain
+/**
+ * A refund address belongs to one kind of chain. Drop it when it can't be used
+ * on the selected chain, and fill an empty field from that chain's connected
+ * wallet. An address the sender typed is never overwritten.
+ */
 function syncRefundAddress() {
-  if (currentWallet.value.account) {
-    refundAddress.value = currentWallet.value.account;
-  } else if (!showManualRefund.value) {
-    refundAddress.value = "";
-  }
+  if (refundAddress.value && !refundOk.value) refundAddress.value = "";
+  if (!refundAddress.value && currentWallet.value.account) refundAddress.value = currentWallet.value.account;
 }
 
 watch(chain, () => {
@@ -97,26 +96,6 @@ watch(() => currentWallet.value.account, () => {
 });
 
 watch([name, token, amount, refundAddress], reset);
-
-async function connectCurrentWallet() {
-  connectingWallet.value = true;
-  error.value = "";
-  try {
-    const acc = await currentWallet.value.connect();
-    if (acc) {
-      refundAddress.value = acc;
-    }
-  } catch (err: any) {
-    error.value = err?.message ?? "Wallet connection failed.";
-  } finally {
-    connectingWallet.value = false;
-  }
-}
-
-async function disconnectCurrentWallet() {
-  await currentWallet.value.disconnect();
-  refundAddress.value = "";
-}
 
 /** Clears the last answer. The cards that showed it are no longer reachable. */
 function reset() {
@@ -205,7 +184,9 @@ async function createPayment() {
         startPolling();
       }
     }
-    if (!onDetails) nav.go("pay-details");
+    // Errors stay on the form card; only a payable answer moves to the details card.
+    if (r.ok && !onDetails) nav.go("pay-details");
+    if (!r.ok && onDetails) nav.back();
   } catch (err) {
     error.value = (err as Error).message;
   } finally {
@@ -302,10 +283,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <!-- Card 1: Payment Portal Flow -->
+  <!-- Card 1: what to pay -->
   <form v-if="screen === 'pay'" @submit.prevent="createPayment">
     <p class="lead">
-      Universal Name Payment Portal: enter any <strong>.uni</strong> recipient to route and execute your payment automatically.
+      Pay anyone by their name, from whichever chain and token you have.
     </p>
     <p v-if="loadError" class="note bad">{{ loadError }}</p>
 
@@ -337,103 +318,42 @@ onUnmounted(() => {
     <label for="un-amount">Amount</label>
     <input id="un-amount" v-model.trim="amount" inputmode="decimal" placeholder="10.00" required />
 
-    <!-- Seamless Refund / Sender Wallet: auto-bound from connected wallet -->
-    <div v-if="currentWallet.account" class="wallet-box active">
-      <div class="wallet-row">
-        <div class="wallet-meta">
-          <span class="status-dot"></span>
-          <div>
-            <div class="wallet-label">Connected Wallet (Sender & Refund)</div>
-            <div class="mono wallet-address">{{ currentWallet.account }}</div>
-          </div>
-        </div>
-        <button type="button" class="btn-text" @click="disconnectCurrentWallet">Change</button>
-      </div>
-    </div>
-    <div v-else class="wallet-box">
-      <div class="wallet-row">
-        <div class="wallet-meta">
-          <span class="status-dot idle"></span>
-          <div>
-            <div class="wallet-label">Sender & Refund Wallet</div>
-            <div class="muted" style="font-size: 12px">Connect to pay & receive refunds automatically</div>
-          </div>
-        </div>
-        <button type="button" class="btn secondary small" :disabled="connectingWallet" @click="connectCurrentWallet">
-          {{ connectingWallet ? "Connecting…" : "Connect Wallet" }}
-        </button>
-      </div>
-    </div>
-
-    <div style="margin-top: 6px">
-      <a
-        href="#"
-        class="muted"
-        style="font-size: 12px; text-decoration: underline"
-        @click.prevent="showManualRefund = !showManualRefund"
-      >
-        {{ showManualRefund ? "Hide custom refund address" : "Or specify custom refund address" }}
-      </a>
-      <div v-if="showManualRefund" style="margin-top: 8px">
-        <AddressInput
-          id="un-refund"
-          v-model="refundAddress"
-          :chain="chain"
-          placeholder="Your refund address on this chain"
-        />
-        <p v-if="refundAddress && !refundOk" class="muted" style="margin-top: 4px; font-size: 12px">
-          Not a valid {{ chainInfo?.name }} address.
-        </p>
-      </div>
-    </div>
+    <label for="un-refund">Refund address on {{ chainInfo?.name }}, used if the payment can't complete</label>
+    <AddressInput id="un-refund" v-model="refundAddress" :chain="chain" placeholder="Your own address on this chain" required />
+    <p v-if="refundAddress && !refundOk" class="muted" style="margin-top: 6px">
+      Not a valid {{ chainInfo?.name }} address.
+    </p>
 
     <div class="actions">
-      <button
-        v-if="!currentWallet.account && !refundAddress"
-        type="button"
-        class="btn block"
-        :disabled="connectingWallet"
-        @click="connectCurrentWallet"
-      >
-        {{ connectingWallet ? "Connecting…" : `Connect ${currentWallet.chainName} Wallet` }}
-      </button>
-      <button
-        v-else
-        type="submit"
-        class="btn block"
-        :disabled="busy || !name || !amount || !refundOk || !tokenInfo"
-      >
-        {{ busy ? "Calculating Route…" : "Create Payment" }}
+      <button type="submit" class="btn block" :disabled="busy || !name || !amount || !refundOk || !tokenInfo">
+        {{ busy ? "Creating Payment…" : "Create Payment" }}
       </button>
     </div>
     <p v-if="error" class="note bad">{{ error }}</p>
+
+    <div v-if="failed" class="note bad">
+      <strong>
+        <template v-if="failed.error === 'NAME_NOT_FOUND'">Name not found.</template>
+        <template v-else-if="failed.error === 'NO_RECORD'">Can't be paid on {{ chainInfo?.name }}.</template>
+        <template v-else-if="failed.error === 'NO_ROUTE'">No route for this payment.</template>
+        <template v-else-if="failed.error === 'AMOUNT_TOO_LOW'">Amount too low.</template>
+        <template v-else>Can't create this payment.</template>
+      </strong>
+      {{ failed.message }}
+    </div>
+    <template v-if="failed?.supported?.length">
+      <p class="muted" style="margin: 12px 0 6px">What works instead:</p>
+      <p>
+        <span v-for="s in failed.supported.slice(0, 30)" :key="s.chain + s.token" class="badge" style="margin: 0 6px 6px 0">
+          {{ s.token === "any" ? `any token on ${s.chainName}` : `${s.token} on ${s.chainName}` }}
+        </span>
+      </p>
+    </template>
   </form>
 
   <!-- Card 2: Transaction Details & Send -->
   <div v-else-if="screen === 'pay-details'">
-    <template v-if="failed">
-      <h2>
-        <template v-if="failed.error === 'NAME_NOT_FOUND'">Name not found</template>
-        <template v-else-if="failed.error === 'NO_RECORD'">Can't be paid on {{ chainInfo?.name }}</template>
-        <template v-else-if="failed.error === 'NO_ROUTE'">No route for this payment</template>
-        <template v-else-if="failed.error === 'AMOUNT_TOO_LOW'">Amount too low</template>
-        <template v-else>Can't get payment details</template>
-      </h2>
-      <p class="note bad" style="margin-top: 0">{{ failed.message }}</p>
-      <template v-if="failed.supported?.length">
-        <p class="muted" style="margin: 12px 0 6px">What works instead:</p>
-        <p>
-          <span v-for="s in failed.supported.slice(0, 30)" :key="s.chain + s.token" class="badge" style="margin: 0 6px 6px 0">
-            {{ s.token === "any" ? `any token on ${s.chainName}` : `${s.token} on ${s.chainName}` }}
-          </span>
-        </p>
-      </template>
-      <div class="actions">
-        <button type="button" class="btn secondary" @click="nav.back()">Change details</button>
-      </div>
-    </template>
-
-    <template v-else-if="ok">
+    <template v-if="ok">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px">
         <span class="badge" :class="ok.mode === 'direct' ? 'ok' : ''">
           {{ ok.mode === "direct" ? "Direct Wallet Settlement" : "Intent-Routed Settlement" }}
@@ -526,7 +446,7 @@ onUnmounted(() => {
       <p v-if="error" class="note bad">{{ error }}</p>
     </template>
 
-    <p v-else class="muted">{{ busy ? "Calculating route…" : "No payment details yet." }}</p>
+    <p v-else class="muted">{{ busy ? "Creating payment…" : "No payment details yet." }}</p>
   </div>
 
   <!-- Card 3: Track Payment Status -->
@@ -534,7 +454,7 @@ onUnmounted(() => {
     <template v-if="payment">
       <PaymentCard :payment="payment" />
       <p v-if="!done" class="muted" style="margin-top: 12px">
-        Checking live status. You can navigate away or close the portal; the payment will settle automatically.
+        Checking live status. You can close this; the payment will still go through.
       </p>
       <div v-else class="actions">
         <button type="button" class="btn secondary" @click="amount = ''; nav.go('pay')">Make another payment</button>

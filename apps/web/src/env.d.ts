@@ -12,4 +12,5 @@ interface ImportMetaEnv {
   readonly VITE_NEAR_NETWORK?: string;
   readonly VITE_NEAR_RPC_URL?: string;
   readonly VITE_NAME_SUFFIX?: string;
+  readonly VITE_ADMIN_ACCOUNTS?: string;
 }

@@ -13,6 +13,13 @@ export interface Settings {
   network: NearNetwork;
   rpcUrl: string;
   suffix: string;
+  /**
+   * Accounts that may claim without paying, besides the contract's relayer
+   * (which is read from the contract). The contract has no view for its admin,
+   * so it is configured here. Only decides whether the widget shows the button;
+   * the contract itself refuses everyone else.
+   */
+  adminAccounts: string[];
 }
 
 const network: NearNetwork = env.VITE_NEAR_NETWORK === "testnet" ? "testnet" : "mainnet";
@@ -26,6 +33,10 @@ export const settings: Settings = {
   network,
   rpcUrl: env.VITE_NEAR_RPC_URL ?? defaultRpcUrl,
   suffix: env.VITE_NAME_SUFFIX ?? ".uni",
+  adminAccounts: (env.VITE_ADMIN_ACCOUNTS ?? (network === "mainnet" ? "bernarditoro.near" : "unam-registry.testnet"))
+    .split(",")
+    .map((a: string) => a.trim())
+    .filter(Boolean),
 };
 
 export const isMainnet = computed(() => settings.network === "mainnet");

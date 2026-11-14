@@ -91,7 +91,36 @@ const symbolOf = (assetId: string) => tokens.value.find((t) => t.assetId === ass
 const now = ref(Date.now());
 const pendingReady = computed(() => (record.value?.pending ? now.value >= record.value.pending.effective_at_ms : false));
 
+/** The contract's relayer, read on load. With the configured admins, the only accounts that may claim without paying. */
+const contractRelayer = ref<string | null>(null);
+const canClaimFree = computed(() => {
+  const me = nearAccount.value;
+  return Boolean(me) && (me === contractRelayer.value || settings.adminAccounts.includes(me!));
+});
+
 const checkoutPayWallet = computed<ChainWallet>(() => getWalletForChain(checkout.value?.chain ?? payChain.value));
+
+/**
+ * Whether the checkout can be paid at all. NEAR pays the contract directly.
+ * Other chains are only payable through a live 1Click deposit address; without
+ * one the resolver falls back to a derived address that nothing collects from,
+ * so the card shows no address and no pay button.
+ */
+const checkoutPayable = computed(() => {
+  const s = checkout.value;
+  if (!s?.chain) return false;
+  return s.chain.startsWith("near:") || s.settlementType === "INTENT_ROUTED_CHECKOUT";
+});
+
+/** The connected wallet can send the payment itself (NEAR and EVM; Solana is pay-by-address only). */
+const checkoutWalletPay = computed(() => {
+  const chain = checkout.value?.chain ?? "";
+  if (!checkoutPayable.value) return false;
+  return chain.startsWith("near:") || (chain.startsWith("eip155:") && checkoutPayWallet.value.hasWallet);
+});
+const checkoutWalletConnected = computed(() =>
+  checkout.value?.chain?.startsWith("near:") ? Boolean(nearAccount.value) : Boolean(checkoutPayWallet.value.account),
+);
 
 const screen = nav.current;
 let timer: number | undefined;
@@ -232,6 +261,10 @@ async function payCheckoutWithWallet() {
     const wallet = getWalletForChain(chainKey);
 
     if (chainKey.startsWith("near:")) {
+      if (!nearAccount.value) {
+        await connectNear();
+        if (!nearAccount.value) throw new Error("Connect your NEAR wallet, then press the button again.");
+      }
       // Pay via ft_transfer_call on NEAR
       const tokenContract = session.tokenContract;
       if (!tokenContract) throw new Error("Missing NEAR token contract.");
@@ -444,6 +477,7 @@ onMounted(async () => {
       { chainId: "eip155:137", chainName: "Polygon", tokens: [{ symbol: "USDC" }, { symbol: "USDT" }] },
       { chainId: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d", chainName: "Solana", tokens: [{ symbol: "USDC" }] },
     ];
+    registry.relayer().then((r) => (contractRelayer.value = r)).catch(() => {});
     await initNear();
     await loadNames();
     if (!tokens.value.length) loadError.value = `Cannot reach the resolver at ${settings.apiUrl}, so the token list is empty.`;
@@ -465,7 +499,7 @@ onUnmounted(() => {
 
   <!-- Card: wallet, owned names, claim -->
   <div v-if="screen === 'names'">
-    <p class="lead">Register a Universal Name (.uni) and configure your multi-chain payout destinations.</p>
+    <p class="lead">Get your own name and choose how you want to be paid.</p>
 
     <!-- Connected Wallet Status (NEAR or External) -->
     <template v-if="nearAccount">
@@ -474,7 +508,7 @@ onUnmounted(() => {
           <div class="wallet-meta">
             <span class="status-dot"></span>
             <div>
-              <div class="wallet-label">Connected Domain Owner (NEAR)</div>
+              <div class="wallet-label">Signed in as</div>
               <div class="mono wallet-address">{{ nearAccount }}</div>
             </div>
           </div>
@@ -501,11 +535,11 @@ onUnmounted(() => {
           <div class="wallet-meta">
             <span class="status-dot idle"></span>
             <div>
-              <div class="wallet-label">Connect Domain Owner</div>
-              <div class="muted" style="font-size: 12.5px">Connect your wallet to manage and register domains</div>
+              <div class="wallet-label">Not signed in</div>
+              <div class="muted" style="font-size: 12.5px">Connect your NEAR wallet to see and manage your names</div>
             </div>
           </div>
-          <button type="button" class="btn small" @click="run('connect', connectNear)">Connect NEAR</button>
+          <button type="button" class="btn small" @click="run('connect', connectNear)">Connect</button>
         </div>
       </div>
     </template>
@@ -576,66 +610,27 @@ onUnmounted(() => {
       </dl>
 
       <template v-if="!claimOutcome">
-        <!-- Multichain Wallet Payment Execution -->
-        <div class="actions" style="margin-top: 16px">
-          <!-- NEAR wallet payment -->
-          <button
-            v-if="checkout.chain?.startsWith('near:')"
-            type="button"
-            class="btn block"
-            :disabled="checkoutPaying"
-            @click="payCheckoutWithWallet"
-          >
-            {{ checkoutPaying ? "Confirming in NEAR wallet…" : `Pay ${checkout.amountFormatted} with NEAR Wallet` }}
+        <p v-if="!checkoutPayable" class="note warn">
+          Paying from {{ checkout.chainName }} isn't available right now. Go back and choose NEAR to pay.
+        </p>
+
+        <!-- One button for every chain the connected wallet can pay from; the wallet that opens depends on the chain. -->
+        <div v-if="checkoutWalletPay" class="actions" style="margin-top: 16px">
+          <button type="button" class="btn block" :disabled="checkoutPaying" @click="payCheckoutWithWallet">
+            {{
+              checkoutPaying
+                ? "Confirm in your wallet…"
+                : checkoutWalletConnected
+                  ? `Pay ${checkout.amountFormatted}`
+                  : "Connect Wallet and Pay"
+            }}
           </button>
-
-          <!-- EVM wallet payment -->
-          <template v-else-if="checkout.chain?.startsWith('eip155:')">
-            <button
-              v-if="evmAccount"
-              type="button"
-              class="btn block"
-              :disabled="checkoutPaying"
-              @click="payCheckoutWithWallet"
-            >
-              {{ checkoutPaying ? "Confirming in wallet…" : `Pay ${checkout.amountFormatted} with Connected Wallet` }}
-            </button>
-            <button
-              v-else-if="hasEvmWallet()"
-              type="button"
-              class="btn block"
-              :disabled="checkoutPaying"
-              @click="payCheckoutWithWallet"
-            >
-              Connect EVM Wallet & Pay
-            </button>
-          </template>
-
-          <!-- Solana wallet payment -->
-          <template v-else-if="checkout.chain?.startsWith('solana:')">
-            <button
-              v-if="solanaAccount"
-              type="button"
-              class="btn secondary block"
-              @click="copyDepositAddress"
-            >
-              {{ copied ? "Copied Solana Deposit Address!" : "Copy Solana Deposit Address" }}
-            </button>
-            <button
-              v-else-if="hasSolanaWallet()"
-              type="button"
-              class="btn block"
-              @click="connectSolana"
-            >
-              Connect Phantom / Solflare
-            </button>
-          </template>
         </div>
 
         <!-- Manual payment / Deposit Address -->
-        <template v-if="checkout.depositAddress">
+        <template v-if="checkoutPayable && checkout.depositAddress && !checkout.chain?.startsWith('near:')">
           <div style="margin-top: 14px">
-            <label>Or transfer directly to deposit address:</label>
+            <label>{{ checkoutWalletPay ? "Or send it yourself to this address:" : "Send it to this address:" }}</label>
             <div class="address">
               <span class="mono">{{ checkout.depositAddress }}</span>
               <button type="button" class="btn secondary small" @click="copyDepositAddress">
@@ -646,7 +641,7 @@ onUnmounted(() => {
             <img v-if="checkoutQR" :src="checkoutQR" class="qr" width="176" height="176" alt="Checkout QR" />
           </div>
 
-          <label for="un-ctx" style="margin-top: 12px">Submitted payment externally? Paste transaction hash:</label>
+          <label for="un-ctx" style="margin-top: 12px">Paid from somewhere else? Paste the transaction hash:</label>
           <div class="row">
             <input id="un-ctx" v-model.trim="manualCheckoutTx" class="mono" placeholder="Tx hash…" autocomplete="off" />
             <button
@@ -656,13 +651,13 @@ onUnmounted(() => {
               :disabled="!manualCheckoutTx.trim() || checkoutPaying"
               @click="submitManualCheckoutTx"
             >
-              Submit Tx
+              Submit
             </button>
           </div>
         </template>
 
         <!-- Contract admin or relayer: claim without paying -->
-        <div v-if="isMainnet && nearAccount" style="margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 12px">
+        <div v-if="isMainnet && canClaimFree" style="margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 12px">
           <p class="muted" style="margin-bottom: 8px">
             The contract's admin or relayer account can claim without paying. Any other account is refused.
           </p>

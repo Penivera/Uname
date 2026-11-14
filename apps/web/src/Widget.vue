@@ -9,10 +9,10 @@ defineProps<{ initialName: string; backdrop: boolean }>();
 const emit = defineEmits<{ close: [] }>();
 
 const TITLES: Record<Screen, string> = {
-  pay: "Payment Portal",
+  pay: "Pay a name",
   "pay-details": "Confirm & Send",
   "pay-status": "Payment Status",
-  names: "Domain Dashboard",
+  names: "My names",
   claim: "Claim & Register",
   name: "Manage Domain",
   destination: "Payout Settings",
@@ -42,7 +42,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
         </span>
       </div>
       <button class="switch" type="button" @click="nav.go(isPayFlow ? 'names' : 'pay')">
-        {{ isPayFlow ? "Domains" : "Pay Portal" }}
+        {{ isPayFlow ? "My names" : "Pay" }}
       </button>
       <button class="icon" type="button" aria-label="Close" @click="emit('close')">×</button>
     </header>
