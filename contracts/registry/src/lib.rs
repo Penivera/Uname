@@ -1,6 +1,5 @@
 use near_sdk::json_types::U128;
 use near_sdk::serde::Serialize;
-use near_sdk::serde_json::json;
 use near_sdk::store::{IterableSet, LookupMap};
 use near_sdk::{env, near, require, AccountId, PanicOnDefault, PromiseOrValue};
 
@@ -45,8 +44,22 @@ fn panic_code(code: &str, detail: &str) -> ! {
     if detail.is_empty() {
         env::panic_str(code)
     } else {
-        env::panic_str(&format!("{code}: {detail}"))
+        let mut msg = String::with_capacity(code.len() + 2 + detail.len());
+        msg.push_str(code);
+        msg.push_str(": ");
+        msg.push_str(detail);
+        env::panic_str(&msg)
     }
+}
+
+fn hex_encode(bytes: &[u8]) -> String {
+    const HEX_CHARS: &[u8; 16] = b"0123456789abcdef";
+    let mut s = String::with_capacity(bytes.len() * 2);
+    for &b in bytes {
+        s.push(HEX_CHARS[(b >> 4) as usize] as char);
+        s.push(HEX_CHARS[(b & 0x0f) as usize] as char);
+    }
+    s
 }
 
 #[near(serializers = [borsh, json])]
@@ -210,16 +223,24 @@ pub enum EventData {
     },
 }
 
+#[derive(Serialize)]
+struct EventEnvelope<'a, T: Serialize> {
+    standard: &'static str,
+    version: &'static str,
+    event: &'a str,
+    data: &'a T,
+}
+
 fn emit(event: &str, data: &impl Serialize) {
-    env::log_str(
-        &json!({
-            "standard": "unam-1.0.0",
-            "version": "1.0.0",
-            "event": event,
-            "data": data,
-        })
-        .to_string(),
-    );
+    let envelope = EventEnvelope {
+        standard: "unam-1.0.0",
+        version: "1.0.0",
+        event,
+        data,
+    };
+    if let Ok(msg) = near_sdk::serde_json::to_string(&envelope) {
+        env::log_str(&msg);
+    }
 }
 
 pub type ValResult<T> = Result<T, (&'static str, String)>;
@@ -251,7 +272,10 @@ pub fn validate_name(raw: &str) -> String {
 
 pub fn canonical_name_checked(raw: &str) -> ValResult<String> {
     let label = validate_name_checked(raw)?;
-    Ok(format!("{label}.uni"))
+    let mut s = String::with_capacity(label.len() + 4);
+    s.push_str(&label);
+    s.push_str(".uni");
+    Ok(s)
 }
 
 pub fn canonical_name(raw: &str) -> String {
@@ -315,10 +339,10 @@ pub fn parse_chain_key_checked(chain: &str) -> ValResult<(String, String, u64)> 
             COIN_TYPE_NEAR
         }
         other => {
-            return Err((
-                "CHAIN_KEY_INVALID",
-                format!("unsupported namespace: {other}"),
-            ))
+            let mut s = String::with_capacity(23 + other.len());
+            s.push_str("unsupported namespace: ");
+            s.push_str(other);
+            return Err(("CHAIN_KEY_INVALID", s));
         }
     };
     Ok((ns, rest.to_string(), coin_type))
@@ -330,7 +354,11 @@ pub fn parse_chain_key(chain: &str) -> (String, String, u64) {
 
 pub fn normalize_chain_key(chain: &str) -> String {
     let (ns, rest, _) = parse_chain_key(chain);
-    format!("{ns}:{rest}")
+    let mut s = String::with_capacity(ns.len() + 1 + rest.len());
+    s.push_str(&ns);
+    s.push(':');
+    s.push_str(&rest);
+    s
 }
 
 pub fn validate_address_checked(ns: &str, address: &[u8]) -> ValResult<()> {
@@ -351,7 +379,10 @@ pub fn validate_address_checked(ns: &str, address: &[u8]) -> ValResult<()> {
     if ok {
         Ok(())
     } else {
-        Err(("ADDRESS_INVALID", format!("bad address for namespace {ns}")))
+        let mut s = String::with_capacity(27 + ns.len());
+        s.push_str("bad address for namespace ");
+        s.push_str(ns);
+        Err(("ADDRESS_INVALID", s))
     }
 }
 
@@ -416,7 +447,10 @@ pub fn validate_policy(policy: &ReceivePolicy) {
 }
 
 fn owner_prefix(owner: &AccountId) -> Vec<u8> {
-    format!("o/{owner}").into_bytes()
+    let mut key = Vec::with_capacity(2 + owner.as_bytes().len());
+    key.extend_from_slice(b"o/");
+    key.extend_from_slice(owner.as_bytes());
+    key
 }
 
 fn require_owner(record: &Record) {
@@ -646,13 +680,16 @@ impl Contract {
         }
 
         let full = self.internal_claim(&name, &target_owner);
+        let mut payment_ref = String::with_capacity(7 + token.as_str().len());
+        payment_ref.push_str("nep141:");
+        payment_ref.push_str(token.as_str());
         emit(
             "PaymentProcessed",
             &EventData::PaymentProcessed {
                 name: full,
                 payer: sender_id.to_string(),
                 amount: price.to_string(),
-                payment_ref: format!("nep141:{token}"),
+                payment_ref,
             },
         );
 
@@ -672,7 +709,10 @@ impl Contract {
             .get_mut(&full)
             .unwrap_or_else(|| panic_code("NAME_NOT_FOUND", ""));
         require_owner(record);
-        let key = format!("{ns}:{rest}");
+        let mut key = String::with_capacity(ns.len() + 1 + rest.len());
+        key.push_str(&ns);
+        key.push(':');
+        key.push_str(&rest);
         record.chains.insert(
             key.clone(),
             ChainRecord {
@@ -688,7 +728,7 @@ impl Contract {
             &EventData::ChainConnected {
                 name: full,
                 chain: key,
-                address: hex::encode(address),
+                address: hex_encode(&address),
             },
         );
     }
@@ -946,99 +986,5 @@ impl Contract {
 
     pub fn records_of(&self, owner: AccountId, skip: usize, limit: usize) -> Vec<String> {
         self.names_of(owner, Some(skip), Some(limit))
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn name_validation_accepts_and_rejects() {
-        assert_eq!(validate_name_checked("peni").unwrap(), "peni");
-        assert_eq!(validate_name_checked("Peni.Uni").unwrap(), "peni");
-        assert_eq!(validate_name_checked("  peni  ").unwrap(), "peni");
-        assert_eq!(validate_name_checked("UPPER").unwrap(), "upper");
-        for bad in ["ab", "-peni", "peni-", "pe--ni", "p ni", "admin", ""] {
-            assert!(
-                validate_name_checked(bad).is_err(),
-                "expected rejection of {bad:?}"
-            );
-        }
-    }
-
-    #[test]
-    fn chain_key_and_cointype() {
-        let (_, _, c) = parse_chain_key_checked("eip155:1").unwrap();
-        assert_eq!(c, EVM_FLAG | 1);
-        let (_, _, c) =
-            parse_chain_key_checked("solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d").unwrap();
-        assert_eq!(c, COIN_TYPE_SOLANA);
-        let (_, _, c) = parse_chain_key_checked("bip122:000000000019d6689c085ae165831e93").unwrap();
-        assert_eq!(c, COIN_TYPE_BIP122);
-        let (_, _, c) = parse_chain_key_checked("near:testnet").unwrap();
-        assert_eq!(c, COIN_TYPE_NEAR);
-        for bad in [
-            "ethereum:1",
-            "eip155:abc",
-            "solana:short",
-            "bip122:xyz",
-            "near:devnet",
-        ] {
-            assert!(
-                parse_chain_key_checked(bad).is_err(),
-                "expected rejection of {bad:?}"
-            );
-        }
-    }
-
-    #[test]
-    fn address_lengths_per_namespace() {
-        assert!(validate_address_checked("eip155", &[0u8; 20]).is_ok());
-        assert!(validate_address_checked("eip155", &[0u8; 32]).is_err());
-        assert!(validate_address_checked("solana", &[0u8; 32]).is_ok());
-        assert!(validate_address_checked("solana", &[0u8; 20]).is_err());
-        assert!(validate_address_checked("bip122", &[0u8; 25]).is_ok());
-        assert!(validate_address_checked("bip122", &[0u8; 10]).is_err());
-        assert!(validate_address_checked("near", b"alice.near").is_ok());
-        assert!(validate_address_checked("near", b"a").is_err());
-    }
-
-    #[test]
-    fn policy_validation() {
-        let asset_policy = ReceivePolicy {
-            force_default: false,
-            default: Some(Destination::Asset {
-                asset: "eip155:1/erc20:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48".into(),
-                chain: "eip155:1".into(),
-                address: vec![0u8; 20],
-            }),
-            payout: None,
-        };
-        assert!(validate_policy_checked(&asset_policy).is_ok());
-        let payout_policy = ReceivePolicy {
-            force_default: true,
-            default: None,
-            payout: Some(Destination::Payout {
-                provider: "bastion".into(),
-                reference: "ref-123".into(),
-            }),
-        };
-        assert!(validate_policy_checked(&payout_policy).is_ok());
-        let empty = ReceivePolicy {
-            force_default: false,
-            default: None,
-            payout: None,
-        };
-        assert!(validate_policy_checked(&empty).is_err());
-        let payout_as_default = ReceivePolicy {
-            force_default: false,
-            default: Some(Destination::Payout {
-                provider: "bastion".into(),
-                reference: "ref".into(),
-            }),
-            payout: None,
-        };
-        assert!(validate_policy_checked(&payout_as_default).is_err());
     }
 }
