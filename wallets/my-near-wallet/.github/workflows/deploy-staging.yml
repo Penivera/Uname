@@ -1,0 +1,28 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - master
+      - staging
+  # Manual redeploys, e.g. after changing the SUNSET_PHASE environment variable.
+  workflow_dispatch:
+
+concurrency:
+  group: 'testnet'
+  cancel-in-progress: true
+
+jobs:
+  testnet-staging-deploy:
+    uses: ./.github/workflows/cloudflare-pages-deploy.yml
+    with:
+      environment: testnet-staging
+      near_wallet_env: testnet_STAGING
+    secrets: inherit
+
+  mainnet-staging-deploy:
+    uses: ./.github/workflows/cloudflare-pages-deploy.yml
+    with:
+      environment: mainnet-staging
+      near_wallet_env: mainnet_STAGING
+    secrets: inherit

@@ -1,0 +1,2074 @@
+{
+    "account": {
+        "activateAccount": {
+            "post": {
+                "descOne": "İlk para yatırma işleminiz alındı ve yeni hesabınıza aktarıldı. Hesabınız artık aktif!",
+                "descTwo": "Depozitonuzun bir kısmı <a href='https://docs.near.org/docs/concepts/account' rel='noopener noreferrer' target='_blank'>hesabınızı barındırma maliyetini karşılamak için ayrılmıştır</a>.",
+                "title": "Hesabınız etkinleştirildi."
+            },
+            "pre": {
+                "desc": "NEAR Cüzdanınızı kullanmaya başlamak için <b>en az ${amount}</b> hesabınıza yatırınız (sometimes called an “address”).",
+                "title": "Az kaldı! İlk para yatırma işleminizi yapın."
+            }
+        },
+        "available": {
+            "error": "Kullanıcı bulunamadı!",
+            "errorSameAccount": "Kendinize gönderemezsiniz.",
+            "implicitAccount": "Hesap kimliğinizi her zaman iki kez kontrol ediniz",
+            "implicitAccountModal": "Lütfen hesap kimliğinizi iki kez kontrol edin, özellikle de bu bir borsa hesabıysa. Hesap kimliği yanlış girilirse, paranız tamamiyle kaybolacaktır.",
+            "success": "Kullanıcı bulundu!"
+        },
+        "create": {
+            "checkingAvailablity": {
+                "check": "Kontrol et",
+                "create": "Kullanılabilirliği kontrol ediliyor"
+            },
+            "errorAccountNotExist": "Hesabınız oluşturulurken bir sorun oluştu. Lütfen tekrar deneyin!",
+            "errorInvalidAccountIdLength": "Hesap Kimliği 2 ile 64 karakter arasında olmalıdır"
+        },
+        "createImplicit": {
+            "post": {
+                "descOne": "İlk para yatırma işleminiz alındı! Talep edildiğinde, mevduatınız yeni hesabınıza aktarılacaktır.",
+                "descTwo": "Önemli: Tek kullanımlık finansman adresiniz artık geçerli olmayacak. Kaydedilmiş olabileceği tüm borsalarda veya diğer cihazlarda Hesap Kimliğinizle değiştirdiğinizden emin olun.",
+                "modal": {
+                    "descOne": "Devam ederek, tek kullanımlık fonlama adresinin değiştirileceğini ve eski adrese gönderilen ek fonların kaybedileceğini kabul etmiş olursunuz.",
+                    "descTwo": "Kaydedilmiş olabileceği tüm borsalarda veya diğer cihazlarda Hesap Kimliğinizle değiştirmeyi unutmayın.",
+                    "title": "Adresinizi güncelleyin"
+                },
+                "title": "Hesabınızı talep edin"
+            },
+            "pre": {
+                "addressHeader": "Tek seferlik finansman adresi",
+                "descOne": "NEAR Cüzdanınızı kullanmaya başlamak için, aşağıdaki tek kullanımlık finansman adresinize <b>en az ${amount}</b> başlangıç depozitosunu yatırın.",
+                "descTwo": "Hesabınızı oluşturmayı tamamlamak için paranız yatırıldıktan sonra bu ekrana tekrar dönün.",
+                "moonPay": {
+                    "buyWith": "İle satın al",
+                    "desc": "Tercih ettiğiniz ödeme yöntemini kullanarak MoonPay ile ilk para yatırma işleminizi yapın.",
+                    "title": "MoonPay ile yatırın"
+                },
+                "title": "Az kaldı! Hesabınızı ilk para yatırma işlemiyle etkinleştirin.",
+                "whereToBuy": {
+                    "button": "NEAR'ı nerede satın alabilirim?",
+                    "desc": "NEAR tokenleri aşağıdaki borsalar aracılığıyla satın alınabilir",
+                    "title": "NEAR tokenlerini al"
+                }
+            },
+            "success": {
+                "button": "Hesabına gitmek için devam et",
+                "descOne": "Tebrikler <b>${accountId}</b>! Hesabınız başarıyla oluşturuldu.",
+                "descThree": "Lütfen adresinizi herhangi bir borsa veya diğer cihazlarda güncelleyin.",
+                "descTwo": "Artık tüm NEAR işlemleri için bu Hesap Kimliğini adresiniz olarak kullanmalısınız.",
+                "modal": {
+                    "desc": "Tebrikler! Hesabınız başarıyla oluşturuldu.",
+                    "title": "NEAR Cüzdan'a Hoş geldiniz!"
+                },
+                "title": "Near'a Hoş geldiniz"
+            }
+        },
+        "fundedStatus": {
+            "active": "Aktif",
+            "awaitingDeposit": "Depozito bekleniyor",
+            "initialDeposit": "İlk depozito",
+            "minDeposit": "Minimum depozito",
+            "nearName": "Hesap Kimliği",
+            "ready": "Talep etmeye hazır",
+            "singleUse": "Tek kullanımlık Finansman adresi",
+            "status": "Hesap durumu"
+        },
+        "login": {
+            "details": {
+                "warning": "Bu tüm bakiyenize erişmenizi sağlar. Lütfen dikkatli ilerleyin."
+            },
+            "incorrectContractId": {
+                "error": "Sözleşme ${contractId} mevcut değil. Bu, kullanmaya çalıştığınız uygulamayla ilgili bir sorun olabilir veya bu sözleşme silinmiş olabilir. Uygulamaya geri yönlendirileceksiniz",
+                "errorTitle": "Geçersiz sözleşme kimliği"
+            }
+        },
+        "nameDoesntMatch": "Hesap adı eşleşmiyor",
+        "recoverAccount": {
+            "error": "Hesap kurtarılamadı. Bu Anahtar Kelime için hesap bulunamadı.",
+            "errorInvalidSeedPhrase": "Bu Anahtar Kelime için hesap bulunamadı.",
+            "success": "Anahtar Kelime kullanılarak kurtarma işlemi tamamlandı.<br/><b>${numberOfAccounts} hesap(s)</b> başarıyla kurtarıldı.<br/>Sonuncusu aktif olarak ayarlanmıştır.",
+            "zeroBalance": {
+                "success": {
+                    "privateKey": "Aşağıdaki hesap, sağladığınız özel anahtar kullanılarak başarıyla içe aktarıldı:"
+                }
+            }
+        },
+        "requestCode": {
+            "error": "Kod içeren SMS gönderilemedi.",
+            "success": "Kod SMS ile gönderildi."
+        },
+        "sendMoney": {
+            "error": "Üzgünüz, bir hata oluştu. Tekrar deneyebilirsiniz."
+        },
+        "sendNewRecoveryLink": {
+            "error": "Yeniden gönderme başarısız. Lütfen tekrar deneyin.",
+            "success": "Kurtarma linki başarıyla gönderildi!"
+        },
+        "verifySeedPhrase": {
+            "error": "yanlış kelime girdiniz"
+        }
+    },
+    "accountExport": {
+        "banner": {
+            "description": "MyNearWallet aşamalı olarak kullanımdan kaldırılıyor ve 2026 sonuna kadar tamamen kapatılacak. Hesaplarınıza güvenle erişmeye devam etmek için onları Meteor Wallet'a taşıyın.",
+            "export": "Hesapları dışa aktar",
+            "resume": "Hesap aktarımına devam et",
+            "title": "MyNearWallet kapanıyor"
+        },
+        "list": {
+            "empty": "Dışa aktarılabilecek hesap yok.",
+            "selectPrompt": "Dışa aktarmak için bir veya daha fazla hesap seçin (en fazla {{max}})",
+            "unavailableTitle": "Aşağıdaki hesaplar kullanılamıyor"
+        },
+        "manual": {
+            "accountLabel": "Hesap {{index}}",
+            "back": "Geri",
+            "backToWallet": "Cüzdana dön",
+            "copy": "Kopyala",
+            "credentialsFailed": "MyNearWallet hesap kimlik bilgilerinizi yükleyemedi.",
+            "loadingCredentials": "Kimlik bilgileri yükleniyor…",
+            "privateKeyLabel": "Özel anahtar",
+            "reveal": "Göster",
+            "subtitle": "Seçtiğiniz hesapların özel anahtarını görüntüleyip kopyalayın.",
+            "title": "Elle dışa aktar",
+            "warning": "Bu bilgileri gizli tutun. Bu kimlik bilgilerine erişen herkes hesaplarınıza erişebilir ve onları kontrol edebilir."
+        },
+        "remove": {
+            "confirmAccess": "Seçili hesaplara Meteor Wallet'ta erişebildiğimi onaylıyorum.",
+            "failed": "MyNearWallet seçili hesapların tümünü kaldıramadı. Lütfen yeniden deneyin.",
+            "listTitle": "Kaldırılacak hesaplar",
+            "removeSelected": "Seçili hesapları kaldır",
+            "removing": "Seçili hesaplar kaldırılıyor…",
+            "title": "Hesapları MyNearWallet'tan kaldır",
+            "warningConfirmFirst": "Hesaplarınızı yalnızca başarıyla aktarıldıklarını ve Meteor Wallet'ta erişebildiğinizi doğruladıktan sonra kaldırın.",
+            "warningPermanent": "Bir hesabı kaldırmak, yerel olarak saklanan hesap verilerini ve anahtarları MyNearWallet'tan kalıcı olarak siler. Bu işlem geri alınamaz."
+        },
+        "returnToWallet": "MyNearWallet'a dön",
+        "select": {
+            "accessKeyCheckFailed": "MyNearWallet hesaplarınızın erişim anahtarlarını kontrol edemedi.",
+            "cancel": "İptal",
+            "checking": "Hesaplarınız kontrol ediliyor…",
+            "exportSelected": "Seçili hesapları dışa aktar",
+            "sharedRecoveryPhraseWarning": "Seçilen tüm hesaplar Meteor Wallet'ta tek bir ortak kurtarma ifadesi kullanacak.",
+            "subtitle": "Dışa aktarmak istediğiniz hesapları seçip gözden geçirin.",
+            "title": "Hesapları dışa aktar"
+        },
+        "success": {
+            "listTitle": "Dışa aktarılan hesaplar",
+            "removeFromWallet": "Dışa aktarılan hesabı MyNearWallet'tan kaldır",
+            "subtitle": "Seçtiğiniz hesaplar güvenle dışa aktarıldı ve Meteor Wallet'a aktarıldı.",
+            "title": "Hesaplar başarıyla dışa aktarıldı"
+        }
+    },
+    "accountSelector": {
+        "noAccountDesc": "Şu anda herhangi bir alternatif hesapta oturum açmadınız.",
+        "signInButton": "Farklı Bir Hesabı İçe Aktar"
+    },
+    "actions": {
+        "AddKey": {
+            "forContract": "Erişim Anahtarı eklendi: ${permissionReceiverId}",
+            "forReceiver": "Tam Erişim Anahtarı eklendi: ${receiverId}"
+        },
+        "CreateAccount": "Yeni hesap oluşturuldu: ${receiverId}",
+        "DeleteAccount": "Hesap silindi: ${receiverId}",
+        "DeleteKey": "Anahtar silindi",
+        "DeployContract": "Sözleşme uygulandı: ${receiverId}",
+        "FunctionCall": "Sözleşmede: ${receiverId} Uygulanan yöntem: ${methodName}",
+        "Stake": "Katılım sağlandı ${stake}",
+        "Transfer": {
+            "received": "Göndericiden ${signerId} alındı ${deposit}",
+            "transferred": "Alıcıya ${receiverId} Gönderildi ${deposit}"
+        }
+    },
+    "actionsSign": {
+        "addKey": "Erişim anahtarı ekleniyor",
+        "createAccount": "Hesap Oluşturma: ${receiverId}",
+        "deleteAccount": "Hesap silme: ${receiverId}",
+        "deleteKey": "Erişim anahtarını silme",
+        "deployContract": "Sözleşme Uygulanıyor: ${receiverId}",
+        "functionCall": "Arama fonksiyonu: ${methodName}",
+        "stake": "Katılım sağlanıyor: ${stake}Ⓝ ${publicKey}...",
+        "transfer": "Alıcıya ${receiverId} aktarılıyor: ${deposit}Ⓝ "
+    },
+    "addNode": {
+        "desc": "Düğümünüz buraya eklenmeden önce CLI (komut satırı arayüzü) üzerinden kurulmalıdır.",
+        "ipAddressInput": {
+            "placeholder": "örnek: 0.0.0.0",
+            "title": "Düğümünüzün IP Adresini girin"
+        },
+        "nicknameInput": {
+            "placeholder": "örnek: AWS Instance",
+            "title": "Bir takma ad verin (isteğe bağlı)"
+        },
+        "pageText": "Düğümünüzü CLI (komut satırı arayüzü) aracılığıyla kurun, ardından buraya ekleyin.",
+        "pageTitle": "Düğüm Ekle"
+    },
+    "amount": "miktar",
+    "arguments": "Argümanlar",
+    "authorizedApps": {
+        "dashboardNoApps": "Herhangi bir uygulamaya yetki vermediniz",
+        "feeAllowance": "Ücret Ödeneği",
+        "ledger": "Ledger",
+        "pageTitle": "Yetkili Uygulamalar",
+        "publicKey": "Açık Adres"
+    },
+    "available": "Mevcut",
+    "availableBalanceInfo": "Kilitlenen veya Katılım sağlanan fonlar hariç harcanabilir NEAR bakiyeniz. <a href='/profile'>Bakiye Dökümünü Görüntüle →</a>",
+    "availableBalanceProfile": "Bu, anlık kullanılabilir NEAR bakiyenizdir.",
+    "back": "Geri",
+    "balance": {
+        "balance": "Toplam Bakiye",
+        "balanceLoading": "Bakiye güncelleniyor"
+    },
+    "balanceBreakdown": {
+        "available": "Kalan bakiye",
+        "reserved": "Ücretler için ayrılmıştır"
+    },
+    "button": {
+        "acceptAndContinue": "Kabul Et & Devam Et",
+        "addFunds": "Fon Ekle",
+        "addNode": "Düğüm Ekle",
+        "allow": "İzin ver",
+        "approve": "Onayla",
+        "authorizing": "Yetkilendiriyor",
+        "browseApps": "Uygulamalara Göz Atın",
+        "buy": "Satın al",
+        "cancel": "İptal",
+        "cancelOperation": "İşlemi İptal Et",
+        "cancelTransfer": "Transferi İptal Et",
+        "claimAccount": "Hesap Talebi",
+        "claimMyAccount": "Hesabımı Al",
+        "close": "Kapat",
+        "Close": "Kapat",
+        "confirm": "Onayla",
+        "confirmAndSend": "Onayla & Gönder",
+        "connect": "Bağlan",
+        "connecting": "Bağlanıyor",
+        "connectLedger": "Ledger'e bağlan",
+        "continue": "Devam",
+        "continueSetup": "Kuruluma Devam Et",
+        "continueToMyAccount": "Hesabıma Devam Et",
+        "copyImplicitAddress": "Finansman Adresini Kopyala",
+        "copyPhrase": "Sözcüğü kopyala",
+        "copyUrl": "URL Kopyala",
+        "createAccount": "Hesap Oluştur",
+        "createAccountCapital": "Hesap Oluştur",
+        "createNewAccount": "Yeni Hesap Oluştur",
+        "creatingAccount": "Hesap Oluşturuluyor",
+        "deauthorize": "Yetkiyi kaldır",
+        "deAuthorizing": "Yetki kaldırılıyor",
+        "deny": "Red",
+        "disable": "Etkisizleştir",
+        "disabling": "Etkisizleştiriliyor",
+        "dismiss": "Reddet",
+        "edit": "Düzenle",
+        "enable": "Etkinleştir",
+        "enabling": "Etkinleştiriliyor",
+        "findMyAccount": "Hesabımı Bul",
+        "finish": "Bitiş",
+        "fundWith": "-ile Yatır",
+        "goBack": "Geri git",
+        "gotIt": "Anladım",
+        "goToDashboard": "Panoya Git",
+        "importAccount": "Hesabı İçe Aktar",
+        "importExistingAccount": "Mevcut Hesabı İçe Aktar",
+        "learnMore": "Daha Fazla Bilgi Edin",
+        "loading": "Yükleniyor",
+        "moreInformation": "Daha fazla bilgi",
+        "needToEditGoBack": "Düzenlemeniz mi gerekiyor? Geri Git",
+        "next": "Sonraki",
+        "protectAccount": "Hesabı Koru",
+        "receive": "Al",
+        "recoverAccount": "Hesabı Kurtar",
+        "recovering": "Hesap Bulunuyor",
+        "recoverYourAccount": "Hesabınızı Kurtarın",
+        "removeNode": "Düğümü Kaldır",
+        "removingKeys": "Anahtarlar Kaldırılıyor",
+        "reserveMyAccountId": "Hesap Kimliğimi Oluştur",
+        "retry": "Tekrar dene",
+        "returnToApp": "Uygulamaya Dön",
+        "saveChanges": "Değişiklikleri Kaydet",
+        "send": "Gönder",
+        "setupPhrase": "Kurtarma İfadesini Ayarla",
+        "signIn": "Oturum aç",
+        "signingIn": "Oturum açılıyor",
+        "signInLedger": "Ledger ile Oturum aç",
+        "skip": "Atla",
+        "stake": "Katılım",
+        "staking": "Katılım Sağlanıyor",
+        "startOver": "Baştan başla",
+        "subscribe": "Abone ol",
+        "swap": "Takas",
+        "topUp": "Yükle",
+        "transferring": "Aktarılıyor",
+        "tryAgain": "Tekrar dene",
+        "unstaking": "Katılımdan Çıkılıyor",
+        "useMax": "Maks. Kullan",
+        "verify": "Doğrula & Tamamla",
+        "verifyCode": "Doğrulama kodu",
+        "verifyCodeEnable": "Doğrula & Devam Et",
+        "verifying": "Doğrulanıyor",
+        "viewAll": "Tümünü Görüntüle",
+        "viewFAQ": "SSS'yi Görüntüle",
+        "viewOnExplorer": "Explorer'da Görüntüle",
+        "withdrawing": "Para Çekiliyor"
+    },
+    "buyNear": {
+        "bridgeTokens": "Ethereum'dan Tokenleri transfer et",
+        "buyWith": "İle Satın Al",
+        "coinMarketCap": "CoinMarketCap",
+        "descOne": "Tercih ettiğiniz ödeme yöntemini kullanarak MoonPay aracılığıyla NEAR satın alın.",
+        "descThree": "Bir köprü kullanarak tokenlerinizi Ethereum'dan NEAR Cüzdanına aktarın.",
+        "descTwo": "NEAR aşağıdaki borsalardan satın alınabilir.",
+        "moonPay": "MoonPay",
+        "notSupported": "bölgenizde desteklenmiyor",
+        "seeMore": "Daha fazlasını gör",
+        "supportedExchanges": "Desteklenen Borsalar",
+        "title": "Yükle"
+    },
+    "confirmLedgerModal": {
+        "header": {
+            "confirm": "Lütfen cihazınızdaki işlemi onaylayın...",
+            "processing": "İşlem sürüyor"
+        },
+        "one": "Ledger'ınızdaki oturum açma ayrıntılarınızı onaylamanız gerekecek."
+    },
+    "connecting": "Bağlanıyor",
+    "copy": {
+        "default": "kopyalandı!",
+        "title": "kopyala"
+    },
+    "createAccount": {
+        "accountIdInput": {
+            "placeholder": "adınız.${data}",
+            "title": "Hesap Kimliği"
+        },
+        "alreadyHaveAnAccount": "Zaten bir hesabınız mı var?",
+        "invalidLinkDrop": {
+            "one": "Bu NEAR Drop talep edildi.",
+            "title": "Geçersiz Bağlantı",
+            "two": "NEAR Drop'lar yalnızca tek bir hesap oluşturmak için kullanılabilir, ardından bağlantı sona erer."
+        },
+        "note": {
+            "canContain": "Hesap kimliğiniz aşağıdakilerden herhangi birini içerebilir:",
+            "cannotContain": "Hesap kimliğiniz şunları İÇEREMEZ:",
+            "characters": "Karakterler \"@\" or \".\"",
+            "digits": "Rakamlar (0-9)",
+            "lowercase": "Küçük harfler (a-z)",
+            "maxCharacters": "64'ten fazla karakter (dahil .${accountSuffix})",
+            "minCharacters": "2'den az karakter",
+            "separators": "Karakterler (_-) ayırıcı olarak kullanılabilir"
+        },
+        "pageText": "NEAR hesabınızla kullanmak için bir Hesap Kimliği girin. Hesap Kimliğiniz, varlık gönderme ve alma dahil tüm NEAR işlemleri için kullanılacaktır.",
+        "pageTitle": "Hesap Kimliği Oluştur",
+        "recoverItHere": "Mevcut Hesabı İçe Aktar",
+        "step": "Step ${step}/${total}",
+        "terms": {
+            "agreeBtn": "Kabul et & Devam et",
+            "declineBtn": "Reddet",
+            "desc": "NEAR hesabı oluşturmaya devam ederek, NEAR Cüzdanın Hizmet Koşullarını ve Gizlilik Politikasını kabul etmiş olursunuz. Bunları dikkatlice okumanızı öneririz:",
+            "privacyCheck": "Gizlilik Politikasını kabul ediyorum",
+            "privacyLink": "Gizlilik Politikası",
+            "termsCheck": "Hizmet Koşullarını kabul ediyorum",
+            "termsLink": "Şartlar & Koşullar",
+            "title": "Şartlar & Koşullar"
+        },
+        "termsPage": {
+            "descOne": "NEAR hesapları <b>en az ${amount}</b> ağ üzerinde <a href='https://docs.near.org/docs/concepts/account' rel='noopener noreferrer' target='_blank'>bir yer tutmak için ihtiyaç duyar.</a>",
+            "descTwo": "Hesap adresi oluşturduktan sonra, hesabınızı etkinleştirmek için küçük bir başlangıç depozitosu yatırmanız istenecektir.",
+            "disclaimer": "NEAR hesabı oluşturarak, MyNearWallet <a href='/terms' rel='noopener noreferrer' target='_blank'>Hizmet Şartlarını</a> ve <a href='/privacy' rel='noopener noreferrer' target='_blank'>Gizlilik Politikasını</a> kabul etmiş olursunuz.",
+            "title": "Başlamadan önce..."
+        }
+    },
+    "dashboard": {
+        "activity": "Son İşlemler"
+    },
+    "dashboardActivity": {
+        "message": {
+            "AddKey": {
+                "forContract": "<span>için</span> <span>${permissionReceiverId}</span>",
+                "forReceiver": "<span>için</span> <span>${receiverId}</span>"
+            },
+            "CreateAccount": "<span>hesap</span> <span>${receiverId}</span>",
+            "DeleteAccount": "<span>hesap</span> <span>${receiverId}<span>",
+            "DeleteKey": "",
+            "DeployContract": "<span>sözleşme</span> <span>${receiverId}</span>",
+            "FunctionCall": "<span>${methodName}</span> sözleşmede <span>${receiverId}</span>",
+            "FunctionCallDetails": {
+                "first": "<span>Method</span> <span>${methodName}</span>",
+                "second": "<span>Sözleşmede</span> <span>${receiverId}</span>"
+            },
+            "Stake": "<span>katılım</span><span>${stake}</span>",
+            "Transfer": {
+                "received": "<span>gönderen</span> <span>${signerId}</span>",
+                "transferred": "<span>alıcı</span> <span>${receiverId}</span>"
+            }
+        },
+        "title": {
+            "AddKey": {
+                "forContract": "Erişim Anahtarı eklendi",
+                "forReceiver": "Erişim Anahtarı eklendi"
+            },
+            "CreateAccount": "Yeni hesap oluşturuldu",
+            "DeleteAccount": "Hesap silindi",
+            "DeleteKey": "Anahtar silindi",
+            "DeployContract": "Sözleşme uygulandı",
+            "FunctionCall": "Yöntem uygulandı",
+            "Stake": "Katılım sağlandı",
+            "Transfer": {
+                "received": "NEAR Geldi",
+                "transferred": "NEAR Gönderildi"
+            }
+        }
+    },
+    "disclaimer": {
+        "text": "Bu bir geliştirme, bir Cüzdan önizlemesidir. Yalnızca NEAR Protokol Yazılım Mühendisi Ağı (DevNet) için kullanılmalıdır. Daha fazla bilgi için ",
+        "title": "VAZGEÇME"
+    },
+    "emailSubscribe": {
+        "placeholder": "E-postanız...",
+        "title": "Erken erişim için aşağıdan üye olun"
+    },
+    "enterAccountNameLedgerModal": {
+        "header": "esap adı girin",
+        "one": "Oturum açtığınız hesabın adını girin"
+    },
+    "error": "Hata",
+    "errors": {
+        "ledger": {
+            "U2F_4": "Ledger cihazı ile giriş başarısız: U2F CİHAZI_UYGUN DEĞİL. Lütfen Ledger cihazınızın bağlı ve kilidinin açık olduğundan emin olun.",
+            "U2FNotSupported": "Ledger için U2F tarayıcı desteği gereklidir. Lütfen U2F uzantılı Chrome, Opera veya Firefox kullanın. Ayrıca bir HTTPS bağlantısında olduğunuzdan da emin olun."
+        },
+        "type": {
+            "LackBalanceForState": "Hesabınızda herhangi bir işlem yapmak için mevcut bakiyeniz yetersizdir. Lütfen hesabınıza NEAR gönderip tekrar deneyin.",
+            "RetriesExceeded": "Bu işlem için maksimum deneme sayısı aşıldı."
+        }
+    },
+    "existingAccount": {
+        "fundNewAccount": {
+            "titleOne": "İşlemi Onayla",
+            "titleTwo": "Yeni Hesaba Para Yatırın"
+        },
+        "selectAccount": {
+            "desc": "Alternatif bir hesabınız varsa <b>en az ${amount} NEAR</b>, yeni hesabınıza para yatırmak ve başlatmak için kullanabilirsiniz!",
+            "descTwo": "Kullanmak istediğiniz hesabı seçin veya oturum açın, ardından minimum depozitoyu onaylamaya devam edin.",
+            "title": "Mevcut bir hesapla para yatırın."
+        }
+    },
+    "exploreApps": {
+        "desc": "Para kazan, Tokenini çıkar, Yatırıma dönüştür! NEAR uygulamalarının ekosistemini keşfedin.",
+        "exploreApps": "Uygulamaları Keşfet",
+        "exploreDeFi": "DeFi'yi Keşfet",
+        "title": "NEAR'da neler var?"
+    },
+    "footer": {
+        "contactSupport": "Topluluğa katıl",
+        "copyrights": "MyNearWallet LLC. Tüm Hakları Saklıdır.",
+        "desc": "NEAR, WEB'in çalışma şeklini daha iyi hale getiren, ölçeklenebilir bir bilgi işlem ve depolama platformudur.",
+        "learnMore": "Daha fazla bilgi edin",
+        "needHelp": "Yardım?",
+        "privacyPolicy": "Gizlilik Politikası",
+        "termsOfService": "Hizmet Şartları"
+    },
+    "fullAccessKeys": {
+        "authorizedTo": "YETKİLENDİRİLDİ",
+        "dashboardNoKeys": "Erişim anahtarınız tam değil",
+        "deAuthorizeConfirm": {
+            "desc": "Tam erişim anahtarı kalıcı olarak devre dışı bırakılacaktır.",
+            "title": "Tam erişim anahtarını devre dışı bırakmak istediğinizden emin misiniz?"
+        },
+        "noKeys": "NEAR Cüzdanınızı herhangi bir uygulamaya bağlamadınız. Bunu yaptığınızda, onları burada yönetebilirsiniz.<br /><br />NEAR ile neler yapıldığını görün:",
+        "pageTitle": "Tam Erişim Anahtarları",
+        "submitAnyTransaction": "Sizin adınıza herhangi bir işlem gönderin",
+        "useContract": "Adınıza olan sözleşmeyi <b>${receiverId}</b> kullanın",
+        "viewYourAccountName": "Hesap Adınızı Görüntüleyin"
+    },
+    "getBalance": "Bakiye alın",
+    "hardwareDevices": {
+        "desc": "Bir donanım cüzdanı kullanarak hesabınızın güvenliğini artırın.",
+        "disable": {
+            "desc": "Devre dışı bırakmadan önce başka kurtarma yöntemleri kurulumunuz olduğundan emin olun.",
+            "disable": "Ledger'ı devre dışı bırak",
+            "keep": "Hayır, Ledger'a devam",
+            "title": "Ledger'ı devre dışı bırakmak istediğinizden emin misiniz?"
+        },
+        "ledger": {
+            "auth": "Yetkilendirildi",
+            "connect": "Ledger'ınız şu anda bağlı değil. Hesabınızın güvende olduğundan emin olmak için Ledger'ınızı yeniden bağlamanızı öneririz.",
+            "disclaimer": "Ledger cihazınızı devre dışı bırakmak için önce alternatif bir kurtarma yöntemini etkinleştirmelisiniz.",
+            "title": "Ledger Donanım Cüzdanı"
+        },
+        "title": "Donanım Cihazları"
+    },
+    "importAccount": {
+        "noId": "Hesap içe aktarılıyor",
+        "noIdFailed": "Hesap içe aktarılamadı.",
+        "withId": "Aktarılan Hesap: ${accountId}",
+        "withIdFailed": "Hesap içe aktarılamadı: ${accountId}"
+    },
+    "importAccountWithLink": {
+        "accountFound": "1 Account Found",
+        "accountImported": "Account Imported",
+        "accountsFound": "${count} Accounts Found",
+        "alreadyImported": "The account secured by this link has been imported.",
+        "continue": "and continue this process in your browser of choice.",
+        "copyUrl": "copy the URL",
+        "foundAccount": "We found <b>1 account</b> secured by this link.",
+        "foundAccounts": "We found <b>${count} accounts</b> secured by this link.",
+        "goToAccount": "Go to Account",
+        "import": "Import",
+        "importAccount": "Import Your Account",
+        "preferedBrowser": "If this isn't your preferred browser,"
+    },
+    "initialDeposit": {
+        "claimAccount": {
+            "desc": "Depozitonuz alındı! Talep edildiğinde, depozitonuz yeni hesabınıza aktarılacaktır.",
+            "disclaimer": {
+                "checkBox": "Kabul et & devam et",
+                "desc": "Önemli: Eski tek kullanımlık finansman adresi artık geçerli olmayacak. Kaydedilmiş olabileceği tüm borsalarda veya diğer cihazlarda yeni adresinizle değiştirdiğinizden emin olun."
+            },
+            "title": "Hesabınızı Talep Edin"
+        },
+        "creditCard": {
+            "desc": "Satın alma işleminiz olan <b>en az ${amount} NEAR</b> MoonPay üzerinden tamamlayın. MoonPay otomatik olarak depozitonuzu yeni hesabınıza yatıracaktır.",
+            "title": "Kredi kartı kullanarak yeni hesabınıza para yatırın."
+        },
+        "manualDeposit": {
+            "desc": "Aşağıdaki tek kullanımlık finansman adresinize <b>en az ${amount} NEAR</b> göndererek minimum başlangıç depozitosunu yatırın.",
+            "title": "Manuel para yatırma."
+        }
+    },
+    "input": {
+        "accountId": {
+            "placeholder": "örn. ebuzer.near",
+            "placeHolderAlt": "Hesap Kimliği",
+            "subLabel": "Hesap kimliği örnekteki gibi bir Üst Düzey Hesap olmalıdır <b>.near</b> veya tam 64 karakter içermelidir.",
+            "title": "Hesap Kimliği"
+        },
+        "enterWord": {
+            "placeholder": "",
+            "title": "Kelime <b>#${wordId}</b>"
+        }
+    },
+    "landing": {
+        "banner": "NEAR Cüzdan Özel Beta'da",
+        "desc": " <span>NEAR Cüzdan</span> ile NEAR tokenlerinizi ve uyumlu varlıklarınızı güvende tutup katılım sağlayarak kazanın.",
+        "or": "veya",
+        "title": "NEAR burada."
+    },
+    "ledgerSignTxModal": {
+        "ADD_ACCESS_KEY": "Ledger'ınızdaki giriş bilgilerinizi onaylamanız gerekecek.",
+        "ADD_ACCESS_KEY_SEED_PHRASE": "Ledger'ınızdaki tüm erişim ayrıntılarını onaylamanız gerekecek.",
+        "ADD_LEDGER_ACCESS_KEY": "Ledger'ınızdaki genel anahtar ayrıntılarını onaylamanız gerekecek.",
+        "CREATE_ACCOUNT_FROM_IMPLICIT": "Ledger'ınızda hesap oluşturmayı onaylamanız gerekecek. Bu, geçici hesaptan bakiyeyi taşımak için gereken işlemleri içerir.",
+        "CREATE_NEW_ACCOUNT": "Ledger'ınızda yeni hesap için bir anahtar eklemeyi onaylamanız gerekecek.",
+        "DEFAULT": "Ledger'ınızdaki işlem ayrıntılarını onaylamanız gerekecek.",
+        "DELETE_RECOVERY_METHOD": "Ledger'ınızdaki anahtar ayrıntılarını silmeyi onaylamanız gerekecek.",
+        "DISABLE_LEDGER": "Ledger'ınızdaki genel anahtar ayrıntılarını onaylamanız gerekecek.",
+        "GET_LEDGER_PUBLIC_KEY": "Ledger'ınızdaki genel anahtar erişimini onaylamanız gerekecek.",
+        "REMOVE_ACCESS_KEY": "Ledger'ınızdaki anahtar ayrıntılarını silmeyi onaylamanız gerekecek.",
+        "REMOVE_NON_LEDGER_ACCESS_KEYS": "Ledger'ınızdaki ayrıntıları onaylamanız gerekecek.",
+        "SEND_MONEY": "Ledger'ınızdaki transfer detaylarını onaylamanız gerekecek.",
+        "SET_SIGN_TRANSACTION_STATUS": "Ledger'ınızdaki depozito ayrıntılarını onaylamanız gerekecek.",
+        "SETUP_RECOVERY_MESSAGE": "Ledger'ınızdaki tüm erişim ayrıntılarını onaylamanız gerekecek.",
+        "SIGN_AND_SEND_TRANSACTIONS": "Ledger'ınızdaki depozito ayrıntılarını onaylamanız gerekecek.",
+        "STAKE": "Ledger'ınızda katılım sağlamayı onaylamanız gerekecek",
+        "UNSTAKE": "Ledger'ınızda katılımdan çıkmayı onaylamanız gerekecek",
+        "WITHDRAW": "Ledger'ınızda para çekme işlemini onaylamanız gerekecek"
+    },
+    "link": {
+        "account": "Hesap",
+        "authorizedApps": "Yetkili Uygulamalar",
+        "buyUSN": "Buy $USN",
+        "fullAccessKeys": "Tam Erişim Anahtarları",
+        "help": "Yardım",
+        "noAccount": "Başka hesabınız yok",
+        "receive": "Al",
+        "send": "Gönder",
+        "staking": "Katılım",
+        "switchAccount": "Hesap",
+        "wallet": "Cüzdan"
+    },
+    "linkdropLanding": {
+        "claiming": "Talep",
+        "ctaAccount": "Mevcut Hesapla Talep Edin",
+        "ctaLogin": "Giriş Yap ve Talep Et",
+        "ctaNew": "Yeni Hesapla Talep Edin",
+        "desc": "NEAR Hediyelerinizi mevcut bir hesapla talep edebilir (oturum açmış olmanız gerekir), veya ilk depozito olarak almak için yeni bir hesap oluşturabilirsiniz.",
+        "error": {
+            "invalidRedirectUrl": "Geçersiz yönlendirme URL'si"
+        },
+        "modal": {
+            "desc": "NEAR bahşişiniz otomatik olarak hesabınıza yatırıldı.",
+            "title": "NEAR bahşişiniz talep edildi"
+        },
+        "or": "veya",
+        "title": "NEAR bahşişi aldınız!"
+    },
+    "loading": "Yükleniyor...",
+    "loadingNoDots": "Yükleniyor",
+    "lockedBalance": "Bu NEAR bir kilitleme sözleşmesinde kilitlenmiştir ve çekilemez. Yine de bu NEAR'ı devredebilir veya katılım sağlayabilirsiniz. NEAR'ın kilidi açıldığında, onu Kilitlenmemiş Bakiyenizde görüntüleyebilir ve çekmeyi seçebilirsiniz (Kullanılabilir Bakiyenize taşıyarak).",
+    "login": {
+        "cliLoginSuccess": {
+            "pageText": "Lütfen bu pencereyi kapatın ve terminaldeki talimatları takip edin.",
+            "pageTitle": "NEAR Shell başarıyla yetkilendirdiniz!"
+        },
+        "confirm": {
+            "pageText": "Uygulamasına <b>tam yetki</b> veriyorsunuz ${appTitle}!",
+            "pageTextSecondLine": "<b>Onaylamak için</b>, lütfen aşağıya hesap kimliğinizi girin.",
+            "pageTitle": "Emin misiniz?",
+            "username": "Hesap Kimliği"
+        },
+        "details": {
+            "callFunctions": "Herhangi bir akıllı sözleşmede çağrı fonksiyonları",
+            "createAndDeleteAccessKeys": "Erişim anahtarları oluşturma ve silme",
+            "createNewAccounts": "Yeni hesap oluştur",
+            "deploySmartContracts": "Akıllı sözleşme uygula",
+            "detailedDescription": "İşlemin detaylı açıklaması",
+            "forContract": "Sözleşme için",
+            "function": "İşlev",
+            "noDescription": "Bu yöntem için açıklama belirtilmedi",
+            "stakeAndUnstake": "NEAR tokenlerine Katılım sağlama ve Katılımdan çıkma",
+            "thisAllows": "Buna izin verir ${appTitle} :",
+            "transferTokens": "Hesabınızdan diğer hesaplara token aktarın"
+        },
+        "form": {
+            "accessYourAccount": "hesabınıza erişin.",
+            "accountIdOnly": "Hesap Kimliğinizi istiyor.",
+            "isRequestingFullAccess": "tam erişim <b>istiyor</b>",
+            "isRequestingTo": "isteğinde bulunuyor",
+            "thisDoesNotAllow": "Bu, uygulamanın herhangi bir token aktarmasına izin vermez.",
+            "thisProvidesAccess": "Bu size tüm tokenlerinize <b>erişmenizi sağlar</b>.<br />Dikkatle ilerleyiniz!",
+            "toYourAccount": "hesabınıza."
+        },
+        "v2": {
+            "connectConfirm": {
+                "desc": "Yalnızca güvendiğiniz sitelere bağlanın. bağlantı kurulduğunda, <a href='${contractIdUrl}' target='_blank' rel='noreferrer'>${appReferrer}</a> yetkilerine sahip olacak <b>${accessType}</b>:",
+                "feeAllowance": {
+                    "desc": "Uygulamaya kullanım sırasında oluşan ağ ücretleri için <b>${amount} NEAR</b> kadar harcama izni verilecektir.",
+                    "title": "Ağ Ücreti Ödeneği"
+                },
+                "fullAccess": "tam izin",
+                "fullAccessModal": {
+                    "desc": "Dikkatle ilerleyin. Tam erişim izinleri, sözleşmelerin ve uygulamaların token bakiyenize erişmesine izin verir. Onaylamak için aşağıya hesap kimliğinizi girin.",
+                    "title": "Hesap erişimine tam izin verilsin mi?"
+                },
+                "fullAccessWarning": "Bu site, hesabınıza tam erişim istiyor. Tam erişimi etkinleştirmek için hesap kimliğinizi doğrulamanız istenecektir.",
+                "limitedAccess": "sınırlı izinler",
+                "permissions": {
+                    "notTransferTokens": "Bu, uygulamanın tokenleri aktarmasına izin vermez",
+                    "transferTokens": "Hesabınızdan tokenleri aktarın",
+                    "viewAddress": "İzin verilen hesabınızın adresini görüntüleyin",
+                    "viewBalance": "İzin verilen hesabınızın bakiyesini görüntüleyin"
+                },
+                "title": "ile bağlanıyor:"
+            },
+            "connectWithNear": {
+                "desc": "Bir uygulama Near hesabınıza <b>${accessType}</b> istiyor. Bağlamak istediğiniz hesabı seçin.",
+                "fullAccess": "tam erişim",
+                "limitedAccess": "sınırlı erişim",
+                "title": "NEAR ile bağlantı kurun"
+            }
+        }
+    },
+    "minimumBalance": "Bu, hesabınızın etkin kalması için tutması gerekilen minimum NEAR bakiyesidir. Bu bakiye, hesabınızın NEAR blok zincirinde (küçük bir arabellekle) kullandığı depolama alanını temsil eder, siz daha fazla veya daha az alan kullandıkça azalacak veya artacaktır.",
+    "mobileDeviceAccess": {
+        "importCode": {
+            "desc": "Halihazırda bir masaüstü cihazda oturum açtıysanız, hesabınızı içe aktarmak için mobil erişim kodunuzu tarayın."
+        },
+        "showCode": {
+            "button": "Mobil Kodu Göster",
+            "desc": "Mobil cihazınıza tam hesap erişim izni vermek için mobil erişim kodunuzu tarayın.",
+            "modal": {
+                "desc": "Hesabınızı mobil cihazınıza aktarmak için aşağıdaki QR kodunu açın ve tarayın.",
+                "disclaimer": "<b>Bu kod son derece hassas veriler içerir ve mobil cihazınıza tam hesap erişim izni sağlar.</b> Bunu paylaşmamaya veya ifşa etmemeye dikkat edin, hesabınızı yalnızca sahip olduğunuz güvenli bir cihaza aktarın.",
+                "reveal": "Göster",
+                "title": "Mobil Erişim Kodu"
+            }
+        },
+        "title": "Mobil Cihaz Erişimi"
+    },
+    "networkBanner": {
+        "desc": "Bu cüzdan (ve ağ) sadece deneme amaçlıdır. Token ve diğer varlıkların değeri yoktur. Oluşturulan hesaplar Mainnet'e aktarılmaz.",
+        "header": "NEAR test Cüzdanı",
+        "title": "Sadece test amaçlı Cüzdan"
+    },
+    "newKeyTransfer": {
+        "activated": {
+            "archive": "Bu aktarım kaydını arşivle",
+            "checkStatus": "Aktarım durumunu kontrol et",
+            "done": "Tamam",
+            "inProgressSubtitle": "Yeni anahtarlarınız zincirde etkin, ancak Meteor Wallet henüz her hesabı güvence altına almayı bitirmedi. Kalan adımları Meteor Wallet'ta tamamlayın, sonra Durumu kontrol et'i kullanın. Eski anahtarları kaldırma, her hesap güvence altına alınana dek kilitli kalır.",
+            "inProgressTitle": "Anahtarlar etkin — Meteor Wallet'ta tamamlanıyor",
+            "keep": "Şimdilik kalsın",
+            "listTitle": "Güvence altındaki hesaplar",
+            "loadingTitle": "Aktarım durumu",
+            "removalRisk": "Tam erişim anahtarını kaldırmak yüksek riskli bir işlemdir. Bunu yalnızca hesaplarınızın taşındığını doğruladıktan sonra yapın.",
+            "removalWarning": "Hesaplarınıza erişebildiğinizi doğruladıktan sonra eski erişim anahtarlarını doğrudan Meteor Wallet'tan kaldırabilirsiniz.",
+            "remove": "Hesapları MyNearWallet'tan kaldır",
+            "sourceKeyRemoved": "Meteor Wallet üzerinden zaten kaldırılan eski anahtarlar: {{count}}",
+            "startUsingMeteor": "Meteor'u kullanmaya başla",
+            "subtitle": "Tüm hesaplar güvence altında. Meteor Wallet her yeni anahtarı zincirde doğruladı, kurtarma ifadesini onayladı ve hesaplarınızı başarıyla içe aktardı.",
+            "title": "Hesaplar Meteor Wallet'ta güvence altında",
+            "unconfirmedTitle": "Hâlâ güvence altına alınıyor"
+        },
+        "activation": {
+            "activatedStatusTitle": "Etkinleştirilen hesaplar",
+            "activatedTitle": "Meteor anahtarları etkinleştirildi",
+            "activateKey": "Anahtarı etkinleştir",
+            "cancel": "Cüzdanıma dön",
+            "checkStatus": "Durumu kontrol et",
+            "finishLater": "Sonra tamamla",
+            "progress": "{{total}} hesabın {{completed}} tanesi tamamlandı",
+            "retry": "Yeniden dene",
+            "statusTitle": "Hesap durumu",
+            "subtitle": "Yeni Meteor anahtarları seçtiğiniz hesaplara eklenecek. Tüm hesaplar doğrulanana kadar bu sayfayı açık tutun.",
+            "title": "Meteor anahtarlarını etkinleştir",
+            "verifyKey": "Anahtarı doğrula",
+            "viewSecured": "Güvence altındaki hesapları gör ({{count}})"
+        },
+        "activationIssue": {
+            "account_not_in_session": "Bu hesap, Meteor Wallet'a sorulan aktarımın parçası değildi.",
+            "activation_not_found": "Meteor'un yeni anahtarı bu hesapta bulunamadı.",
+            "activation_not_full_access": "Meteor'un yeni anahtarı tam erişim olmadan eklendi.",
+            "invalid_add_key_transaction": "Meteor'un anahtarını ekleyen işlem doğrulanamadı.",
+            "rpc_lookup_failed": "Meteor Wallet bu hesabı doğrulamak için NEAR blok zincirine ulaşamadı. Birazdan yeniden deneyin.",
+            "session_not_found": "Meteor Wallet bu aktarımı artık tanımıyor. Yeniden başlatın.",
+            "source_signer_mismatch": "Meteor'un anahtarı, bu aktarımın başladığı anahtardan farklı bir anahtarla eklendi.",
+            "unknown": "Meteor Wallet bu hesabı doğrulayamadı."
+        },
+        "activationStatus": {
+            "added": "Anahtar eklendi",
+            "adding": "Anahtar ekleniyor…",
+            "confirmed": "Güvence altında",
+            "failed": "Başarısız",
+            "pendingWallet": "Meteor Wallet'ta tamamlanıyor…",
+            "verifying": "Meteor ile doğrulanıyor…",
+            "waiting": "Bekliyor"
+        },
+        "advancedDescription": "Gelişmiş: mevcut hesap anahtarlarının şifrelenmiş verisini eski köprü akışıyla gönderir. Mümkün olduğunda yukarıdaki yeni anahtar yöntemini kullanın.",
+        "continueDescription": "Önceki bir aktarım tamamlanmadan kesildi. Devam edin — Meteor Wallet kaldığınız yerden sürdürür.",
+        "continueExistingSecret": "Mevcut anahtarla aktarıma devam et",
+        "continueTitle": "Meteor Wallet'a aktarıma devam et",
+        "description": "Meteor seçilen tüm hesaplar için tek bir yeni anahtar oluşturur; hiçbir özel anahtar veya kurtarma ifadesi bu cüzdandan çıkmaz.",
+        "easiest": "En kolay",
+        "eligibility": {
+            "algorithmUnsupported": "Yalnızca Ed25519 kaynak anahtarları destekleniyor.",
+            "ledgerUnsupported": "Ledger tabanlı kaynak hesaplar bu aktarımda desteklenmiyor.",
+            "noLocalKey": "Kullanılabilir düz bir yerel imzalama anahtarı yok.",
+            "notFullAccess": "Tam erişim anahtarı bulunamadı.",
+            "notFunded": "Bu örtük hesaba henüz para yatırılmadı.",
+            "twoFactorUnsupported": "2FA/çoklu imza hesapları desteklenmiyor. Önce 2FA'yı kapatın ya da elle dışa aktarmayı kullanın.",
+            "verificationFailed": "Hesap anahtarları şu anda kontrol edilemedi (ağ sorunu) — hesapta hiçbir şey değiştirilmedi. Birazdan tekrar deneyin."
+        },
+        "error": {
+            "addKeyAccountMismatch": "Bu aktarım o hesabı kapsamıyor, bu yüzden hiçbir anahtar değiştirilmedi. Aktarımı hesap listenizden yeniden başlatın.",
+            "addKeyChainRequired": "MyNearWallet anahtar değişikliğini imzalamak için NEAR ağına ulaşamadı. Bağlantınızı kontrol edip yeniden deneyin.",
+            "browserStorageFull": "Bu tarayıcıda MyNearWallet için depolama alanı kalmadı, bu yüzden aktarım bu cihazdaki ilerlemesini kaydedemedi. Hesaplarınız ve anahtarlarınız güvende. MyNearWallet güvenle boşaltabileceği alanı zaten boşalttı; geri kalanı bu site için saklanan başka veriler tarafından kullanılıyor. Aşağıdaki kodla destek ekibine başvurun veya “Bunun yerine özel anahtarları dışa aktar” seçeneğini kullanın. Her hesabın yedeği yoksa bu sitenin verilerini temizlemeyin; bu, bu tarayıcıda saklanan anahtarları siler.",
+            "clientIdConflict": "Bu aktarım farklı hesaplarla başlatılmıştı. Hesap listenizden yeniden başlatın.",
+            "insufficientBalanceForAddKeys": "Seçilen bazı hesaplarda Meteor'un anahtarını eklemek için yeterli kullanılabilir NEAR yok. Bakiye yükleyin veya seçimden çıkarın, sonra yeniden deneyin.",
+            "journalCorrupt": "Bu cihazda saklanan aktarım kaydı güvenli biçimde okunamadı.",
+            "journalRetentionRequired": "Bu cihazdaki aktarım geçmişi dolu. Tamamlanmış bir aktarımı arşivleyin ve yeniden deneyin.",
+            "noAccountsReady": "Bu aktarımdaki hiçbir hesap etkinleştirmeye hazır değil.",
+            "orphanedAddKey": "Bu cihazda kısmen gönderilmiş bir anahtar değişikliği kayıtlı; başka bir aktarım başlatılabilmesi için önce çözülmesi gerekiyor. Aşağıdaki referansla destek ekibine başvurun.",
+            "recoveryRequired": "Bu aktarım NEAR blok zincirine zaten anahtar ekledi, bu yüzden öylece atılamaz.",
+            "refusedSourceKeyRemoval": "Güvenlik için, bu hesabın kendi erişim anahtarına işaret eden bir temizleme adımı reddedildi. Hiçbir anahtar değiştirilmedi. Destek ekibiyle iletişime geçin ve aşağıdaki kodu belirtin.",
+            "resolveNow": "Bu aktarımı çöz",
+            "revokeAccountMismatch": "O hesap bu aktarımın parçası değil, bu yüzden hiçbir şey değişmedi.",
+            "revokeChainRequired": "MyNearWallet anahtarın kaldırıldığını doğrulamak için NEAR ağına ulaşamadı. Hiçbir şey değişmedi — çevrimiçi olduğunuzda yeniden deneyin.",
+            "revokedAccountsRequired": "Kaldırılacak hesap belirtilmedi, bu yüzden hiçbir şey değişmedi.",
+            "revokeDestinationKeyPresent": "Meteor Wallet'ın anahtarı hâlâ hesapta, bu yüzden bu aktarım henüz kapatılamaz. Anahtarı kaldırın, NEAR ağının onaylamasını bekleyin ve yeniden deneyin.",
+            "sessionNotFound": "Bu aktarım artık kullanılamıyor. Hesap listenizden yeniden başlatın.",
+            "sessionNotTerminal": "Bu aktarımda hâlâ tamamlanmamış hesaplar var; henüz arşivlenemez.",
+            "startOverSecuredRows": "Bazı hesaplar Meteor Wallet'ta zaten güvence altına alındı, bu yüzden bu aktarım artık buradan iptal edilemez. Durumu kontrol et ile tamamlayın, sonra arşivleyin — hesapları daha sonra Meteor Wallet'tan kaldırabilirsiniz.",
+            "startOverUnresolvable": "Bu aktarımın kayıtları eksik olduğundan otomatik olarak güvenle iptal edilemez. Aşağıdaki kodu belirterek destek ekibiyle iletişime geçin.",
+            "startResultConflict": "Bu cihazda hâlâ başka bir aktarım kayıtlı. Yenisini başlatmadan önce onu tamamlayın veya çözün.",
+            "startResultDiscardFailed": "Bu cihazdaki aktarım kaydı güvenli biçimde temizlenemedi ve olduğu gibi bırakıldı. Başka bir aktarım başlatmadan önce çözün.",
+            "startResultMissing": "Bu aktarımın etkinleştirme kaydı eksik, bu yüzden güvenle sürdürülemez. Hesap listenizden yeniden başlatın.",
+            "startResultReferenced": "Bu aktarımın hazırlanan anahtarları hâlâ etkin bir aktarım tarafından kullanılıyor ve atılamaz.",
+            "unavailable": "Meteor Wallet'a aktarımlar bu sürümde kullanılamıyor.",
+            "verificationProofMissing": "Bu aktarımı Meteor Wallet ile doğrulamak için gereken kanıt eksik. Hesap listenizden yeniden başlatın.",
+            "verifyBeforeAddKeyIntent": "Bu hesabın yeni anahtarı henüz NEAR blok zincirine eklenmedi, bu yüzden Meteor Wallet ile doğrulanamaz.",
+            "verifyHashMismatch": "Kontrol edilen etkinleştirme, bu aktarımın kendi zincir kaydıyla eşleşmiyor. Aşağıdaki kodla desteğe başvurun.",
+            "verifySessionUpdateFailed": "Meteor Wallet yanıt verdi, ancak sonuç bu cihaza kaydedilemedi. Bitirmek için Durumu kontrol et'i yeniden çalıştırın.",
+            "versionSkew": "Bu sayfa, aktarım hizmetinin beklediğinden daha eski bir MyNearWallet sürümünü çalıştırıyor. Sayfayı yenileyin (veya bu sekmeyi kapatıp yeniden açın) ve tekrar deneyin — aktarımınız güvende ve kaldığı yerden devam edecek.",
+            "walletBindingMissing": "Meteor Wallet yanıt verirken kendini tanıtmadı. Aktarımı yeniden başlatın.",
+            "walletConnectionMissing": "Bu aktarımın Meteor Wallet bağlantısı eksik. Yeni bir oturumla yeniden bağlanmak için Durumu kontrol et'i kullanın."
+        },
+        "existingSecret": {
+            "declined": "Hesap aktarımı Meteor Wallet'ta reddedildi.",
+            "expired": "Hesap aktarımının süresi doldu. Yeniden deneyebilirsiniz.",
+            "startFailed": "MyNearWallet hesap aktarımını başlatamadı."
+        },
+        "genericError": "Aktarıma devam edilemedi.",
+        "hideAdvanced": "Mevcut anahtarla gelişmiş aktarımı gizle",
+        "ineligible": "{{accountId}} şu anda aktarılamıyor. {{reason}}",
+        "issue": {
+            "account_not_found": "Meteor Wallet bu hesabı NEAR blok zincirinde bulamadı.",
+            "key_generation_failed": "Meteor Wallet bu hesap için yeni bir anahtar oluşturamadı.",
+            "pending_transfer_conflict": "Bu hesabın Meteor Wallet'ta tamamlanmamış bir aktarımı zaten var. Orada tamamlayın veya iptal edin, sonra yeniden deneyin.",
+            "rpc_lookup_failed": "Meteor Wallet bu hesabı kontrol etmek için NEAR blok zincirine ulaşamadı. Birazdan yeniden deneyin.",
+            "secure_storage_failed": "Meteor Wallet bu hesabın yeni anahtarını güvenle saklayamadı.",
+            "source_key_not_found": "Bu cüzdanın bu hesap için kullandığı anahtar artık hesapta değil.",
+            "source_key_not_full_access": "Bu cüzdanın bu hesap için kullandığı anahtar tam erişim anahtarı değil.",
+            "unknown": "Meteor Wallet bu hesabı hazırlayamadı."
+        },
+        "journalError": {
+            "broadcastAmbiguous": "Ağın yanıtı belirsizdi. Hiçbir şey kaybolmadı — yeniden deneyin; cüzdan zincire ulaşmış olanları bağdaştırır.",
+            "chainDataInvalid": "Ağ, bu cüzdanın güvenle doğrulayamadığı veriler döndürdü. Hiçbir şey değiştirilmedi — birazdan yeniden deneyin.",
+            "conflict": "Bu aktarımın kayıtları başka bir aktarımınkilerle çakışıyor. Yeniden deneyin; tekrarlanırsa aşağıdaki kodla desteğe başvurun.",
+            "destinationKeyUnproven": "Bu hesapta, bu aktarıma ait olduğu kanıtlanmamış bir Meteor anahtarı var. Devam etmeden önce kurtarma ekranında çözün.",
+            "persistFailed": "Aktarım ilerlemesi bu cihaza kaydedilemedi. Tarayıcı depolamasında yer açın ve yeniden deneyin — hiçbir şey kaybolmadı.",
+            "sourceKeyUnavailable": "Bu hesabın tam imza anahtarı artık bu cüzdanda yok; bu adım burada imzalanamaz.",
+            "unreadable": "Bu aktarımın cihazdaki günlüğü güvenle okunamadı. Hiçbir şey değiştirilmedi — aşağıdaki kodla desteğe başvurun."
+        },
+        "livenessConfirmed": "test transferi doğrulandı",
+        "loading": "Aktarım yükleniyor…",
+        "manualDescription": "Özel anahtarlarınızı görüntüleyip kopyalayın.",
+        "manualTitle": "Elle dışa aktar",
+        "methodHeading": "Nasıl dışa aktarmak istersiniz?",
+        "methodSubheading": "Hesaplarınıza nasıl erişip onları nasıl dışa aktaracağınızı seçin.",
+        "pending": {
+            "importIncomplete": "Meteor Wallet bu hesabın içe aktarımını hâlâ tamamlıyor. Birazdan Durumu kontrol et'i kullanın.",
+            "livenessCheckFailed": "Meteor Wallet'ın bu hesap için test işlemi başarısız oldu. Yeniden denemek için Durumu kontrol et'i kullanın."
+        },
+        "progressLabel": "Hesap aktarımı ilerlemesi",
+        "progressSteps": {
+            "activated": "Anahtarları doğrula",
+            "activating": "Anahtarları etkinleştir",
+            "ready": "Başlangıç",
+            "secured": "Bitti"
+        },
+        "ready": {
+            "acceptedTitle": "Etkinleştirmeye hazır hesaplar",
+            "activate": "Yeni anahtarları etkinleştir",
+            "cancel": "Cüzdanıma dön",
+            "cancelTransfer": "Bu aktarımı iptal et",
+            "finishLater": "Sonra tamamla",
+            "noneSubtitle": "Meteor Wallet seçilen hesapların hiçbirini hazırlayamadı. Aşağıdaki nedenleri giderip yeniden deneyin.",
+            "noneTitle": "Hiçbir hesap hazırlanamadı",
+            "refusedTitle": "Bu aktarıma dahil edilmedi",
+            "startOver": "Hesap seçimine dön",
+            "subtitle": "Meteor Wallet aşağıdaki her hesap için yeni bir erişim anahtarı oluşturdu. Etkinleştirme, Meteor'un yeni anahtarını NEAR blok zincirindeki her hesaba ekler. Mevcut anahtarlarınız hiçbir yere gönderilmez ve siz kaldırmayı seçene kadar çalışmaya devam eder.",
+            "title": "Meteor anahtarları hazır"
+        },
+        "recommended": "Önerilen",
+        "recovery": {
+            "archive": "Bu kaydı kapat",
+            "archiveRefused": "Meteor Wallet'ın anahtarı hâlâ hesapta. NEAR blok zincirinin kaldırmayı onaylamasını bekleyip yeniden deneyin.",
+            "check": "NEAR blok zincirinde kontrol et",
+            "continue": "Hesap seçimine dön",
+            "detail": {
+                "access_keys_unreadable": "Hesabın anahtarları NEAR blok zincirinden okunamadı.",
+                "signed_transaction_may_still_land": "İmzalanmış anahtar değişikliği NEAR blok zinciri tarafından hâlâ kabul edilebilir, bu yüzden bu kaydı şimdi kapatmak güvenli değil.",
+                "transaction_expiry_unknown": "MyNearWallet, imzalanmış anahtar değişikliğinin hâlâ kabul edilip edilemeyeceğini belirleyemedi."
+            },
+            "fieldDestinationKey": "Meteor Wallet anahtarı",
+            "fieldSourceKey": "İmzalama anahtarınız",
+            "fieldTransaction": "İşlem",
+            "finishLater": "Sonra tamamla",
+            "journalUnreadable": "Bu cihazda saklanan aktarım kaydı okunamadı, bu yüzden etkilenen hesaplar burada listelenemiyor. Aşağıdaki referansla destek ekibine başvurun — tarayıcı verilerinizi temizlemeyin, olanların tek kaydı orada.",
+            "removeKey": "Meteor Wallet'ın anahtarını kaldır",
+            "resolvedSubtitle": "Bu cihazda tamamlanmamış anahtar değişikliği yok. Yeniden bir aktarım başlatabilirsiniz.",
+            "resolvedTitle": "Çözülecek bir şey yok",
+            "status": {
+                "ambiguous": "NEAR blok zinciri şu an için ne doğrulayabildi ne de reddedebildi. Hiçbir şey değişmedi — birazdan yeniden deneyin.",
+                "destination_key_absent": "Anahtar değişikliği hiç geçerli olmadı ve artık kabul edilemez. Bu kayıt kapatılabilir.",
+                "destination_key_present_unproven": "Meteor Wallet'ın anahtarı bu hesapta, ancak oraya bu aktarımın koyduğunu gösteren bir kanıt yok. Konuyu kapatmak için kendi anahtarınızla kaldırın.",
+                "finalized": "Anahtar değişikliği NEAR blok zincirinde tamamlanmış. Bu aktarıma hesap listenizden devam edilebilir.",
+                "not_found": "Zaten çözüldü."
+            },
+            "statusUnchecked": "Henüz kontrol edilmedi. Kontrol yalnızca NEAR blok zincirini okur — hiçbir şey imzalanmaz veya gönderilmez.",
+            "subtitle": "Bu cihazda bir anahtar değişikliği imzalandı ama hiç doğrulanmadı. Başka bir aktarım başlatılabilmesi için çözülmesi gerekiyor.",
+            "supportExplainer": "Yukarıdaki adımların hiçbiri sorunu çözmezse destek ekibine başvurun ve referansı belirtin. Bu çözülene kadar yeni bir aktarım başlatma isteği reddedilmeye devam edecek.",
+            "supportReferenceLabel": "Destek referansı",
+            "title": "Tamamlanmamış bir anahtar değişikliğini çöz"
+        },
+        "selectedAccounts": "Seçilen hesaplar",
+        "showAdvanced": "Mevcut anahtarla gelişmiş aktarımı göster",
+        "start": "Aktarımı başlat",
+        "starting": "Meteor Wallet açılıyor…",
+        "startOver": {
+            "confirm": "Yeni anahtarları kaldır ve baştan başla",
+            "discardPending": "Yarıda kalan aktarımı sil ve yeniden başla",
+            "keep": "Bu aktarımı koru",
+            "link": "Bu aktarımı iptal et ve baştan başla",
+            "removing": "Yeni anahtarlar kaldırılıyor… ({{completed}}/{{total}})",
+            "warningBody": "Bu işlem, bu aktarımdaki her hesaptan yeni cüzdanın erişim anahtarını, burada zaten sahip olduğunuz anahtarla imzalayarak kaldırır. Hesaplarınız ve mevcut anahtarlarınız olduğu gibi kalır. Ardından istediğiniz cüzdana yeni bir aktarım başlatabilirsiniz.",
+            "warningTitle": "Yeni anahtarlar kaldırılıp baştan mı başlansın?"
+        },
+        "supportCode": "Destek kodu: {{code}}",
+        "supportReference": "Destek referansı: {{id}}",
+        "title": "Meteor Wallet'a aktar"
+    },
+    "NFTs": {
+        "emptyState": "Henüz koleksiyonunuz yok gibi görünüyor.",
+        "loadMore": "Daha fazla yükle"
+    },
+    "nodeDetails": {
+        "pageText": "Düğümünüzün ayrıntılarını güncelleyin.",
+        "pageTitle": "Düğüm Ayrıntıları"
+    },
+    "nodeStaking": {
+        "nodes": {
+            "noNode": {
+                "text": "Bu, düğümünüzü cüzdan hesabınıza bağlar.",
+                "title": "Zaten düğüm kurulumunuz mu var? Buraya ekleyin."
+            },
+            "title": "Düğümler"
+        },
+        "pageText": "nodeandstaking.near",
+        "pageTitle": "Düğüm & Katılım",
+        "staking": {
+            "title": "Katılım",
+            "youAreStaking": "Katılım sağlıyorsunuz"
+        },
+        "steps": {
+            "one": {
+                "desc": "Dokümanlar'da bulunan talimatlar",
+                "title": "1. CLI (komut satırı arayüzü) aracılığıyla bir Düğüm Kurun ve Çalıştırın"
+            },
+            "three": {
+                "desc": "Buradan veya CLI'den Katılım sağlayın. Yardım için belgelere bakın.",
+                "title": "3. Katılım sağlamaya Başlayın"
+            },
+            "title": "Bir düğüm veya Katılım için lütfen bu adımları izleyin:",
+            "two": {
+                "desc": "Senkronizasyon dışı bir düğüm üretemez veya doğrulayamaz",
+                "title": "2. Düğümün Senkronize olmasını bekleyin"
+            }
+        }
+    },
+    "of": "...",
+    "ofTotal": "Toplamı",
+    "or": "veya",
+    "pageNotFound": {
+        "displayTitle": "404",
+        "returnToWallet": "Cüzdan'a Dön",
+        "title": "Hata, bu sayfa eksik gibi görünüyor."
+    },
+    "profile": {
+        "account": {
+            "available": "Mevcut bakiye",
+            "availableToTransfer": "Aktarılabilir bakiye",
+            "availableToWithdraw": "Çekilebilir bakiye",
+            "inStakingPools": "Katılım havuzunda",
+            "pendingRelease": "Bakiye hazırlanıyor",
+            "reservedForStorage": "Depolama için ayrılan",
+            "reservedForTransactions": "İşlemler için ayrılan",
+            "staked": "Katılım sağlandı",
+            "staking": "Katılım durumu",
+            "unstaked": "Katılımdan çıkıldı",
+            "walletBalance": "Cüzdan bakiyesi",
+            "walletId": "Cüzdan Kimliği"
+        },
+        "authorizedApps": {
+            "title": "Yetkili Uygulamalar"
+        },
+        "details": {
+            "availableBalance": "Mevcut Bakiye",
+            "locked": "Kilitli",
+            "lockPopup": {
+                "createAnotherAccount": "başka bir hesap oluştur",
+                "text": "Hesap kimliğiniz sistemdeki benzersiz tanımlayıcınızdır, veri ve varlık sahipliği buna bağlı olduğundan değiştirilemez. Ancak istediğiniz isimle ${link} hoşgeldiniz, varlıklarınızı istediğiniz gibi aktarabilirsiniz.",
+                "title": "Bu neden kilitli?"
+            },
+            "minBalance": "Minimum Bakiye",
+            "profile": "PROFİL",
+            "public": "Genel",
+            "qrDesc": "Bu adrese göndermek için telefonunuzun kamera uygulamasını kullanın",
+            "staked": "Katılım sağlandı",
+            "totalBalance": "Toplam Bakiye",
+            "unlocked": "kilit açıldı",
+            "unvested": "yatırım yapılmadı",
+            "username": "Hesap Kimliği",
+            "visibleTo": "GÖRÜLEBİLİR"
+        },
+        "lockup": {
+            "locked": "Kilitli",
+            "lockupBalance": "Kilitli bakiye",
+            "lockupId": "Kilitli Kimlik",
+            "unlocked": "kilit açıldı"
+        },
+        "lockupBanner": {
+            "cta": "Cüzdana Aktar",
+            "title": "Kilitli bakiyenizden çekebileceğiniz <b>${amount}</b> bulunmaktadır!"
+        },
+        "pageTitle": {
+            "default": "Hesap Detayları",
+            "loading": "Yükleniyor...",
+            "notFound": "Hesap ${accountId} bulunamadı"
+        },
+        "security": {
+            "lessSecure": "En Pratik",
+            "lessSecureDesc": "Bu seçenek, az miktarda NEAR ve diğer varlıkları olan hesaplar için önerilir. Pratiktir, ancak daha güvenli seçeneklere göre riskli olabilir. E-posta hesabınız veya SMS mesajlarınız ele geçirilirse, paranız risk altında olabilir.",
+            "mostSecure": "En Güvenli (Önerilen)",
+            "mostSecureDesc": "Ledger en güvenli seçenektir. Parolalar doğru kullanıldıklarında güvenli olabilirler (bunlar bir yere yazılmalı ve güvenli bir şekilde saklanmalıdırlar).",
+            "title": "Güvenlik & Kurtarma"
+        },
+        "twoFactor": "İki Faktörlü Kimlik Doğrulama",
+        "twoFactorDesc": "İşlemleri onaylarken veya hesabınızda oturum açarken SMS veya e-posta ile kimlik doğrulaması yapın."
+    },
+    "reCAPTCHA": {
+        "disclaimer": "Bu site reCAPTCHA tarafından korunmaktadır ve Google <a href='https://policies.google.com/privacy' target='_blank' rel='noopener noreferrer'>Gizlilik Politikası</a> ve <a href='https://policies.google.com/terms' target='_blank' rel='noopener noreferrer'>Hizmet Şartları</a> geçerlidir.",
+        "fail": {
+            "desc": "NEAR tarafından finanse edilen yeni hesapları yetkilendirmek için reCAPTCHA gereklidir.",
+            "link": "Kendi hesabınıza para yatırmak mı istiyorsunuz?",
+            "title": "reCAPTCHA yüklenemedi."
+        },
+        "loading": "reCAPTCHA yükleniyor..."
+    },
+    "receivePage": {
+        "addressTitle": "Addresiniz",
+        "copyAddressLinkLong": "Adres URL'nizi kopyalayın",
+        "copyAddressLinkShort": "KOPYALA",
+        "qrCodeTitle": "QR kodunu tarayın",
+        "snackbarCopySuccess": "Address URL'niz kopyalandı!"
+    },
+    "recoverAccount": {
+        "actionRequired": "Bu mesaj sihirli bir bağlantı içerir. Kurtarmaya başlamak için bağlantıya tıklayın!",
+        "actionType": "Kurtarma",
+        "cannotResend": "Bu mesaj, e-posta/telefon kurtarma özelliğini etkinleştirdiğinizde gönderildi. Bu mesaj yalnızca bir kez gönderilir ve tekrar gönderilemez.",
+        "email": {
+            "desc": "E-postanızda near.org'dan konuyla ilgili bir mesaj olup olmadığını kontrol edin:",
+            "subject": "\"Important: Near Wallet Recovery Email\".",
+            "title": "Email"
+        },
+        "ledger": {
+            "desc": "Ledger'in güvenli bir şekilde bağlandığından ve cihazda NEAR uygulamasının açık olduğundan emin olun.",
+            "title": "Ledger"
+        },
+        "pageText": "Bir veya daha fazla hesap kurtarma yöntemi kurduysanız, hesabınızı içe aktarmak için aşağıdaki talimatları izleyin.",
+        "pageTitle": "Hesabı İçe Aktar",
+        "phone": {
+            "desc": "Numaradan gelen SMS mesajını kontrol edin",
+            "number": "+14086179592.",
+            "title": "Telefon"
+        },
+        "phrase": {
+            "desc": "12 kelimelik kurtarma sözcüklerinizi yanınızda bulunduğundan emin olun, ardından kurtarma işlemine başlamak için aşağıya tıklayın.",
+            "title": "Anahtar Kelimeler"
+        },
+        "privateKey": {
+            "desc": "Özel anahtarınızın ed25519 ile başladığından emin olun, ardından kurtarma sürecini başlatmak için aşağıdaki linke tıklayın.",
+            "title": "Özel Anahtar"
+        }
+    },
+    "recoverManual": {
+        "buttonImportManually": "Manuel olarak içe aktarın.",
+        "cantFindAccount": "Hesabınızı bulamıyor musunuz?",
+        "errorAccessKeyNotMatch": "Erişim anahtarı eşleşmiyor",
+        "errorAccountNotExist": "Hesap mevcut değil",
+        "inputAccountId": "Hesabınızı içe aktarmak için hesap kimliğinizi buraya girin",
+        "pageTitle": "Hesabı Manuel İçe Aktarma"
+    },
+    "recoverPrivateKey": {
+        "pageText": "Hesapla ilişkili olan özel anahtarı girin.",
+        "pageTitle": "Özel Anahtar ile Kurtarma Yap",
+        "privateKeyInput": {
+            "title": "Özel Anahtar"
+        }
+    },
+    "recoverSeedPhrase": {
+        "pageText": "Hesapla ilişkilendirilmiş olan anahtar kelimelerinizi giriniz.",
+        "pageTitle": "Anahtar Kelimeleri kullanarak kurtar",
+        "seedPhraseInput": {
+            "placeholder": "kelime dizinini doğru giriniz...",
+            "title": "Anahtar Kelime (12 Kelime)"
+        }
+    },
+    "recoverWithLink": {
+        "errorP": "Lütfen en son gönderilmiş olan e-postanızı veya telefonunuzu kontrol edin. Önceki tüm iletilerdeki bağlantılar geçersizdir.",
+        "errorTitle": "Bağlantı Süresi Doldu",
+        "pOne": "Hesabınızı geri yüklemek için \"Devam\" tıklayınız:",
+        "pTwo": "Tercih ettiğiniz tarayıcı bu değilse, URL'yi kopyalayın ve bu işlemi tercih ettiğiniz tarayıcıda tamamlayın.",
+        "snackbarCopySuccess": "Kopyalanan URL'yi kurtar",
+        "title": "Hesabı Geri Yükle"
+    },
+    "recoveryMgmt": {
+        "disableInputPlaceholder": "Onaylamak için hesap kimliğinizi girin",
+        "disableNo": "Hayır, Devam",
+        "disableNotAllowed": "Hesapların en az bir etkin kurtarma yöntemi olması gerekir. Lütfen devam etmek için alternatif bir kurtarma yöntemini etkinleştirin.",
+        "disableTextPhrase": "Mevcut Anahtar Kelime parolanız kalıcı olarak devre dışı bırakılacak.",
+        "disableTitle": "Bu metodu devre dışı bırakmak istediğinizden emin misiniz?",
+        "enabled": "Etkinleştirildi",
+        "methodTitle": {
+            "email": "Email",
+            "phone": "Telefon",
+            "phrase": "Anahtar Kelime"
+        },
+        "noRecoveryMethod": "Hesabınızı kurtarmak için bir yönteminiz yok. lütfen aşağıya bir yöntem ekleyin.",
+        "recoveryLinkSent": "Kurtarma Bağlantısı Gönderildi!",
+        "resend": {
+            "email": "Email'i Tekrar Gönder",
+            "phone": "SMS'i Tekrar Gönder"
+        },
+        "title": "Kurtarma Yöntemleri"
+    },
+    "reduxActions": {
+        "ADD_ACCESS_KEY": {
+            "error": "Bu eylem onaylanırken bir hata oluştu. Lütfen tekrar deneyin!",
+            "success": "${title} artık hesabınızı kullanma yetkisine sahip."
+        },
+        "ADD_ACCESS_KEY_SEED_PHRASE": {
+            "error": "Anahtar Kelime kurtarma ayarlanırken bir hata oluştu. Lütfen tekrar deneyin!",
+            "success": "Anahtar Kelime kurtarma kurulumu tamamlandı."
+        },
+        "ADD_LEDGER_ACCOUNT_ID": {
+            "error": "Hesaplardan birine erişim reddedildi. Hiçbir hesap kurtarılmadı.<br>Devam etmek için, Ledger cihazınızdaki her hesaba salt okunur erişim yetkisi vermelisiniz. Lütfen tekrar deneyin.",
+            "success": ""
+        },
+        "CHECK_ACCOUNT_AVAILABLE": {
+            "error": "Kullanıcı bulunamadı.",
+            "success": "Kullanıcı bulundu."
+        },
+        "CHECK_IS_NEW": {
+            "error": "Hesap kimliği alınmıştır. Başka bir şey deneyin.",
+            "success": "Tebrikler! ${accountId} kullanılabilir."
+        },
+        "CHECK_NEW_ACCOUNT": {
+            "error": "Hesap kimliği alınmıştır. Başka bir şey deneyin.",
+            "success": "Tebrikler! ${accountId} kullanılabilir."
+        },
+        "CREATE_ACCOUNT_WITH_SEED_PHRASE": {
+            "error": "",
+            "success": ""
+        },
+        "CREATE_NEW_ACCOUNT": {
+            "error": "Hesap kimliği alınmıştır. Başka bir şey deneyin.",
+            "success": "Tebrikler! ${accountId} kullanılabilir."
+        },
+        "default": {
+            "error": "Üzgünüz, bir hata oluştu. tekrar deneyebilirsiniz.",
+            "success": ""
+        },
+        "DELETE_RECOVERY_METHOD": {
+            "error": "",
+            "success": ""
+        },
+        "DEPLOY_MULTISIG": {
+            "error": "",
+            "success": ""
+        },
+        "Deserialization": "",
+        "GET_LEDGER_ACCOUNT_IDS": {
+            "error": "Genel anahtar erişimi reddedildi. Hiçbir hesap kurtarılmadı.<br/>Devam etmek için, NEAR Cüzdanının genel anahtarınızı görmesine izin vermelisiniz. Lütfen tekrar deneyin.",
+            "success": ""
+        },
+        "LackBalanceForState": "Bakiyeniz yetersiz olduğundan işleminizi gerçekleştiremiyoruz. Lütfen hesabınıza NEAR gönderip tekrar deneyin.",
+        "NotEnoughBalance": "Hesabınızda bu işlem için yeterli bakiye yok.",
+        "PROMPT_TWO_FACTOR": {
+            "invalidCode": "Geçersiz 2FA kodu. Lütfen tekrar deneyin."
+        },
+        "RECOVER_ACCOUNT_SEED_PHRASE": {
+            "error": "Hesap kurtarılamadı. Bu Anahtar Kelime için hesap bulunamadı.",
+            "success": "Anahtar Kelime kullanılarak kurtarma işlemi tamamlandı.<br/><b>${numberOfAccounts} hesap(lar)</b> başarıyla kurtarıldı.<br/>Sonuncusu aktif olarak ayarlandı."
+        },
+        "REFRESH_ACCOUNT_EXTERNAL": {
+            "error": "Hesap <b>${accountId}</b> bulunamadı"
+        },
+        "REMOVE_ACCESS_KEY": {
+            "error": "Lütfen cihazınızın bağlı olduğunu ve NEAR uygulamasının açık olduğundan emin olun.",
+            "success": ""
+        },
+        "RetriesExceeded": "Aşırı yoğunluktan dolayı sistem meşgul, Lütfen tekrar deneyin.",
+        "SAVE_AND_SELECT_LEDGER_ACCOUNTS": {
+            "error": "Lütfen cihazınızın bağlı olduğunu ve NEAR uygulamasının açık olduğunu kontrol edin.",
+            "success": "Başarıyla oturum açtınız.<br/><b>${numberOfAccounts} hesap(lar) kurtarıldı.</b> En son oluşturduğunuz hesabınız etkin olarak ayarlandı."
+        },
+        "SEND_MONEY": {
+            "error": "Üzgünüz, bir hata oluştu. Tekrar deneyebilirsiniz."
+        },
+        "SETUP_RECOVERY_MESSAGE": {
+            "error": "Kurtarma yönteminiz kurulurken bir hata oluştu. Lütfen tekrar deneyin!",
+            "success": "Kurtarma ayarları tamamlandı."
+        },
+        "SIGN_AND_SEND_TRANSACTIONS": {
+            "error": "",
+            "success": ""
+        },
+        "SunsetCapabilityRetired": "Bu artık MyNearWallet'ta kullanılamıyor. Lütfen hesabınızı desteklenen bir cüzdana taşıyın.",
+        "TRANSFER_ALL_FROM_LOCKUP": {
+            "error": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+            "success": "Kilitli hesabınızdan tokenleri başarıyla aktardınız!"
+        },
+        "U2F_4": "Ledger cihazı ile giriş başarısız oldu: U2F CİHAZI_UYGUN DEĞİL. Lütfen Ledger cihazınızın bağlı ve kilidinin açık olduğundan emin olun.",
+        "VERIFY_TWO_FACTOR": {
+            "error": "İki Faktörlü Doğrulama kurulumu başarısız oldu. Lütfen tekrar deneyin.",
+            "success": "İki Faktörlü Doğrulama başarıyla kuruldu!"
+        }
+    },
+    "releaseNotesModal": {
+        "desc": "Siz sordunuz, biz dinledik! En son güncelleme, bakiyelerin cüzdanda nasıl görüntülendiğini ve yeni hesaplar oluşturmanın daha kolay yollarını getiriyor.",
+        "subText1": "Yükleme esnasında, yeni hesabınızı doğrulamak ve başlatmak için SMS özellikli bir telefon numarası kullanabilirsiniz. Bu bilgileri vermek istemeyen kullanıcılarda depozito ile yeni hesapını başlatabilirler.",
+        "subText2": "Cüzdanda şimdi görüntülenen birincil bakiye, daha önce 'Toplam Bakiyeniz' olan 'Kullanılabilir Bakiyeniz'dir. Kullanılabilir Bakiye, harcamak/katılım sağlamak/ve ekosistemle etkileşim kurmak için nelere sahip olduklarını bir bakışta bilmek isteyen kullanıcılara en fazla faydayı sunar; katılım sağlanmış kolayca harcanamayan tokenleri içermez. Katılım sağlanan tokenlerinizin bakiyesinin ayrıntılarını 'Hesap' ve 'Katılım' ekranlarında görmeye devam edebilirsiniz.",
+        "subTitle1": "Yeni Özellikler",
+        "subTitle2": "Geliştirmeler",
+        "title": "Sürüm notları"
+    },
+    "reservedForFeesInfo": "Yaklaşık ${data} NEAR işlemlerin maliyetini karşılamak için ayrılmıştır.",
+    "selectAccountDropdown": {
+        "account": "Hesap",
+        "createAccount": "Yeni Hesap Oluştur",
+        "noOtherAccounts": "Başka hesabınız yok",
+        "selectAccount": "Hesap seçin",
+        "switchAccount": "Hesap değiştir",
+        "switchAccounthNotAllowed": "Bu uygulama hesap değişikliklerine izin vermez"
+    },
+    "sending": "Gönderiyor",
+    "sendMoney": {
+        "account": {
+            "title": "Alıcı"
+        },
+        "amount": {
+            "available": "Gönderilebilen"
+        },
+        "amountStatusId": {
+            "available": "Mevcut Bakiye:",
+            "howMuch": "Ne kadar göndermek istiyorsun?",
+            "noMoreThan": "5 ONDALIK BASAMAKTAN FAZLA OLMAMALI",
+            "notEnoughTokens": "Hesabınızda en az ${amount} NEAR bırakmalısınız",
+            "sending": "Gönderiyor:"
+        },
+        "banner": {
+            "insufficient": "Mevcut bakiyenizin tamamını göndermeye çalışıyorsunuz. İşlem ücretlerini karşılamak için en az <b>${data} NEAR</b> ayırmalısınız.",
+            "useMax": "Mevcut bakiyenizin küçük bir kısmı (${data} NEAR) işlem ücretlerini karşılamak için ayrıldı."
+        },
+        "button": {
+            "confirm": "Onayla & Gönder",
+            "dashboard": "Gösterge Tablosuna Git",
+            "send": "İlet"
+        },
+        "confirmModal": {
+            "title": "İşlemi onayla"
+        },
+        "onceConfirmed": "Onaylandıktan sonra bu işlem geri alınamaz.",
+        "subtitle": {
+            "default": "Gönderilecek NEAR tutarını ve gönderilecek Hesap Kimliğini girin.",
+            "success": "Başarıyla gönderdiniz",
+            "to": "alıcı:"
+        },
+        "title": {
+            "default": "Gönder",
+            "success": "Başarılı!"
+        },
+        "to": "alıcı",
+        "wasSentTo": "gönderildi:",
+        "youAreSending": "Gönderiyorsunuz"
+    },
+    "sendV2": {
+        "accordionTriggerTitle": {
+            "balanceDetails": "Bakiye ayrıntıları",
+            "transactionDetails": "İşlem Ayrıntıları"
+        },
+        "enterAmount": {
+            "bridgedTokenWarning": "Bu bir köprü tokenidir. Binance gibi borsalara göndermeyin."
+        },
+        "review": {
+            "title": "Gönderiyorsunuz"
+        },
+        "selectAsset": {
+            "assetInputPlaceholder": "Varlık adı ara",
+            "assetListNameTitle": "Ad",
+            "asssetListBalanceTitle": "Gönderilebilir",
+            "title": "Varlık Seç"
+        },
+        "selectReceiver": {
+            "receiverInputLabel": "Alıcıya Gönder"
+        },
+        "selectTokenButtonTitle": "Varlık Seç",
+        "success": {
+            "title": "İşlem tamamlandı!</br>Gönderdiğiniz <span class='color-blue'>${amount}</span></br> <span class='color-green'>${receiverId}</span> hesabına aktarıldı"
+        },
+        "translateIdInfoTooltip": {
+            "estimatedFees": "İşleminizin tahmini maliyeti.",
+            "estimatedTotal": "Ücretler dahil işleminizin tahmini toplamı.",
+            "networkFees": "İşleminizi işleme koyma maliyetlerini karşılamak için ödenen nihai tutar.",
+            "reservedForFees": "Hesap bakiyenizin harcanamayan kısmı. Bu miktar, hesabınızın depolama maliyetlerini karşılamak için ayrılmıştır. Daha fazla bilgi için belgelerimizi inceleyebilirsiniz."
+        },
+        "TXEntry": {
+            "status": {
+                "Failure": "Başarısız",
+                "notAvailable": "Durum mevcut değil",
+                "SuccessValue": "Başarılı"
+            },
+            "title": {
+                "amount": "Tutar",
+                "availableBalance": "Mevcut bakiye",
+                "availableToSend": "Gönderilebilir bakiye",
+                "estimatedFees": "Tahmini ücretler",
+                "estimatedTotal": "Tahmini toplam",
+                "from": "Gönderen",
+                "networkFees": "Ağ ücretleri",
+                "receiverId": "Alıcı",
+                "reservedForFees": "Ücretler için ayrılmıştır",
+                "status": "TXN Durumu",
+                "timeStamp": "Tarih & saat",
+                "to": "Alıcı",
+                "token": "Varlık"
+            }
+        }
+    },
+    "setRecoveryConfirm": {
+        "didNotReceive": "Kodunuzu almadınız mı?",
+        "email": "email adres",
+        "inputError": "Lütfen doğrulama kodunu giriniz!",
+        "inputHeader": "Doğrulama kodunu giriniz",
+        "inputPlaceholder": "Doğrulama kodu",
+        "or": "veya",
+        "pageText": "6 basamaklı bir doğrulama kodu gönderdik, ",
+        "phone": "telefon numarası",
+        "reenter": {
+            "link": "buraya tıklayın",
+            "one": {
+                "email": "Henüz bu e-postayı almadıysanız veya yukarıdaki e-posta adresi yanlışsa, ",
+                "phoneNumber": "Henüz bu SMS'i almadıysanız veya yukarıdaki telefon numarası yanlışsa, "
+            },
+            "two": {
+                "email": " E-posta adresinizi tekrar girin ve tekrar gönderin.",
+                "phoneNumber": " Telefon numaranızı tekrar girin ve tekrar gönderin."
+            }
+        },
+        "resendCode": "Kodunuzu tekrar gönderin",
+        "resending": "Tekrar gönderiliyor...",
+        "sendToDifferent": "Farklı bir yere gönder",
+        "title": "Doğrulama Kodunu Giriniz"
+    },
+    "setupLedger": {
+        "header": "Ledger cihazınızı bağlayın",
+        "one": "Ledger Nano S veya X'i USB aracılığıyla bilgisayarınıza veya mobil cihazınıza bağlayın ve <b>NEAR uygulamasını açın</b>. <br><br>Ardından, 'Bekleyen Ledger İncelemesi' ekranından  <b>her iki düğmeye basın</b>.",
+        "two": "NEAR Ledger uygulamasını henüz yüklemediyseniz,",
+        "twoLink": "bu talimatları takip ediniz"
+    },
+    "setupLedgerSteps": {
+        "header": "Ledger cihazınıza NEAR'ı kurun",
+        "one": "<a href='https://www.ledger.com/ledger-live' target='_blank'>Ledger Live,</a> Adresinden mevcut bir yazılım güncellemesi var ise yükleyiniz.",
+        "three": "Cihazınıza <span class='color-black'>NEAR uygulamasını</span> yüklemek için talimatları izleyin.",
+        "two": "Yönetici <span class='color-black'>Sekmesine tıklayın</span> ardından, <span class='color-black'>NEAR</span> için arama yapın."
+    },
+    "setupLedgerSuccess": {
+        "header": "Ledger hesabınızı güvence altına aldı!",
+        "nextStep": {
+            "header": {
+                "keep": "Mevcut anahtarlar tutulsun mu?",
+                "remove": "Anahtar kaldırma işlemini onaylayın"
+            },
+            "one": {
+                "keep": "<span class='color-red'>Birden çok kurtarma yöntemini sürdürme ve cihazına sahip olmak hesabınızın güvenlik açığını artırır.</span>",
+                "remove": "Mevcut anahtarlarınızı ve kurtarma yöntemlerinizi kaldırmadan önce, Ledger Anahtar Kelime parolanızı kaydettiğinizden ve güvenli bir şekilde sakladığınızdan emin olun."
+            },
+            "two": {
+                "remove": "Anahtar Kelime parolanıza erişiminizi kaybederseniz, NEAR A.Ş, hesabınızın ve fonlarının kurtarılmasında size yardımcı olamayacak."
+            }
+        },
+        "one": "Mevcut tüm anahtarları (kurtarma yöntemleri ve cihazları) kaldırmanızı öneririz.",
+        "primaryCta": "Mevcut Anahtarları ve Kurtarma Yöntemlerini Kaldırın",
+        "secondaryCta": "Mevcut anahtarları koru",
+        "two": "Birden çok şifre ve kurtarma yöntemini sürdürme (Anahtar Kelimeler dahil) hesabınızın güvenlik açığını artırır."
+    },
+    "setupPasswordProtection": {
+        "average": "Orta düzey şifre",
+        "changePassword": {
+            "completedDescription": "Şifrenizi başarıyla güncellediniz.",
+            "completedTitle": "Şifre Başarıyla Güncellendi",
+            "step1Description": "Devam etmek için mevcut şifrenizi onaylayın",
+            "step1Title": "Adım 1/2: Eski Şifreyi Onayla",
+            "step2Description": "Yeni şifrenizi buraya belirleyin",
+            "step2Title": "Adım 2/2: Yeni Şifre Belirle"
+        },
+        "confirm": "Şifreyi Onayla",
+        "disableModal": {
+            "description": "Şifre şifrelemesini devre dışı bırakmak hesaplarınızı daha büyük bir risk altında bırakır. Devam etmek istediğinize emin misiniz?",
+            "disabledDescription": "Şifre şifrelemesi başarıyla devre dışı bırakıldı",
+            "disabledTitle": "Şifre Şifrelemesi Devre Dışı Bırakıldı",
+            "instruction": "Onaylamak için şifrenizi buraya girin",
+            "title": "Şifre Şifrelemesini Devre Dışı Bırak"
+        },
+        "enter": "Şifre girin",
+        "invalidPassword": "Geçersiz Şifre",
+        "lengthError": "En az 8 karakter",
+        "matchError": "Şifreler eşleşmiyor",
+        "pageText": "Cüzdanınızı açmak için bunu kullanacaksınız.",
+        "pageTitle": "Bir Şifre Oluştur",
+        "passwordExist": "Şifre zaten mevcut",
+        "passwordExistDescription": "Hesabınızı zaten bir şifre ile güvence altına aldınız.",
+        "setPasswordSuccessfully": "Şifre Başarıyla Ayarlandı",
+        "setPasswordSuccessfullyButton": "Ana Sayfaya Dön",
+        "setPasswordSuccessfullyDescription": "Hesaplarınız artık şifreleme ile daha iyi korunmaktadır.",
+        "strong": "Güçlü şifre",
+        "unlockWalletButton": "Cüzdanı Aç",
+        "unlockWalletDescription": "Hoş geldiniz, web3 dünyası sizi bekliyor. Cüzdanınızı açmak için şifrenizi girin.",
+        "unlockWalletInputPlaceholder": "Şifre girin",
+        "unlockWalletTitle": "Cüzdanı Aç",
+        "week": "Zayıf şifre",
+        "withoutPassword": "Şifre oluşturmadan devam et"
+    },
+    "setupRecovery": {
+        "advancedSecurity": "En Güvenli (Önerilen)",
+        "advancedSecurityDesc": "12 kelimelik parolanızı yazın veya hesabınızı Ledger cihazınızla güvenceye alın.",
+        "basicSecurity": "En Pratik",
+        "basicSecurityDesc": "E-posta adresinizi veya telefon numaranızı girin ve sihirli bir bağlantı alın",
+        "emailDesc": "E-posta ile doğrulama kodu ve hesap kurtarma bağlantısı alın.",
+        "emailPlaceholder": "example@email.com",
+        "emailTitle": "Email",
+        "header": "Hesabınızın güvenliğini sağlayın",
+        "ledgerDesc": "Hesabınızı bir Ledger donanım cihazıyla koruyun.",
+        "ledgerTitle": "Ledger Donanım Cüzdanı",
+        "notSupportedPhone": "Maalesef, bölgeniz için SMS hizmetini sunmuyoruz. Bunun yerine lütfen e-postayı seçin.",
+        "phoneDesc": "SMS ile doğrulama kodu ve hesap kurtarma bağlantısı alın.",
+        "phonePlaceholder": "+1 415 797 8554",
+        "phoneTitle": "Telefon",
+        "phraseDesc": "Benzersiz bir parola oluşturun ve güvenli bir şekilde saklayın.",
+        "phraseTitle": "Anahtar Kelimeyi Güvene Al",
+        "subHeader": "Hesabınızı güvenceye almak ve kurtarmak için bir yöntem seçin. Bu, önemli etkinlikleri doğrulamak, hesabınızı kurtarmak ve hesabınıza diğer cihazlardan erişmek için kullanılacaktır."
+    },
+    "setupSeedPhrase": {
+        "pageText": "Aşağıdaki kelimeleri SIRASI İLE yazınız ve güvenli bir yerde saklayınız. Onlar olmadan hesabınızı kurtaramazsınız!",
+        "pageTitle": "Sözcük Kurulumu",
+        "snackbarCopyImplicitAddress": "Finansman Adresi Kopyalandı!",
+        "snackbarCopySuccess": "Sözcükler kopyalandı!"
+    },
+    "setupSeedPhraseSuccess": {
+        "pageText": "Hesabınızı geri yüklemek için Kurtarma Sözcüklerinizi kullanın.",
+        "pageTextSecondLine": "Kurtarma İfadenize erişimi olan herkes hesaplarınıza erişebilir, bu nedenle çevrimdışı olan, güvenli ve emniyetli bir yerde saklayın.",
+        "pageTitle": "Kurtarma Kurulumu Tamamlandı"
+    },
+    "setupSeedPhraseVerify": {
+        "pageText": "Kurulum işlemini tamamlamak için kurtarma sözcüklerinizden aşağıdaki kelimeyi girin.",
+        "pageTitle": "Sözcüğü Doğrula",
+        "startOverText": "Onu yazmadınız mı?"
+    },
+    "sign": {
+        "ActionWarrning": {
+            "binaryData": "Bağımsız değişkenler ikili veri içerir",
+            "deleteAccount": "Hesabınızı silmek üzeresiniz! NEAR bakiyeniz yok edilecek ve tüm hesap verileriniz silinecek.",
+            "deployContract": "Hesabınıza bir sözleşme yerleştirmek üzeresiniz! Bu sözleşme, NEAR bakiyenize erişebilir ve sizin adınıza diğer sözleşmelerle etkileşim kurabilir.",
+            "functionCall": "Bu işlev için tanım belirtilmemiş.",
+            "stake": "NEAR tokenlerini katılım sağlamak üzeresiniz. Bu tokenler kilitlenir ve doğrulayıcınız yanıt vermezse kaybolma riskiyle karşı karşıya kalır."
+        },
+        "authorizationRequestSuccessful": "Yetkilendirme talebi başarılı",
+        "authorizing": "Yetkilendiriliyor",
+        "availableBalance": "Mevcut Bakiye",
+        "availableToTransfer": "Aktarılabilir",
+        "contract": "Sözleşme:",
+        "details": {
+            "detailedDescription": "İşlemin detaylı açıklaması",
+            "forContract": "Sözleşme için",
+            "gasLimit": "Gaz Limiti",
+            "gasPriceUnavailable": "Gaz fiyatı tahmini bulunmuyor",
+            "transactionFees": "İşlem Ücretleri"
+        },
+        "hereAreSomeDetails": "İşte size yardımcı olacak bazı detaylar.",
+        "insufficientFunds": "Yetersiz bakiye",
+        "isRequesting": {
+            "authorization": "yetkilendirme istiyor",
+            "transferOf": "aktarılmasını talep ediyor"
+        },
+        "nothingHasBeenTransferred": "Hiçbir şey aktarılmadı.",
+        "transactionCancelled": "İşlem iptal edildi",
+        "transferring": "Aktarılıyor",
+        "unexpectedStatus": "Beklenmedik durum",
+        "unknownApp": "Bilinmeyen Uygulama",
+        "wasTransferredSuccessfully": "başarıyla aktarıldı"
+    },
+    "signInLedger": {
+        "advanced": {
+            "desc": "Bağlantılı hesaplarını içe aktarmak için bir HD yolu belirtin.",
+            "setPath": "HD Yolu Ayarla",
+            "subTitle": "HD Yolu",
+            "title": "Gelişmiş Seçenekler"
+        },
+        "firefoxBanner": {
+            "desc": "Ledger şuanda sadece <a href='https://www.mozilla.org/' rel='noopener noreferrer' target='_blank'><b>Mozilla Firefox</b></a>. desteklemektedir. Diğer tarayıcılar da çok yakında eklenecektir."
+        },
+        "header": "Ledger cihazınızla oturum açın",
+        "modal": {
+            "accountsApproved": "hesap(lar) onaylandı",
+            "confirmPublicKey": "Genel anahtarı onaylayın",
+            "ledgerMustAdd": "Ledger, cihazınız tarafından korunan her hesap için bir erişim anahtarı eklemelidir:",
+            "status": {
+                "confirm": "Onayla",
+                "error": "Hata",
+                "pending": "Bekliyor",
+                "rejected": "Reddedildi",
+                "success": "Onaylandı",
+                "waiting": "Bir sonraki"
+            }
+        },
+        "one": "Ledger'ın güvenli bir şekilde bağlandığından ve cihazda NEAR uygulamasının açık olduğundan emin olun.."
+    },
+    "stagingBanner": {
+        "desc": "Uyarı: Bu, NEAR Cüzdanının yayın öncesi sürümüdür. Hatalar olabilir ve bu hatalar para kaybına neden olabilir. Bu sürümü kullanmaya devam ederek, bu riskleri anladığınızı ve kabul ettiğinizi ve NEAR Cüzdan ekibinin size yardımcı olamayacağını kabul etmiş olursunuz..",
+        "title": "Uyarı: Bu, Cüzdan'ın yayın öncesi sürümüdür. Riskler size aittir!"
+    },
+    "stakedBalance": "NEAR, bir validatörü desteklemek ve ağın güvenliğini sağlamak için aktif olarak kullanılmaktadır. Bu NEAR'dan katılımınızı geri almak istediğinizde; bu işlem, 4 döngü (~28-48 saat) sürdüğünden, Kullanılabilir Bakiyenizde görünmesi biraz zaman alacaktır.",
+    "staking": {
+        "alertBanner": {
+            "button": "Mevcut Validatörü Görüntüle",
+            "title": "Yeni bir validatör ile katılım sağlamak için öncelikle mevcut validatörünüzün katılımından çıkıp ve tokenlerinizi çekmelisiniz."
+        },
+        "amountStakingInput": {
+            "placeholder": "örneğin: 15",
+            "title": "Katılım tutarını girin"
+        },
+        "balanceBanner": {
+            "currency": "NEAR",
+            "title": "Mevcut kilitli bakiye"
+        },
+        "balanceBox": {
+            "available": {
+                "button": "Çek",
+                "info": "Bu tokenler katılımdan çıktı ve çekilmeye hazır.",
+                "title": "Çekilebilir bakiye"
+            },
+            "pending": {
+                "info": "Bu tokenler katılımdan çıkartıldı, ancak henüz çekilmeye hazır değiller. Tokenler, katılımdan çekildikten 28 ila 48 saat sonra çekilmeye hazır olur.",
+                "title": "Hazırlanan tutar"
+            },
+            "staked": {
+                "button": "Katılımdan çık",
+                "info": "NEAR tokenleri şu anda validatörle katılım sağlanmıştır. Bu tokenler şuanda ödül biriktiriyor. Bu tokenlere erişebilmek için önce katılımdan çıkılmalı ve daha sonra bu tokenler çekilmelidir.",
+                "title": "Toplam katılım miktarı"
+            },
+            "unclaimed": {
+                "info": "Kazanılan, ancak çekilmeyen ödüller; otomatik olarak yeniden katılım sağlanır, bu ödüllerin zaman içerisinde sürekli birikerek arttığını <a target='_blank' href='https://www.investopedia.com/terms/c/compoundinterest.asp'>ifade eder</a>.",
+                "title": "Kazanılan ödüller",
+                "unavailable": {
+                    "cta": "Daha fazla bilgi edin",
+                    "modalDescOne": "İki Faktörlü Kimlik Doğrulama etkinleştirildiğinden şu anda ödülleri hesaplayamıyoruz. Bu işlevi yakın gelecekte etkinleştirmeyi umuyoruz.",
+                    "modalDescTwo": "Bu arada, “Toplam katılım sağlanan miktar” altında biriken ödüllerinizi görebileceksiniz. Ödülleriniz otomatik olarak tekrar katılım sağlandığından tokenleriniz katılımda kaldığı sürece bakiyeniz sürekli artacaktır.",
+                    "modalTitle": "Kazanılan katılım ödülleri görüntülenemiyor",
+                    "title": "Kazanılan ödüller görüntülenemiyor."
+                }
+            }
+        },
+        "noValidators": {
+            "title": "Şu anda herhangi bir validatörle katılımda değilsiniz."
+        },
+        "pageText": "Düğümünüzü CLI aracılığıyla kurun, ardından buraya ekleyin.",
+        "pageTitle": "Katılım",
+        "stake": {
+            "accounts": "NEAR'ı kilitlediyseniz eğer, kilitli NEAR (lockup.near), veya kilitsiz NEAR (hesap isminiz) ile de katılım sağlayabilirsiniz. Yalnızca seçilen hesap için katılım pozisyonlarını göreceksiniz. NEAR'ı kilitlemediyseniz, bu bölümü göz ardı edebilirsiniz",
+            "amount": "Miktar",
+            "banner": {
+                "insufficientBalance": "Mevcut bakiyenizin tamamına katılım sağlamaya çalışıyorsunuz. En az <b>${data} NEAR</b> işlem ücretlerini karşılamak için ayrılmalı.",
+                "stakeMax": "Mevcut bakiyenizin küçük bir kısmı (${data} NEAR) işlem ücretlerini karşılamak için ayrıldı."
+            },
+            "button": "Katılım Sağla",
+            "confirm": "Katılım sağlıyorsunuz",
+            "desc": "Seçtiğiniz validatör ile katılım sağlamak istediğiniz tutarı girin.",
+            "from": "gönderen",
+            "input": {
+                "availableBalance": "Mevcut bakiye",
+                "near": "NEAR"
+            },
+            "ledgerDisclaimer": "Not: Bu validatör ile ilk defa katılım sağladığınız için, iki işlemi onaylamanız gerekecektir.",
+            "stakeWith": "İle katılım sağla",
+            "title": "Katılım Tutarı",
+            "useMax": "Maks. kullan",
+            "with": "ile"
+        },
+        "stakeSuccess": {
+            "button": "Gösterge Tablosuna Dön",
+            "desc": "Katılımınız başarıyla seçtiğiniz validatöre devredildi:",
+            "descTwo": "Artık katılım durumunuzu ve ödüllerinizi katılım kontrol panelinizden görüntüleyebilirsiniz.",
+            "title": "Başarılı!"
+        },
+        "staking": {
+            "available": "Mevcut bakiye",
+            "button": "Tokenlerime Katılım Sağla",
+            "currentValidators": "Mevcut Validatörleriniz",
+            "desc": "NEAR tokenlerinizi bir validatör ile katılım sağlayın",
+            "noValidators": "Henüz bir validatörle katılım sağlamadınız.",
+            "selectAccount": "Hesabından katılım sağlanıyor",
+            "title": "Katılım Durumu",
+            "totalStaked": "Katılım sağlandı"
+        },
+        "unstake": {
+            "beforeUnstakeDisclaimer": "Katılımdan çıkmış tokenler ~28-48 saat (4 döngü) zaman diliminde hazırlanan tutar bölümünde kullanıma sunulacaktır.",
+            "button": "Tokenleri katılımdan çıkartın",
+            "confirm": "Katılımdan çıkıyorsunuz",
+            "desc": "Mevcut validatörünüzde katılımdan çıkarmak istediğiniz token miktarını giriniz.",
+            "input": {
+                "availableBalance": "Katılımdan çıkılabilir bakiye",
+                "near": "NEAR"
+            },
+            "stakeWith": "Katılımından çıkılan",
+            "title": "Tokenleri Katılımdan Çıkar"
+        },
+        "unstakeSuccess": {
+            "button": "Gösterge Tablosuna Dön",
+            "desc": "Başarıyla bu validatörün katılımından çıktınız:<b>${amount}</b>",
+            "descTwo": "Tokenleriniz hazırlanan bölümde ve ~28-48 saat içerisinde kullanımınıza sunulacak.",
+            "title": "Başarılı!"
+        },
+        "validator": {
+            "button": "Validatör ile katılım sağla",
+            "desc": "Bu komisyon sizin adınıza validatöre katılım sağlaması için ödenmiştir. Komisyon, ödüllerinizden düşürülür.",
+            "fee": "Validatör Komisyonu",
+            "title": "Validatör: <br/>${validator}",
+            "unstake": "Katılımdan çıkıyorsunuz",
+            "withdraw": "Paranızı çekiyorsunuz",
+            "withdrawalDisclaimer": "Hazırlamaya alınan paranız ~28-48 saat sonra kullanımınıza sunulacaktır"
+        },
+        "validatorBox": {
+            "cta": "Seç",
+            "fee": "Komisyon",
+            "near": "NEAR",
+            "staking": "Katılım",
+            "state": {
+                "active": "aktif",
+                "inactive": "pasif"
+            },
+            "with": "ile"
+        },
+        "validators": {
+            "available": "Mevcut Validatörler",
+            "button": "Validatör Görüntüle",
+            "desc": {
+                "account": "NEAR tokenlerinizi katılım sağlamak için bilinen bir validatör girin veya listeden birini seçin.",
+                "lockup": "NEAR tokenlerinizi katılım sağlamak için bilinen bir validatör girin veya listeden birini seçin. Verilen herhangi bir zamanda yalnızca tek bir validatör ile katılım sağlayabilirsiniz.",
+                "unstake": "Tokenlerinizi katılımdan çıkarmak istediğiniz validatör havuzunu seçin.",
+                "withdraw": "Tokenlerinizi çekmek istediğiniz validatör havuzunu seçin."
+            },
+            "inputLabel": "Validatör Hesap Kimliği",
+            "inputPlaceholder": "validatör-adı.near",
+            "search": {
+                "error": "Eşleşen validatör bulunamadı.",
+                "success": "Validatör bulundu!"
+            },
+            "title": "Bir Validator seç"
+        }
+    },
+    "stakingPoolUnstaked": "Bu NEAR şu anda bir katılım havuzundadır ancak katılım sağlanmamıştır. Hazırlanan tutar durumunda da olabilir.",
+    "success": "Başarılı",
+    "sunset": {
+        "autoImport": {
+            "tryAnotherMethod": "Başka bir içe aktarma yöntemi dene"
+        },
+        "banner": {
+            "cta": "Hesapları taşı",
+            "phase2": {
+                "description": "Gönderim, stake ve uygulama onayları {{date}} tarihinde duracak. Tam erişimi korumak için hesaplarınızı şimdi Meteor Wallet'a taşıyın. Fonlarınız güvende.",
+                "title": "MyNearWallet {{date}} tarihinde sınırlı moda geçiyor"
+            },
+            "phase3": {
+                "description": "Bakiyeleri görüntüleyebilir, anahtarlarınızı dışa aktarabilir ve hesaplarınızı taşıyabilirsiniz. Fonlarınız güvende.",
+                "title": "MyNearWallet artık sınırlı modda"
+            }
+        },
+        "bar": {
+            "cta": "Şimdi taşı",
+            "import": {
+                "description": "Kurtarma ifadeniz, özel anahtarınız veya Ledger cihazınız doğrudan Meteor Wallet'ta çalışır.",
+                "title": "Hesabınıza girmek için MyNearWallet'a ihtiyacınız yok."
+            },
+            "phase2": {
+                "description": "Bundan sonra gönderim, stake ve uygulama onayları duracak. Hesaplarınızı şimdi taşıyın.",
+                "title": "MyNearWallet {{date}} tarihinde sınırlı moda geçiyor."
+            },
+            "phase3": {
+                "description": "Bakiyeleri görüntüleyebilir, anahtarlarınızı dışa aktarabilir ve hesaplarınızı taşıyabilirsiniz.",
+                "title": "MyNearWallet sınırlı modda."
+            },
+            "reload": {
+                "cta": "Yeniden yükle",
+                "description": "En son sürümle devam etmek için sayfayı yeniden yükleyin.",
+                "title": "MyNearWallet güncellendi."
+            }
+        },
+        "common": {
+            "backToWallet": "Cüzdana dön",
+            "exportKeys": "Anahtarlarımı dışa aktar",
+            "getMeteor": "Meteor Wallet'ı edinin",
+            "learnMore": "Daha fazla bilgi",
+            "migrate": "Hesaplarımı taşı",
+            "resume": "Aktarıma devam et",
+            "retry": "Tekrar dene",
+            "whyIsThisHappening": "Bu neden oluyor?"
+        },
+        "dapp": {
+            "approval": {
+                "body": "MyNearWallet kullanımdan kaldırılıyor ve artık uygulamalardan gelen istekleri onaylamıyor.",
+                "bodyWithHost": "{{host}} bir istek gönderdi, ancak MyNearWallet kullanımdan kaldırılıyor ve artık uygulamalardan gelen istekleri onaylamıyor.",
+                "title": "MyNearWallet artık uygulama isteklerini onaylayamıyor"
+            },
+            "cli": {
+                "body": "MyNearWallet kullanımdan kaldırıldığı için MyNearWallet ile NEAR CLI girişi artık desteklenmiyor.",
+                "hint": "Özel anahtarınızı MyNearWallet'tan dışa aktarıp NEAR CLI'ye içe aktarın veya NEAR CLI'ye başka bir cüzdanla giriş yapın.",
+                "title": "NEAR CLI girişi artık desteklenmiyor"
+            },
+            "closeWindow": "Bu pencereyi kapatabilirsiniz.",
+            "errorMessage": "MyNearWallet kullanımdan kaldırılıyor ve artık bu isteği kabul etmiyor. Lütfen başka bir cüzdan seçin.",
+            "hint": "Hesaplarınız ve fonlarınız güvende. Uygulamada başka bir cüzdan seçin veya önce hesabınızı Meteor Wallet'a taşıyıp onunla bağlanın.",
+            "hintWithHost": "Hesaplarınız ve fonlarınız güvende. {{host}} içinde başka bir cüzdan seçin veya önce hesabınızı Meteor Wallet'a taşıyıp onunla bağlanın.",
+            "login": {
+                "body": "MyNearWallet kullanımdan kaldırılıyor ve artık yeni uygulama bağlantılarını kabul etmiyor.",
+                "bodyWithHost": "{{host}} bağlanmak istedi, ancak MyNearWallet kullanımdan kaldırılıyor ve artık yeni uygulama bağlantılarını kabul etmiyor.",
+                "title": "MyNearWallet artık uygulamalara bağlanamıyor"
+            },
+            "returningToApp": "Uygulamaya dönülüyor…",
+            "returningToHost": "{{host}} sitesine dönülüyor…",
+            "returnToApp": "Uygulamaya dön",
+            "returnToHost": "{{host}} sitesine dön",
+            "signedOut": {
+                "body": "Bu tarayıcıda oturum açmış bir MyNearWallet hesabı yok ve MyNearWallet kullanımdan kaldırılıyor; bu yüzden bu isteği burada onaylayamaz.",
+                "bodyWithHost": "{{host}} bir istek gönderdi, ancak bu tarayıcıda oturum açmış bir MyNearWallet hesabı yok. MyNearWallet kullanımdan kaldırılıyor; bu yüzden bu isteği burada onaylayamaz.",
+                "hint": "Hesaplarınız ve fonlarınız güvende. Kurtarma ifadeniz, özel anahtarınız veya Ledger cihazınız doğrudan Meteor Wallet'ta çalışır: hesabınızı oraya ekleyin, ardından uygulamada Meteor Wallet'ı seçin.",
+                "hintWithHost": "Hesaplarınız ve fonlarınız güvende. Kurtarma ifadeniz, özel anahtarınız veya Ledger cihazınız doğrudan Meteor Wallet'ta çalışır: hesabınızı oraya ekleyin, ardından {{host}} içinde Meteor Wallet'ı seçin.",
+                "title": "Bu tarayıcıda MyNearWallet hesabı yok"
+            }
+        },
+        "existingAccountGate": {
+            "checking": "Hesabınız kontrol ediliyor…",
+            "errorBody": "Bu hesabı doğrulamak için NEAR ağına ulaşılamadı. Hiçbir şey değişmedi. Lütfen tekrar deneyin.",
+            "errorTitle": "Bu hesap kontrol edilemedi"
+        },
+        "guidance": {
+            "actions": {
+                "exportKey": "Anahtarı dışa aktar",
+                "openMeteor": "Meteor Wallet'ı aç",
+                "turnOff2fa": "2FA'yı kapat"
+            },
+            "algorithmUnsupported": "Bu anahtar türü otomatik olarak aktarılamaz. Anahtarı dışa aktarın ve onu destekleyen bir cüzdana içe aktarın.",
+            "ledger": "Bu hesap Ledger cihazınızla korunuyor. Aynı Ledger'ı Meteor Wallet'a veya Ledger uyumlu herhangi bir NEAR cüzdanına bağlayın. Hiçbir anahtarın taşınması gerekmez.",
+            "noLocalKey": "MyNearWallet bu tarayıcıda bu hesap için bir anahtar tutmuyor. Yeni cüzdanınızda orijinal kurtarma ifadenizi veya cihazınızı kullanın.",
+            "notFullAccess": "Bu tarayıcıdaki anahtar bu hesabı tam olarak kontrol edemez. Yeni cüzdanınızda orijinal kurtarma ifadenizi kullanın.",
+            "notFunded": "Bu adres hiç fon almadı, bu yüzden henüz aktarılacak bir şey yok. Fon daha sonra gelirse erişiminizi korumak için anahtarını dışa aktarın.",
+            "twoFactor": "Hesap ayarlarınızdan 2FA'yı kapatın, ardından bu hesabı taşımak için geri dönün. Bu hesap için 12 kelimelik bir kurtarma ifadesi oluşturduysanız, bu ifade hâlâ tam erişime sahiptir ve doğrudan Meteor Wallet'ta çalışır."
+        },
+        "importBlocked": {
+            "checkFailed": "Bu hesabı kontrol etmek için NEAR ağına ulaşılamadı. Hiçbir şey değişmedi. Lütfen tekrar deneyin.",
+            "noAccount": "Bu kurtarma ifadesi veya anahtar için bir NEAR hesabı bulunamadı. MyNearWallet artık yeni hesap oluşturamıyor. Doğru girdiğinizi kontrol edin. Meteor Wallet'ta ve diğer NEAR cüzdanlarında da çalışır."
+        },
+        "inline": {
+            "dappApproval": "MyNearWallet'taki uygulama onayları {{date}} tarihinde sona eriyor. Uygulamaları kullanmaya devam etmek için hesabınızı desteklenen bir cüzdana taşıyın.",
+            "dappApprovalWithHost": "MyNearWallet'taki uygulama onayları {{date}} tarihinde sona eriyor. {{host}} kullanmaya devam etmek için hesabınızı taşıyın.",
+            "migrateLink": "Şimdi taşı",
+            "staking": "Yeni stake sona erdi. {{date}} tarihine kadar burada unstake ve çekim yapabilirsiniz. Stake edilen NEAR'ınız hesabınızda kalır ve yeni cüzdanınızdan yönetilebilir. Unstake işlemi yaklaşık 2–3 gün sürer.",
+            "stakingEnded": "MyNearWallet'ta stake işlemleri sona erdi. Stake'iniz güvende ve burada görünmeye devam ediyor. Hesabınızı taşıdıktan sonra onu yeni cüzdanınızdan yönetin."
+        },
+        "landing": {
+            "existingAccount": "Zaten bir hesabınız var mı? Kurtarma ifadeniz, özel anahtarınız veya Ledger cihazınız doğrudan Meteor Wallet'ta çalışır.",
+            "limitedMode": {
+                "description": "Gönderim, stake ve uygulama onayları sona erdi. Hesaplarınız ve fonlarınız NEAR'da güvende.",
+                "title": "MyNearWallet sınırlı modda"
+            },
+            "noNewAccounts": "MyNearWallet artık yeni hesap oluşturmuyor. NEAR'da yeni misiniz? Meteor Wallet ile başlayın.",
+            "otherWallets": "Diğer NEAR cüzdanları"
+        },
+        "manualExport": {
+            "findingAccounts": "Bu cüzdanın anahtarlarını tuttuğu hesaplar aranıyor…",
+            "howToImport": "Yeni cüzdanınızda Özel anahtarı içe aktar seçeneğini seçin ve aşağıdaki özel anahtarı yapıştırın (anahtar ed25519: ile başlar).",
+            "noKeys": "Bu tarayıcıda dışa aktarılacak özel anahtar yok.",
+            "notes": {
+                "notFullAccess": "Bu anahtar hesabı tam olarak kontrol edemez. Varsa orijinal kurtarma ifadenizi yeni cüzdanınızda kullanın.",
+                "notFunded": "Bu adres hiç fon almadı, bu yüzden henüz NEAR'da yok. Fon daha sonra gelirse anahtarı onu yine kontrol eder.",
+                "twoFactor": "Bu hesapta 2FA açık, bu yüzden bu anahtar hesabı tek başına taşıyamayabilir. Önce 2FA'yı kapatın veya oluşturduysanız 12 kelimelik kurtarma ifadenizi kullanın. Bu anahtarı bir kurtarma ifadesi kadar güvenli saklayın."
+            },
+            "recoveryPhraseStillWorks": "Bir hesap oluştururken 12 kelimelik bir kurtarma ifadesi kaydettiyseniz, bu ifade her NEAR cüzdanında çalışmaya devam eder."
+        },
+        "nav": {
+            "migrate": "Taşı"
+        },
+        "notice": {
+            "antiPhishing": "Kurtarma ifadenizi veya özel anahtarınızı asla e-posta, özel mesaj ya da başka bir web sitesi üzerinden istemeyiz. Taşıma yalnızca app.mynearwallet.com içinde yapılır.",
+            "continue": "Devam et",
+            "learnMore": "Daha fazla bilgi",
+            "migrateNow": "Şimdi taşı",
+            "phase1": {
+                "p1": "MyNearWallet, NEAR ekosistemindeki geçişin bir parçası olarak kademeli olarak kullanımdan kaldırılacak.",
+                "p2": "Fonlarınız güvende ve hemen bir işlem yapmanız gerekmiyor.",
+                "p3": "Önümüzdeki aylarda desteklenen NEAR cüzdanlarına rehberli taşıma seçenekleri sunacağız.",
+                "title": "MyNearWallet kullanımdan kaldırılıyor"
+            },
+            "phase2": {
+                "p1": "Hesap oluşturma, takas, NEAR satın alma, yeni stake ve yeni uygulama bağlantıları kapatıldı.",
+                "p2": "{{date}} tarihinden itibaren gönderim, stake ve uygulama onayları da duracak. Bakiyelerinizi görüntülemeye, anahtarlarınızı dışa aktarmaya ve hesaplarınızı taşımaya devam edebileceksiniz.",
+                "p3": "Fonlarınız güvende. Tam erişimi korumak için hesaplarınızı şimdi Meteor Wallet'a taşıyın.",
+                "title": "MyNearWallet {{date}} tarihinde sınırlı moda geçiyor"
+            },
+            "phase3": {
+                "p1": "Gönderim, stake ve uygulama onayları sona erdi. Fonlarınız güvende; bakiyelerinizi görüntüleyebilir ve hesaplarınızı Meteor Wallet'a taşıyabilirsiniz.",
+                "title": "MyNearWallet artık sınırlı modda"
+            }
+        },
+        "retired": {
+            "addRecoveryMethod": {
+                "hint": "Mevcut kurtarma ifadeniz ve anahtarlarınız çalışmaya devam eder. Hesabınızı taşıdıktan sonra anahtarlarını yeni cüzdanınızdan yönetebilirsiniz.",
+                "title": "Anahtar ve kurtarma yöntemi ekleme artık kullanılamıyor"
+            },
+            "body": "MyNearWallet kullanımdan kaldırılıyor. Hesaplarınızı desteklenen bir cüzdana taşımaya odaklanabilmeniz için bu özellik kapatıldı. Fonlarınız NEAR'daki hesabınızda güvende.",
+            "buy": {
+                "hint": "Hesabınız taşındıktan sonra Meteor Wallet'ta veya bir borsada NEAR satın alabilirsiniz.",
+                "title": "NEAR satın alma artık kullanılamıyor"
+            },
+            "createAccount": {
+                "fundedHint": "Bir hesap oluşturmaya başlayıp ona zaten fon mu yatırdınız? Kurtarma ifadenizle Meteor Wallet'a içe aktarın. Fonlarınız güvende.",
+                "hint": "NEAR'da yeni misiniz? Meteor Wallet ile bir cüzdan oluşturabilirsiniz.",
+                "title": "Yeni hesap oluşturma sona erdi"
+            },
+            "enableTwoFactor": {
+                "hint": "2FA'yı şimdi açmak hesabınızı taşımayı zorlaştırır. Hesabınızın mevcut güvenliği değişmez.",
+                "title": "İki faktörlü kimlik doğrulama artık açılamaz"
+            },
+            "explore": {
+                "hint": "Hesabınızı taşıdıktan sonra NEAR uygulamalarını Meteor Wallet'tan keşfedebilirsiniz.",
+                "title": "Explore sayfası artık kullanılamıyor"
+            },
+            "linkdropClaim": {
+                "hint": "Bu bağlantıyı Meteor Wallet veya başka bir NEAR cüzdanıyla talep edin. Talep edilene kadar fonlar bağlantıda kalır.",
+                "title": "NEAR bağlantıları artık burada talep edilemiyor"
+            },
+            "manageLedger": {
+                "hint": "Hesabınız zaten bir Ledger ile korunuyorsa, aynı Ledger'ı Meteor Wallet'a veya Ledger uyumlu herhangi bir NEAR cüzdanına bağlayın. Hiçbir anahtarın taşınması gerekmez.",
+                "title": "Ledger kurulumu artık kullanılamıyor"
+            },
+            "phase3Body": "MyNearWallet artık sınırlı modda.",
+            "receive": {
+                "hint": "MyNearWallet üzerinden alma sona erdi. Hesabınız NEAR'da var olmaya devam ediyor; bu nedenle ona gönderilen her şey zincire ulaşır ve geçtiğiniz cüzdanda kullanılabilir olur.",
+                "title": "Alma sayfası artık kullanılamıyor"
+            },
+            "send": {
+                "hint": "Hesabınızı taşıdıktan sonra Meteor Wallet'tan NEAR ve token gönderebilirsiniz. O zamana kadar fonlarınız hesabınızda güvende.",
+                "title": "Gönderim artık kullanılamıyor"
+            },
+            "stakeDeposit": {
+                "hint": "Mevcut stake'iniz güvende. {{date}} tarihine kadar MyNearWallet'ta unstake ve çekim yapabilir ya da stake'inizi istediğiniz zaman yeni cüzdanınızdan yönetebilirsiniz.",
+                "phase3Hint": "Mevcut stake'iniz hesabınızda güvende. Hesabınızı taşıdıktan sonra onu yeni cüzdanınızdan yönetebilirsiniz.",
+                "title": "Yeni stake artık kullanılamıyor"
+            },
+            "stakeManage": {
+                "hint": "Stake'iniz hesabınızda güvende ve onu MyNearWallet'ta görmeye devam edebilirsiniz. Hesabınızı taşıdıktan sonra yeni cüzdanınızdan unstake, çekim ve ödül talebi yapabilirsiniz.",
+                "title": "Stake işlemleri artık kullanılamıyor"
+            },
+            "swap": {
+                "hint": "Hesabınızı taşıdıktan sonra Meteor Wallet'ta token takası yapabilirsiniz.",
+                "title": "Takas artık kullanılamıyor"
+            }
+        },
+        "select": {
+            "exportKeysInstead": "Bunun yerine özel anahtarları dışa aktar"
+        }
+    },
+    "swap": {
+        "available": "Kullanılabilir: ${amount} ${symbol}",
+        "confirm": "Onayla ve Değiştir",
+        "details": "İşlem detayları",
+        "error": "Takas hatası",
+        "errorToFetchData": "Exchange için veri yüklenirken hata oluştu",
+        "failTitle": "Takas başarısız oldu!",
+        "fee": "Tahmini Ücretler",
+        "from": "From",
+        "inputTooLow": "Giriş miktarı çok düşük",
+        "insufficientBalanceForAmountAndFee": "Girdi tutarını ve takas ücretini ödemek için yetersiz bakiye",
+        "insufficientBalanceForFee": "Takas ücretini ödemek için yetersiz bakiye",
+        "max": "Maks: ${amount} ${symbol}",
+        "minReceived": "Minimum alınan",
+        "noPoolAvailable": "${tokenIn} -> ${tokenOut} arasında takas yapılabilecek havuz yok",
+        "poolsError": "Belirteç havuzlarında bir hata oluştu. Bu sayfayı yeniden yüklemeyi deneyin.",
+        "price": "Fiyat",
+        "priceImpact": "Fiyat Etkisi",
+        "review": "Takası Gözden Geçir",
+        "reviewInfo": "Değiş tokuş ediyorsun.",
+        "slippage": "Kayma toleransı",
+        "success": "Başarılı takas",
+        "successTitle": "Takas tamamlandı!</br>You swapped <span class='color-blue space'>${amountFrom}</span></br>to <span class='color-green'>${amountTo}</span>",
+        "swapFee": "Takas ücreti",
+        "title": "Swap",
+        "to": "To",
+        "translateIdInfoTooltip": {
+            "fee": "İşleminizi işlemenin tahmini maliyeti.",
+            "minimumReceived": "Ticaretten alacağınız minimum tutar.",
+            "priceImpact": "Piyasa fiyatı ile tahmini fiyat arasındaki fark, ticaretin büyüklüğüne bağlıdır.",
+            "slippage": "İşlem başarısız olmadan önce fiyatın artabileceği yüzde.",
+            "swapFee": "Likidite sağlayıcıları için ödenen tutar üzerinden alınan ücret."
+        }
+    },
+    "swapping": "Swapping",
+    "sync": "Eşitle",
+    "tokenBox": {
+        "priceUnavailable": "Fiyat Mevcut Değil",
+        "swapTo": "İtibaren"
+    },
+    "topLevelAccounts": {
+        "body": "Hesap adları, alan adlarına benzer. Sadece ${data} hesapları adınız.${data} gibi hesapları oluşturabilir, örn. sadece adınız.${data} uygulama adınız.${data}. Bu cüzdanda oluşturulan tüm hesaplar .${data} Üst Düzey Hesap kullanır (ÜDH). Hesap adları ve kendi ÜDH'nızı oluşturma hakkında daha fazla bilgi için <a rel='noopener noreferrer' href='https://docs.nearprotocol.com/docs/concepts/account'>docs</a>.",
+        "header": "Üst Düzey Hesaplar"
+    },
+    "total": "toplam",
+    "totalBalance": "Toplam bakiyeniz, kontrolünüz altındaki tüm NEAR tokenlerini temsil eder. Çoğu durumda, bu bakiyenin tamamına anında erişemeyebilirsiniz (ör. bakiye kilitliyse, devredilmişse veya katılım sağlanmışsa). Aktif olarak aktarabileceğiniz, devredebileceğiniz ve katılım sağlayabileceğiniz NEAR Mevcut Bakiyenizi kontrol edin.",
+    "transaction": {
+        "status": {
+            "checkingStatus": "Durum kontrol ediliyor...",
+            "Failure": "Başarısız",
+            "notAvailable": "Durum bulunamadı",
+            "NotStarted": "Başlatılmadı",
+            "Started": "Başlatıldı",
+            "SuccessValue": "başarılı"
+        }
+    },
+    "transfer": {
+        "estimatedFees": "Tahmini ücretler",
+        "from": "Gönderen",
+        "to": "Alıcı"
+    },
+    "twoFactor": {
+        "active": "Aktif",
+        "alertBanner": {
+            "button": "Daha fazla bilgi edin",
+            "title": "Etkinleştirildiğinde, <b>${data}</b> iki faktörlü kimlik doğrulamanın sözleşme depolama maliyetlerini karşılamak için kilitlenecektir."
+        },
+        "checkBox": "İki faktörlü kimlik doğrulamayı etkinleştirerek, ${amount} tutarının sözleşme depolamasını kapsayacak şekilde ayrılacağını kabul ediyorum.",
+        "desc": "İşlemleri yetkilendirirken SMS veya e-posta yoluyla onay isteyerek hesabınızı koruyun.",
+        "disable": {
+            "desc": "2FA Devre dışı bırakıldığında işlemlerin onaylanması gerekmeyeceğini unutmayın.",
+            "disable": "2FA'yı Devre Dışı Bırak",
+            "keep": "Hayır, 2FA'yı devam ettir",
+            "title": "2FA'yı devre dışı bırakmak istediğinize emin misiniz??"
+        },
+        "email": "Email",
+        "enable": "İki Faktörlü Kimlik Doğrulamayı Etkinleştir",
+        "notEnabled": "2FA Etkin Değil",
+        "notEnoughBalance": "2FA'yı etkinleştirmek için hesabınızda minimum bulunması gereken tutar ${amount}",
+        "phone": "Telefon",
+        "promptDesc": "Hesabınızın ve varlıklarınızın güvenliğini artırmak için iki faktörlü kimlik doğrulama yöntemini ayarlamanızı önemle tavsiye ederiz.",
+        "select": "Kimlik Doğrulama Yöntemini Seçin",
+        "since": "dan beri",
+        "subHeader": "İki faktörlü kimlik doğrulama, hesabınıza ekstra bir güvenlik katmanı ekler. <b>Anahtar kelime ve Ledger parolaları, hesabınıza tam erişime izin vermeye devam eder.</b>",
+        "title": "İki Faktörlü Kimlik Doğrulama",
+        "verify": {
+            "desc": "6 haneli bir doğrulama kodu gönderildi:",
+            "didntReceive": "Kodunuzu almadınız mı?",
+            "inputLabel": "6 basamaklı doğrulama kodunuzu giriniz",
+            "placeholder": "Doğrulama kodu",
+            "resend": "Yeniden gönder",
+            "resending": "Gönderiliyor...",
+            "resent": "Kod gönderildi!",
+            "title": "İki Faktörlü Doğrulama Kodunu Girin"
+        }
+    },
+    "unlockedAvailTransfer": "Bu NEAR'ın kilidi açıldı ve kilitleme sözleşmenizden aktarılabilir.",
+    "unlockedBalance": "Bu NEAR hala bir kilitleme sözleşmesinde ama kilidi açıldı.",
+    "unvestedBalance": "Yatırımsız NEAR size tahsis edilmiştir, ancak henüz sizin mülkiyetinizde değil. Yine de bu NEAR'ı devredebilir veya katılım sağlayabilirsiniz ki ödüller tamamen sizin olacaktır. NEAR'ınız yatırım hakkı elde ettiğinde Kilitli veya Kilitsiz bakiyenizde görünecektir.",
+    "verifyAccount": {
+        "desc": "Yeni hesapların spamlanmasını önlemek için, hesap sahibi olduğunuzu doğrulamamız gerekecek. Tek seferlik bir şifre kullanarak veya küçük bir miktar para yatırma işlemi yaparak doğrulayabilirsiniz.",
+        "modal": {
+            "email": {
+                "desc": "Bu hesabı doğrulamak için farklı bir e-posta adresi kullanmanız veya alternatif bir yöntem seçmeniz gerekecek. Yine de bu adresi kurtarma yöntemi olarak kullanmaya devam edebilirsiniz.",
+                "title": "Bu e-posta adresi, farklı bir hesabı doğrulamak için zaten kullanılmış."
+            },
+            "phone": {
+                "desc": "Bu hesabı doğrulamak için farklı bir telefon numarası kullanmanız veya başka bir yöntem seçmeniz gerekecek. Bu numarayı kurtarma yöntemi olarak kullanmaya devam edebilirsiniz.",
+                "title": "Bu telefon numarası, farklı bir hesabı doğrulamak için zaten kullanılmış."
+            }
+        },
+        "option": {
+            "creditCard": {
+                "desc": "İlk para yatırma işleminiz için MoonPay aracılığıyla NEAR satın alın.",
+                "title": "Kredi Kartı ile Yatır"
+            },
+            "email": {
+                "desc": "E-posta yoluyla tek seferlik bir doğrulama kodu alın.",
+                "title": "Email"
+            },
+            "existingAccount": {
+                "desc": "Yeni hesabınıza para yatırmak ve başlatmak için mevcut bir hesabı kullanın.",
+                "title": "Mevcut bir hesapla para yatırın"
+            },
+            "manualDeposit": {
+                "desc": "Tek kullanımlık bir finansman adresi aracılığıyla manuel para yatırma işlemi gönderin.",
+                "title": "Manuel para yatırma"
+            },
+            "phone": {
+                "desc": "SMS yoluyla tek seferlik doğrulama kodu alın.",
+                "title": "Telefon"
+            }
+        },
+        "options": {
+            "initialDeposit": "İlk Para Yatırma",
+            "passCode": "Tek kullanımlık şifre"
+        },
+        "title": "Az Kaldı! Yeni hesabınızı doğrulayın."
+    },
+    "wallet": {
+        "availableBalance": "Mevcut Bakiye",
+        "balance": "Bakiye",
+        "balances": "Bakiyeler",
+        "balanceTitle": "NEAR Bakiyesi",
+        "collectibles": "Koleksiyonlarım",
+        "dateAndTime": "Tarih & Saat",
+        "depositNear": {
+            "desc": "Cüzdanınızla işlem yapmak için NEAR tokenlerine ihtiyacınız olacak.",
+            "title": "NEAR Yatır"
+        },
+        "recommendToSetPassword": "Hesabınızı daha iyi güvenli hale getirmek için şifre oluşturmanız önerilir.",
+        "setUpPasswordBtn": "Şifre oluştur",
+        "tokens": "Tokenler",
+        "totalBalance": "Toplam Bakiye",
+        "totalBalanceTitle": "Toplam Bakiye",
+        "yourPortfolio": "Portföyünüz"
+    },
+    "walletErrorCodes": {
+        "addAccessKey": {
+            "error": "Bir hata oluştu.<br />Hesabınıza erişmek için lütfen bir önceki adımdaki Anahtar Kelimelerini girin."
+        },
+        "addAccessKeySeedPhrase": {
+            "errorSecond": "Bir hata oluştu.<br />Anahtar Kelimeler hesabınıza eklenmedi. Lütfen tekrar deneyin."
+        },
+        "addLedgerAccountId": {
+            "errorRpc": "Hesap kurtarılırken hata oluşuyor."
+        },
+        "createNewAccount": {
+            "accountCreated": {
+                "error": "Hesap oluşturma başarılı ancak bir hata oluştu. Lütfen hesabınızı içe aktarın."
+            },
+            "accountExists": {
+                "error": "Hesap oluşturma başarısız. Bu Hesap Zaten Mevcut."
+            },
+            "error": "Hesap oluşturma başarısız. Tekrar deneyebilirsiniz."
+        },
+        "emailProviderInvalid": "${domainName} hesap doğrulaması için kullanılamaz.  Lütfen farklı bir e-posta sağlayıcısından bir e-posta adresi sağlayın.",
+        "getLedgerAccountIds": {
+            "aborted": "İşlem durduruldu.",
+            "noAccounts": "Bu Ledger cihazı için hesap bulunamadı. Lütfen bu Ledger ile bir hesap ilişkilendirdiğinizi doğrulayın.",
+            "noAccountsAccepted": "Hiçbir hesap kabul edilmedi.",
+            "U2FNotSupported": "Ledger için U2F tarayıcı desteği gereklidir. Lütfen U2F uzantılı Chrome, Opera veya Firefox kullanın."
+        },
+        "invalidRecaptchaCode": "Geçersiz reCAPTCHA kodu; Tekrar deneyin!",
+        "lockup": {
+            "transferAllWithStakingPoolBalance": "Kalan kilitli bakiyenizi Cüzdan'a aktarmak için katılım havuzundaki tutarınızın tamamını katılımdan çıkartıp çekiniz."
+        },
+        "promptTwoFactor": {
+            "userCancelled": "2FA kodu doğru bir şekilde doğrulanmadı."
+        },
+        "recoverAccountPrivateKey": {
+            "errorPKNotValid": "Sağlanan özel anahtar geçerli değil. Lütfen özel anahtarınızı kontrol edin ve tekrar deneyin."
+        },
+        "recoverAccountSeedPhrase": {
+            "errorInvalidSeedPhrase": "Bu Anahtar Kelime için hesap bulunamadı."
+        },
+        "recoveryMethods": {
+            "lastMethod": "Son kurtarma yönteminizi silemezsiniz. Ledger'i etkinleştirmedikçe, hesabınızın kurtarılabilirliğini sağlamak için en az bir kurtarma yöntemini etkin tutmanız gerekir.",
+            "setupMethod": "Bir hata oluştu. Lütfen kurtarma yönteminizi kontrol edin."
+        },
+        "sendFungibleToken": {
+            "error": "Bir hata oluştu. Gönderme işleminiz iptal edildi."
+        },
+        "setupRecoveryMessage": {
+            "error": "Kurtarma yönteminiz kurulurken bir hata oluştu. Lütfen tekrar deneyin!"
+        },
+        "setupRecoveryMessageNewAccount": {
+            "invalidCode": "Geçersiz kod"
+        },
+        "signAndSendTransactions": {
+            "notEnoughTokens": "Yetersiz Token."
+        },
+        "staking": {
+            "noLockup": "Hesap için kilitleme sözleşmesi yok",
+            "noWithdraw": "Validatörden bekleyen bakiye çekilemiyor"
+        }
+    },
+    "warning": "Uyarı"
+}

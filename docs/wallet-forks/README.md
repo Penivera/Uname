@@ -10,6 +10,7 @@ This guide details how to integrate Universal Name (`.uni`) domain resolution di
 
 | Wallet | Repository | Architecture | License | Suitability for `.uni` Fork |
 | :--- | :--- | :--- | :--- | :--- |
+| **MyNearWallet** | [`mynearwallet/my-near-wallet`](https://github.com/mynearwallet/my-near-wallet) | React, Redux, Parcel | Apache-2.0 | ⭐⭐⭐⭐⭐ **Active Fork in Repo**: Located at [`wallets/my-near-wallet`](../../wallets/my-near-wallet). Primary web wallet for NEAR Protocol. |
 | **Rabby Wallet** | [`rabbyhub/rabby`](https://github.com/rabbyhub/rabby) | React, TypeScript, Webpack | MIT / Proprietary mix | ⭐⭐⭐⭐⭐ **Top Choice**: Most popular EVM power-user extension. Clean modular address resolver. |
 | **Taho Wallet** | [`taho-xyz/taho-wallet`](https://github.com/taho-xyz/taho-wallet) | React, TypeScript, Redux | GPL-3.0 | ⭐⭐⭐⭐⭐ **Top Choice**: 100% open-source, community owned, dedicated domain resolution service. |
 | **Rainbow** | [`rainbow-me/rainbow`](https://github.com/rainbow-me/rainbow) | React Native (iOS/Android/Web) | GPL-3.0 | ⭐⭐⭐⭐ Excellent choice for a dedicated mobile wallet with native `.uni` support. |
@@ -20,11 +21,15 @@ This guide details how to integrate Universal Name (`.uni`) domain resolution di
 
 ## Detailed Fork Guides
 
-1. **[Rabby Wallet Fork Guide](./rabby-wallet.md)**:
+1. **[MyNearWallet Fork Guide](./my-near-wallet.md)**:
+   - Full walkthrough of the live fork located in [`wallets/my-near-wallet`](../../wallets/my-near-wallet).
+   - Real-time resolution via `api.unamereg.xyz` and NEAR Mainnet JSON-RPC.
+   - Tested and verified.
+2. **[Rabby Wallet Fork Guide](./rabby-wallet.md)**:
    - Full walkthrough to fork Rabby Wallet.
    - Exact code modifications in `AddressInput` / `useResolveAddress`.
    - Building and testing the unpacked Chrome extension.
-2. **[Taho Wallet Fork Guide](./taho-wallet.md)**:
+3. **[Taho Wallet Fork Guide](./taho-wallet.md)**:
    - Full walkthrough to fork Taho Wallet.
    - Integrating `@uname/resolver-sdk` into the background domain resolution service.
    - Building and deploying.

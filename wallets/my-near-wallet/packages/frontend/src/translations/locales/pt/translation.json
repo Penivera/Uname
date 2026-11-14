@@ -1,0 +1,2117 @@
+{
+    "account": {
+        "activateAccount": {
+            "post": {
+                "descOne": "Seu depósito inicial foi recebido e encaminhado para sua nova conta. Agora, sua conta está ativa!",
+                "descTwo": "Uma porção do seu saldo foi reservado para cobrir os <a href='https://docs.near.org/docs/concepts/account' rel='noopener noreferrer' target='_blank'>custos de hospedagem da conta</a>.",
+                "title": "Sua conta foi ativada."
+            },
+            "pre": {
+                "desc": "Para utilizar sua NEAR Wallet, faça um depósito mínimo inicial de <b>pelo menos ${amount}</b> para seu ID da conta (também conhecido por “endereço”).",
+                "title": "Quase lá! Faça seu depósito inicial."
+            }
+        },
+        "available": {
+            "error": "Usuário não encontrado!",
+            "errorSameAccount": "Não é possível enviar para você mesmo.",
+            "implicitAccount": "Sempre verifique o ID da conta",
+            "implicitAccountModal": "Por favor, verifique o ID da conta, especialmente se esta for uma conta de exchange. Se o ID da conta for inserido incorretamente, seus fundos serão perdidos para sempre.",
+            "success": "Usuário encontrado!"
+        },
+        "create": {
+            "checkingAvailablity": {
+                "check": "Verificando",
+                "create": "Verificando disponibilidade"
+            },
+            "errorAccountNotExist": "Ocorreu um erro ao criar sua conta. Por favor, tente novamente!",
+            "errorInvalidAccountIdLength": "ID da Conta deve conter entre 2 e 64 caracteres"
+        },
+        "createImplicit": {
+            "post": {
+                "descOne": "Seu depósito inicial foi recebido! Uma vez reivindicada, seu depósito será transferido para essa nova conta.",
+                "descTwo": "Importante: Seu endereço de financiamento deixará de existir. Se certifique de atualizar este endereço para o ID da conta criada em todos os dispositivos ou exchanges que utiliza.",
+                "modal": {
+                    "descOne": "Ao continuar, você está ciente de que o endereço de financiamento será substituído e qualquer valor enviado ao endereço antigo será perdido.",
+                    "descTwo": "Se lembre de atualizar este endereço para o ID da conta em todos os dispositivos ou exchanges que utiliza.",
+                    "title": "Atualizar o endereço"
+                },
+                "title": "Reivindique sua conta"
+            },
+            "pre": {
+                "addressHeader": "Endereço de fundação único",
+                "descOne": "Inicialize sua conta enviando ao menos <b>${amount}</b> para o endereço de fundação único abaixo.",
+                "descTwo": "Retorne a esta tela assim que seus fundos forem depositados para terminar de criar sua conta.",
+                "moonPay": {
+                    "buyWith": "Comprar com",
+                    "desc": "Faça seu depósito inicial via MoonPay utilizado seu método de pagamento preferido.",
+                    "title": "Adicionar saldo com MoonPay"
+                },
+                "title": "Coloque fundos em sua Conta",
+                "utorg": {
+                    "buyWith": "Comprar com",
+                    "desc": "Faça seu depósito inicial via Utorg utilizado seu método de pagamento preferido.",
+                    "title": "Adicionar saldo com Utorg"
+                },
+                "whereToBuy": {
+                    "button": "Onde consigo comprar NEAR?",
+                    "desc": "NEAR tokens estão disponíveis para compra nas seguintes exchanges",
+                    "title": "Compre NEAR tokens"
+                }
+            },
+            "success": {
+                "button": "Continuar para a Conta",
+                "descOne": "Parabéns <b>${accountId}</b>! Sua conta foi criada com sucesso.",
+                "descThree": "Por favor, atualize seu endereço em quaisquer exchanges ou outros dispositivos.",
+                "descTwo": "Agora você deve usar este ID da Conta como seu endereço para todas as operações na NEAR.",
+                "modal": {
+                    "desc": "Parabéns! Sua conta foi criada com sucesso.",
+                    "title": "Bem-vindo à NEAR Wallet!"
+                },
+                "title": "Bem-vindo a NEAR"
+            }
+        },
+        "createImplicitAccount": {
+            "createCustomNameModal": {
+                "desc": "Unlike your default address, a custom address can be anything you like, making it easier to remember and share!",
+                "title": "Add a Custom Address to Your Wallet"
+            },
+            "customAddress": "A custom address can be anything you like, making it easier to remember and share!",
+            "customAmount": "Custom",
+            "exchange": "exchange",
+            "orAskFriend": "or ask a friend!",
+            "orSendNear": "...or send at least ${amount} NEAR to your wallet address.",
+            "sendFrom": "Send from an",
+            "title": "Almost there! To get started, buy some NEAR using one of providers...",
+            "titleAlt": "Almost there! To get started, send at least ${amount} NEAR to your wallet address."
+        },
+        "fundedStatus": {
+            "active": "Ativo",
+            "awaitingDeposit": "Aguardando depósito",
+            "initialDeposit": "Depósito inicial",
+            "minDeposit": "Depósito mínimo",
+            "nearName": "ID da Conta",
+            "ready": "Pronto para reivindicação",
+            "singleUse": "Endereço de financiamento de uso único",
+            "status": "Status da Conta"
+        },
+        "login": {
+            "details": {
+                "warning": "Isso permite acesso a todo o seu saldo. Prossiga com cuidado."
+            },
+            "incorrectContractId": {
+                "error": "O contrato ${contractId} não existe. Isso pode ser um problema com o aplicativo que você está tentando usar ou este contrato pode ter sido excluído. Você será redirecionado de volta para a aplicação",
+                "errorTitle": "ID de contrato inválido"
+            }
+        },
+        "nameDoesntMatch": "O nome da conta não corresponde",
+        "recoverAccount": {
+            "error": "Falha ao recuperar conta. Nenhuma conta foi encontrada para esta frase-semente.",
+            "errorInvalidSeedPhrase": "Nenhuma conta foi encontrada para esta frase-semente.",
+            "success": "A recuperação usando a Frase-semente está completa.<br/><b>${numberOfAccounts} conta(s)</b> foram recuperadas com sucesso.<br/>A última é definida como ativa.",
+            "zeroBalance": {
+                "success": {
+                    "privateKey": "A conta a seguir foi importada com sucesso usando a chave privada fornecida:"
+                }
+            }
+        },
+        "requestCode": {
+            "error": "Falha ao enviar SMS com o código.",
+            "success": "SMS enviado com o código."
+        },
+        "sendMoney": {
+            "error": "Desculpe, ocorreu um erro. Por favor, tente novamente."
+        },
+        "sendNewRecoveryLink": {
+            "error": "Falha ao reenviar. Por favor, tente novamente.",
+            "success": "Link de recuperação enviado com sucesso!"
+        },
+        "verifySeedPhrase": {
+            "error": "Você digitou a palavra incorreta"
+        }
+    },
+    "accountExport": {
+        "banner": {
+            "description": "A MyNearWallet está sendo descontinuada e será totalmente encerrada até o fim de 2026. Migre suas contas para a Meteor Wallet para continuar acessando-as com segurança.",
+            "export": "Exportar contas",
+            "resume": "Retomar a transferência de contas",
+            "title": "A MyNearWallet está sendo descontinuada"
+        },
+        "list": {
+            "empty": "Nenhuma conta está disponível para exportação.",
+            "selectPrompt": "Selecione uma ou mais contas para exportar (máx. {{max}})",
+            "unavailableTitle": "As contas a seguir não estão disponíveis"
+        },
+        "manual": {
+            "accountLabel": "Conta {{index}}",
+            "back": "Voltar",
+            "backToWallet": "Voltar para a carteira",
+            "copy": "Copiar",
+            "credentialsFailed": "A MyNearWallet não conseguiu carregar as credenciais das suas contas.",
+            "loadingCredentials": "Carregando credenciais…",
+            "privateKeyLabel": "Chave privada",
+            "reveal": "Revelar",
+            "subtitle": "Revele e copie a chave privada das contas selecionadas.",
+            "title": "Exportar manualmente",
+            "warning": "Mantenha estas informações privadas. Qualquer pessoa com acesso a estas credenciais pode acessar e controlar suas contas."
+        },
+        "remove": {
+            "confirmAccess": "Confirmo que consigo acessar as contas selecionadas na Meteor Wallet.",
+            "failed": "A MyNearWallet não conseguiu remover todas as contas selecionadas. Tente novamente.",
+            "listTitle": "Contas a remover",
+            "removeSelected": "Remover contas selecionadas",
+            "removing": "Removendo as contas selecionadas…",
+            "title": "Remover contas da MyNearWallet",
+            "warningConfirmFirst": "Só remova suas contas depois de confirmar que foram transferidas com sucesso e que você consegue acessá-las na Meteor Wallet.",
+            "warningPermanent": "Remover uma conta exclui permanentemente da MyNearWallet os dados e as chaves armazenados localmente. Esta ação não pode ser desfeita."
+        },
+        "returnToWallet": "Voltar para a MyNearWallet",
+        "select": {
+            "accessKeyCheckFailed": "A MyNearWallet não conseguiu verificar as chaves de acesso das suas contas.",
+            "cancel": "Cancelar",
+            "checking": "Verificando suas contas…",
+            "exportSelected": "Exportar contas selecionadas",
+            "sharedRecoveryPhraseWarning": "Todas as contas selecionadas usarão uma única frase de recuperação compartilhada na Meteor Wallet.",
+            "subtitle": "Selecione e revise as contas que deseja exportar.",
+            "title": "Exportar contas"
+        },
+        "success": {
+            "listTitle": "Contas exportadas",
+            "removeFromWallet": "Remover conta exportada da MyNearWallet",
+            "subtitle": "As contas selecionadas foram exportadas com segurança e importadas na Meteor Wallet.",
+            "title": "Contas exportadas com sucesso"
+        }
+    },
+    "accountSelector": {
+        "noAccountDesc": "Você não está conectado a nenhuma conta alternatíva.",
+        "signInButton": "Importar uma Outra Conta"
+    },
+    "actions": {
+        "AddKey": {
+            "forContract": "Chave de Acesso adicionada por: ${permissionReceiverId}",
+            "forReceiver": "Chave de Acesso Total adicionada por: ${receiverId}"
+        },
+        "CreateAccount": "Nova conta criada: ${receiverId}",
+        "DeleteAccount": "Conta deletada: ${receiverId}",
+        "DeleteKey": "Chave deletada",
+        "DeployContract": "Contrato implantado: ${receiverId}",
+        "FunctionCall": "Método chamado: ${methodName} no contrato: ${receiverId}",
+        "Stake": "Staked ${stake}",
+        "Transfer": {
+            "received": "Recebido ${deposit} de ${signerId}",
+            "transferred": "Transferido ${deposit} para ${receiverId}"
+        }
+    },
+    "actionsSign": {
+        "addKey": "Adicionando chave de acesso",
+        "createAccount": "Criando Conta: ${receiverId}",
+        "deleteAccount": "Deletando conta: ${receiverId}",
+        "deleteKey": "Deletando chave de acesso",
+        "deployContract": "Implantando Contrato: ${receiverId}",
+        "functionCall": "Chamando função: ${methodName}",
+        "stake": "Staking: ${stake}Ⓝ ${publicKey}...",
+        "transfer": "Transferindo: ${deposit}Ⓝ para ${receiverId}"
+    },
+    "addNode": {
+        "desc": "Seu nó deve ser configurado via CLI antes de adicioná-lo aqui.",
+        "ipAddressInput": {
+            "placeholder": "exemplo: 0.0.0.0",
+            "title": "Digite o endereço IP do seu nó"
+        },
+        "nicknameInput": {
+            "placeholder": "exemplo: Instância AWS",
+            "title": "Dê um apelido (opcional)"
+        },
+        "pageText": "Configure seu nó via CLI, então adicione-o aqui.",
+        "pageTitle": "Adicionar nó"
+    },
+    "amount": "quantidade",
+    "arguments": "Parâmetros",
+    "authorizedApps": {
+        "dashboardNoApps": "Você não autorizou nenhum app",
+        "feeAllowance": "Taxa de Permissão",
+        "ledger": "Ledger",
+        "pageTitle": "Apps Autorizados",
+        "publicKey": "Chave Pública"
+    },
+    "available": "Disponivel",
+    "availableBalanceInfo": "Saldo NEAR disponível excluindo valores em stake ou bloqueados. <a href='/profile'>Ver saldo detalhado→</a>",
+    "availableBalanceProfile": "Este é o seu saldo NEAR gastável e pode ser usado ou transferido imediatamente. Isso será inferior ao seu saldo total.",
+    "back": "Voltar",
+    "balance": {
+        "balance": "Saldo total",
+        "balanceLoading": "Carregando saldo"
+    },
+    "balanceBreakdown": {
+        "available": "Saldo disponível",
+        "reserved": "Reservado para tarifas"
+    },
+    "button": {
+        "acceptAndContinue": "Aceitar & Continuar",
+        "addFunds": "Adicionar Fundos",
+        "addNode": "Adicionar Nó",
+        "allow": "Permitir",
+        "approve": "Aprovar",
+        "authorizing": "Autorizando",
+        "browseApps": "Procurar Aplicativos",
+        "buy": "Comprar",
+        "cancel": "Cancelar",
+        "cancelOperation": "Cancelar Operação",
+        "cancelTransfer": "Cancelar Transferência",
+        "claimAccount": "Criar Conta",
+        "claimMyAccount": "Reinvindicar Minha Conta",
+        "close": "Fechar",
+        "Close": "Fechar",
+        "confirm": "Confirmar",
+        "confirmAndSend": "Confirmar e Enviar",
+        "connect": "Conectar",
+        "connecting": "Conectando",
+        "connectLedger": "Conectar Ledger",
+        "continue": "Continuar",
+        "continueSetup": "Continuar para a Configuração",
+        "continueToMyAccount": "Continuar para Minha Conta",
+        "copyImplicitAddress": "Copiar endereço de fundação",
+        "copyPhrase": "Copiar Frase",
+        "copyUrl": "Copiar URL",
+        "createAccount": "Criar Conta",
+        "createAccountCapital": "Criar Conta",
+        "createNewAccount": "Criar Nova Conta",
+        "creatingAccount": "Criando Conta",
+        "deauthorize": "Desautorizar",
+        "deAuthorizing": "Desautorizando",
+        "deny": "Negar",
+        "disable": "Desativar",
+        "disabling": "Desativando",
+        "dismiss": "Dispensar",
+        "edit": "Editar",
+        "enable": "Ativar",
+        "enabling": "Ativando",
+        "findMyAccount": "Encontrar Minha Conta",
+        "finish": "Finalizar",
+        "fundWith": "Adicionar Fundos",
+        "goBack": "Voltar",
+        "gotIt": "Entendi",
+        "goToDashboard": "Ir para Painel",
+        "importAccount": "Importar Conta",
+        "importExistingAccount": "Importar Conta Existente",
+        "learnMore": "Aprender mais",
+        "loading": "Carregando...",
+        "moreInformation": "Mais informações",
+        "needToEditGoBack": "Precisa editar? Volte",
+        "next": "Próximo",
+        "protectAccount": "Proteger Conta",
+        "receive": "Receber",
+        "recoverAccount": "Recuperar Conta",
+        "recovering": "Encontrando Conta",
+        "recoverYourAccount": "Recuperar sua Conta",
+        "removeNode": "Remover Nó",
+        "removingKeys": "Removendo Chaves",
+        "reserveMyAccountId": "Reservar o ID da Minha Conta",
+        "retry": "Tentar novamente",
+        "returnToApp": "Retornar ao App",
+        "saveChanges": "Salvar Alterações",
+        "send": "Enviar",
+        "setupPhrase": "Configurar Frase de Recuperação",
+        "signIn": "Fazer Login",
+        "signingIn": "Fazendo login",
+        "signInLedger": "Login com Ledger",
+        "skip": "Pular",
+        "stake": "Stake",
+        "staking": "Staking",
+        "startOver": "Iniciar novamente",
+        "subscribe": "Inscrever-se",
+        "swap": "Troca",
+        "topUp": "Top Up",
+        "transferring": "Transferindo",
+        "tryAgain": "Tentar Novamente",
+        "unstaking": "Unstaking",
+        "useMax": "Usar Máximo",
+        "verify": "Verificar e Concluir",
+        "verifyCode": "Verificar Código",
+        "verifyCodeEnable": "Verificar e Concluir",
+        "verifying": "Verificando",
+        "viewAll": "Visualizar tudo",
+        "viewFAQ": "Ver FAQ",
+        "viewOnExplorer": "Ver no Explorer",
+        "withdrawing": "Sacando"
+    },
+    "buyNear": {
+        "bridgeTokens": "Fazer ponte de tokens do Ethereum",
+        "buyWith": "Comprar com",
+        "coinMarketCap": "CoinMarketCap",
+        "descMoonpay": "Compre NEAR pela MoonPay usando seu método de pagamento preferido.",
+        "descThree": "Transfira seus tokens do Ethereum para a carteira NEAR usando uma ponte.",
+        "descTwo": "NEAR está disponível para compra nas seguintes exchanges.",
+        "descUtorg": "Compre NEAR pela Utorg usando seu método de pagamento preferido.",
+        "moonPay": "MoonPay",
+        "seeMore": "Ver mais em",
+        "supportedExchanges": "Exchanges suportadas",
+        "title": "Comprar NEAR",
+        "utorg": "Utorg"
+    },
+    "confirmLedgerModal": {
+        "header": {
+            "confirm": "Por favor, confirme a operação no seu dispositivo...",
+            "processing": "Processando"
+        },
+        "one": "Você precisará confirmar seus detalhes de login no seu Ledger"
+    },
+    "connecting": "Conectando",
+    "copy": {
+        "default": "Copiado!",
+        "title": "Copiar"
+    },
+    "createAccount": {
+        "accountIdInput": {
+            "placeholder": "yourname.${data}",
+            "title": "ID da Conta"
+        },
+        "addACustomAddress": "Add a Custom Address",
+        "alreadyHaveAnAccount": "Já possui uma conta?",
+        "invalidLinkDrop": {
+            "one": "Esta recompensa de NEAR já foi reivindicada.",
+            "title": "Link inválido",
+            "two": "Recompensas NEAR só podem ser usadas para criar uma única conta, depois disso o link irá expirar."
+        },
+        "note": {
+            "canContain": "O ID da sua conta pode conter qualquer um dos seguintes itens:",
+            "cannotContain": "O ID da sua conta NÃO pode conter:",
+            "characters": "Caracteres \"@\" ou \".\"",
+            "digits": "Dígitos (0-9)",
+            "lowercase": "Caracteres minúsculos (a-z)",
+            "maxCharacters": "Mais que 64 caracteres (incluindo .${accountSuffix})",
+            "minCharacters": "Menos que 2 caracteres",
+            "separators": "Caracteres (_-) podem ser usados como separadores"
+        },
+        "pageText": "Digite um ID para usar com sua conta NEAR. O ID da conta será usado para todas as operações NEAR, incluindo o envio e o recebimento de ativos.",
+        "pageTitle": "Definir ID da conta",
+        "recoverItHere": "Importar Conta Existente",
+        "step": "Passo ${step}/${total}",
+        "terms": {
+            "agreeBtn": "Concordar e continuar",
+            "declineBtn": "Recusar",
+            "desc": "Ao prosseguir com a criação de uma conta NEAR, você concorda com os Termos de Serviço e Política de Privacidade da NEAR Wallet. Recomendamos que você os leia com atenção:",
+            "privacyCheck": "Eu concordo com a Política de Privacidade",
+            "privacyLink": "Política de Privacidade",
+            "termsCheck": "Eu concordo com os Termos de Serviço",
+            "termsLink": "Termos e Condições",
+            "title": "Termos e Condições"
+        },
+        "termsPage": {
+            "descOne": "Contas NEAR necessitam de um saldo de <b>pelo menos ${amount}</b> NEAR para <a href='https://docs.near.org/docs/concepts/account' rel='noopener noreferrer' target='_blank'>reservar seu espaço na rede.</a>",
+            "descTwo": "Antes de reservar um endereço único, será requisitado um pequeno depósito inicial para ativar sua conta.",
+            "disclaimer": "Ao criar uma carteira NEAR, você concorda com os <a href='/terms' rel='noopener noreferrer' target='_blank'>Termos de Serviço</a> e <a href='/privacy' rel='noopener noreferrer' target='_blank'>Política de Privacidade</a> da carteira MyNearWallet.",
+            "title": "Antes de começar..."
+        }
+    },
+    "dashboard": {
+        "activity": "Atividade"
+    },
+    "dashboardActivity": {
+        "message": {
+            "AddKey": {
+                "forContract": "<span>para</span> <span>${permissionReceiverId}</span>",
+                "forReceiver": "<span>para</span> <span>${receiverId}</span>"
+            },
+            "CreateAccount": "<span>conta</span> <span>${receiverId}</span>",
+            "DeleteAccount": "<span>conta</span> <span>${receiverId}<span>",
+            "DeleteKey": "",
+            "DeployContract": "<span>contrato</span> <span>${receiverId}</span>",
+            "FunctionCall": "<span>${methodName}</span> no contrato <span>${receiverId}</span>",
+            "FunctionCallDetails": {
+                "first": "<span>Método</span> <span>${methodName}</span>",
+                "second": "<span>No contrato</span> <span>${receiverId}</span>"
+            },
+            "Stake": "<span>stake</span><span>${stake}</span>",
+            "Transfer": {
+                "received": "<span>de</span> <span>${signerId}</span>",
+                "transferred": "<span>para</span> <span>${receiverId}</span>"
+            }
+        },
+        "title": {
+            "AddKey": {
+                "forContract": "Chave de acesso adicionada",
+                "forReceiver": "Chave de acesso adicionada"
+            },
+            "CreateAccount": "Nova conta criada",
+            "DeleteAccount": "Conta deletada",
+            "DeleteKey": "Chave deletada",
+            "DeployContract": "Contrato implantado",
+            "FunctionCall": "Método chamado",
+            "Stake": "Staked",
+            "Transfer": {
+                "received": "NEAR recebido",
+                "transferred": "NEAR enviado"
+            }
+        }
+    },
+    "disclaimer": {
+        "text": "Esta é uma carteira de pré-visualização para desenvolvedor&apos;. Deve ser usada somente para o protocolo NEAR Protocol DevNet. Saiba mais em ",
+        "title": "AVISO"
+    },
+    "emailSubscribe": {
+        "placeholder": "Seu e-mail...",
+        "title": "Cadastre-se abaixo para acesso antecipado"
+    },
+    "enterAccountNameLedgerModal": {
+        "header": "Insira nome da conta",
+        "one": "Digite o nome da conta na qual você está fazendo login"
+    },
+    "error": "Erro",
+    "errors": {
+        "ledger": {
+            "U2F_4": "Falha ao fazer login com o Ledger: U2F DEVICE_INELIGIBLE. Certifique-se de que seu dispositivo Ledger está conectado e desbloqueado.",
+            "U2FNotSupported": "O suporte do navegador ao U2F é necessário para o Ledger. Use Chrome, Opera ou Firefox com uma extensão U2F. Verifique também se você está em uma conexão HTTPS."
+        },
+        "type": {
+            "LackBalanceForState": "Seu saldo disponível é muito baixo para realizar qualquer ação em sua conta. Envie NEAR para sua conta e tente novamente.",
+            "RetriesExceeded": "Máximo de tentativas excedido para esta transação."
+        }
+    },
+    "existingAccount": {
+        "fundNewAccount": {
+            "titleOne": "Aprovar Transação",
+            "titleTwo": "Adicionar Fundos à Nova Conta"
+        },
+        "selectAccount": {
+            "desc": "Se você tem uma outra conta contendo um saldo de <b>no mínimo ${amount} NEAR</b>, você pode usa-lá para adicionar fundos e iniciar sua nova conta!",
+            "descTwo": "Selecione ou entre na conta conta que você deseja usar, então continue para aprovar o depósito mínimo.",
+            "title": "Adicionar fundos usando uma carteira existente."
+        }
+    },
+    "exploreApps": {
+        "desc": "Ganhe, gere e jogue! Descubra o ecossistema de aplicativos NEAR.",
+        "exploreApps": "Explorar Apps",
+        "exploreDeFi": "Explorar DeFi",
+        "title": "O que está na NEAR?"
+    },
+    "footer": {
+        "contactSupport": "Entrar na Comunidade",
+        "copyrights": "MyNearWallet LLC. Todos os direitos reservados.",
+        "desc": "NEAR é uma plataforma escalável de computação e armazenamento que muda como a web funciona, para melhor.",
+        "learnMore": "Saber mais",
+        "needHelp": "Precisa de ajuda?",
+        "privacyPolicy": "Política de Privacidade",
+        "termsOfService": "Termos de Serviço"
+    },
+    "fullAccessKeys": {
+        "authorizedTo": "AUTORIZADO PARA",
+        "dashboardNoKeys": "Você não tem chaves de Acesso Completo",
+        "deAuthorizeConfirm": {
+            "desc": "A chave de acesso completo será permanentemente desativada.",
+            "title": "Você tem certeza que deseja desabilitar essa chave de acesso completo?"
+        },
+        "noKeys": "Você não conectou sua carteira NEAR a nenhuma aplicação. Quando fizer, você pode gerenciá-los aqui.<br /><br />Veja o que foi construído com a NEAR:",
+        "pageTitle": "Chaves de Acesso Completo",
+        "submitAnyTransaction": "Envie qualquer transação em seu nome",
+        "useContract": "Use o contrato <b>${receiverId}</b> em seu nome",
+        "viewYourAccountName": "Ver o nome da sua conta"
+    },
+    "getBalance": "Obter saldo",
+    "hardwareDevices": {
+        "desc": "Melhore a segurança da sua conta usando uma carteira física.",
+        "disable": {
+            "desc": "Certifique-se de ter outros métodos de recuperação configurados antes de desativar.",
+            "disable": "Desativar Ledger",
+            "keep": "Não, continuar com a Ledger",
+            "title": "Você tem certeza que deseja desativar sua Ledger?"
+        },
+        "ledger": {
+            "auth": "Autorizado",
+            "connect": "Sua Ledger não está conectada no momento. Aconselhamos que você reconecte sua Ledger para garantir que sua conta esteja protegida.",
+            "disclaimer": "Para desativar sua Ledger, você deve primeiro ativar um método de recuperação alternativo.",
+            "title": "Carteira Física Ledger"
+        },
+        "title": "Dispositivos Físicos"
+    },
+    "importAccount": {
+        "importAccount": "Importar a sua conta",
+        "noId": "Importando conta",
+        "noIdFailed": "Falha ao importar conta.",
+        "selectAccount": "Escolha a carteira que pretende importar",
+        "withId": "Importando conta: ${accountId}",
+        "withIdFailed": "Falha ao importar conta: ${accountId}"
+    },
+    "importAccountWithLink": {
+        "accountFound": "1 Account Found",
+        "accountImported": "Account Imported",
+        "accountsFound": "${count} Accounts Found",
+        "alreadyImported": "The account secured by this link has been imported.",
+        "continue": "and continue this process in your browser of choice.",
+        "copyUrl": "copy the URL",
+        "foundAccount": "We found <b>1 account</b> secured by this link.",
+        "foundAccounts": "We found <b>${count} accounts</b> secured by this link.",
+        "goToAccount": "Go to Account",
+        "import": "Import",
+        "importAccount": "Import Your Account",
+        "preferedBrowser": "If this isn't your preferred browser,"
+    },
+    "initialDeposit": {
+        "claimAccount": {
+            "desc": "Seu depósito inicial foi recebido! Uma vez reivindicada, seu depósito será transferido para essa nova conta.",
+            "disclaimer": {
+                "checkBox": "Concordar & Continuar",
+                "desc": "Importante: Seu endereço de financiamento deixará de existir. Se certifique de atualizar este endereço para o ID da conta criada em todos os dispositivos ou exchanges que utiliza."
+            },
+            "title": "Reivindicar sua conta"
+        },
+        "creditCard": {
+            "desc": "Complete sua compra de <b>pelo menos ${amount} NEAR</b> via MoonPay. MoonPay automaticamente depositará esse valor em sua nova conta.",
+            "title": "Adicionar saldo utilizando cartão de crédito."
+        },
+        "manualDeposit": {
+            "desc": "Realize um depósito inicial de <b>pelo menos ${amount} NEAR</b> para o seguinte endereço de financiamento.",
+            "title": "Depósito manual."
+        }
+    },
+    "input": {
+        "accountId": {
+            "placeholder": "p.ex. johndoe.near",
+            "placeHolderAlt": "ID da conta",
+            "subLabel": "A ID da conta deve fazer parte de uma conta Top Level como <b>.near</b> ou conter exatamente 64 caracteres.",
+            "title": "ID da Conta"
+        },
+        "enterWord": {
+            "placeholder": "",
+            "title": "Palavra <b>#${wordId}</b>"
+        }
+    },
+    "landing": {
+        "banner": "Carteira Near está em Beta privado",
+        "desc": "Armazene e stake com segurança seus tokens NEAR e ativos compatíveis com a <span>NEAR Wallet</span>.",
+        "or": "ou",
+        "title": "NEAR está aqui."
+    },
+    "ledgerSignTxModal": {
+        "ADD_ACCESS_KEY": "Você precisará confirmar os detalhes de login na sua Ledger.",
+        "ADD_ACCESS_KEY_SEED_PHRASE": "Você precisará confirmar todos os detalhes de acesso na sua Ledger.",
+        "ADD_LEDGER_ACCESS_KEY": "Você precisará confirmar os detalhes da chave pública na sua Ledger.",
+        "CREATE_ACCOUNT_FROM_IMPLICIT": "Você precisará confirmar a criação da conta na sua Ledger. Isso inclui as transações necessárias para movimentar o saldo da conta temporária.",
+        "CREATE_NEW_ACCOUNT": "Você precisará confirmar a adição da chave para a nova conta na sua Ledger.",
+        "DEFAULT": "Você precisará confirmar os detalhes da transação em sua Ledger.",
+        "DELETE_RECOVERY_METHOD": "Você precisará confirmar os detalhes da exclusão de chave na sua Ledger.",
+        "DISABLE_LEDGER": "Você precisará confirmar os detalhes da chave pública na sua Ledger.",
+        "GET_LEDGER_PUBLIC_KEY": "Você precisará confirmar o acesso a chave pública na sua Ledger.",
+        "REMOVE_ACCESS_KEY": "Você precisará confirmar os detalhes da exclusão de chave na sua Ledger.",
+        "REMOVE_NON_LEDGER_ACCESS_KEYS": "Você precisará confirmar os detalhes na sua Ledger.",
+        "SEND_MONEY": "Você precisará confirmar os detalhes da transferência na sua Ledger.",
+        "SET_SIGN_TRANSACTION_STATUS": "Você precisará confirmar os detalhes de depósito na sua Ledger.",
+        "SETUP_RECOVERY_MESSAGE": "Você precisará confirmar todos os detalhes de acesso na sua Ledger.",
+        "SIGN_AND_SEND_TRANSACTIONS": "Você precisará confirmar os detalhes de depósito na sua Ledger.",
+        "STAKE": "Você precisará confirmar o staking na sua Ledger",
+        "UNSTAKE": "Você precisará confirmar o unstaking na sua Ledger",
+        "WITHDRAW": "Você precisará confirmar o saque na sua Ledger"
+    },
+    "link": {
+        "account": "Conta",
+        "authorizedApps": "Apps Autorizados",
+        "buyUSN": "Buy $USN",
+        "fullAccessKeys": "Chaves de Acesso Completo",
+        "help": "Ajuda",
+        "noAccount": "Você não tem outras contas",
+        "receive": "Receber",
+        "send": "Enviar",
+        "staking": "Staking",
+        "switchAccount": "Trocar conta",
+        "wallet": "Carteira"
+    },
+    "linkdropLanding": {
+        "claiming": "Reivindicar",
+        "ctaAccount": "Reivindicar com uma Conta Existente",
+        "ctaLogin": "Logar e Reivindicar",
+        "ctaNew": "Reivindicar com uma Nova Conta",
+        "desc": "Você pode reivindicar a distribuição de NEAR com uma conta existente (precisar estar logado), ou criar uma nova conta para receber como depósito inicial.",
+        "error": {
+            "invalidRedirectUrl": "URL de redirecionamento inválido"
+        },
+        "modal": {
+            "desc": "Sua recompensa de NEAR foi automaticamente depositada na sua conta.",
+            "title": "Recompensa de NEAR foi reivindicada."
+        },
+        "or": "ou",
+        "title": "Você recebeu uma distribuição de NEAR!"
+    },
+    "loading": "Carregando...",
+    "loadingNoDots": "Carregando",
+    "lockedBalance": "Este NEAR está bloqueado em um contrato de bloqueio e não pode ser retirado. Você ainda pode delegar ou fazer stake deste NEAR. Assim que o NEAR for desbloqueado, você poderá visualizá-lo em seu Saldo Desbloqueado e escolher retirá-lo (passando para seu Saldo Disponível).",
+    "login": {
+        "cliLoginSuccess": {
+            "pageText": "Por favor, feche esta janela e siga as instruções no terminal.",
+            "pageTitle": "Você autorizou com sucesso o NEAR Shell!"
+        },
+        "confirm": {
+            "pageText": "Você está concedendo <b>acesso total</b> para ${appTitle}!",
+            "pageTextSecondLine": "<b>Para confirmar</b>, digite o ID da sua conta abaixo.",
+            "pageTitle": "Você tem certeza?",
+            "username": "ID da Conta"
+        },
+        "details": {
+            "callFunctions": "Chamar funções em qualquer contrato inteligente",
+            "createAndDeleteAccessKeys": "Criar e excluir chaves de acesso",
+            "createNewAccounts": "Criar novas contas",
+            "deploySmartContracts": "Implantar contratos inteligentes",
+            "detailedDescription": "Descrição detalhada da transação",
+            "forContract": "Para o contrato",
+            "function": "Função",
+            "noDescription": "Nenhuma descrição especificada para esse método",
+            "stakeAndUnstake": "Stake e unstake NEAR tokens",
+            "thisAllows": "Isso permite ${appTitle} a:",
+            "transferTokens": "Transferir tokens de sua conta para outras contas"
+        },
+        "form": {
+            "accessYourAccount": "acessar sua conta.",
+            "accountIdOnly": "está solicitando seu ID da Conta.",
+            "isRequestingFullAccess": "está solicitando <b>acesso total</b>",
+            "isRequestingTo": "está solicitando para",
+            "thisDoesNotAllow": "Isso não permite que o app transfira nenhum token.",
+            "thisProvidesAccess": "Isso fornece acesso a <b>todos os seus tokens</b>.<br />Prossiga com cuidado!",
+            "toYourAccount": "para sua conta."
+        },
+        "v2": {
+            "connectConfirm": {
+                "desc": "Só conecte-se a sites em que confia. Uma vez conectado, <a href='${contractIdUrl}' target='_blank' rel='noreferrer'>${appReferrer}</a> terá <b>${accessType}</b>:",
+                "feeAllowance": {
+                    "desc": "A aplicação será autorizada a gastar até <b>${amount} NEAR</b> em taxas de rede que incidam durante o uso.",
+                    "title": "Taxa de Allowance da Rede"
+                },
+                "fullAccess": "permissões completas",
+                "fullAccessModal": {
+                    "desc": "Prossiga com cuidado. Permissões de acesso completo permitem que contratos e aplicativos acessem seu saldo de tokens. Para confirmar, forneça o ID de sua conta abaixo.",
+                    "title": "Conceder acesso completo?"
+                },
+                "fullAccessWarning": "Este site está requisitando acesos completo à sua conta. Para permitir acesso completo, será solicitado que verifique o ID de sua conta.",
+                "limitedAccess": "permissões limitadas",
+                "permissions": {
+                    "notTransferTokens": "Isso não permite que o app transfira tokens",
+                    "transferTokens": "Transferir tokens de sua conta",
+                    "viewAddress": "Ver o endereço de sua conta autorizada",
+                    "viewBalance": "Ver o saldo de sua conta autorizada"
+                },
+                "title": "Conectando-se com:"
+            },
+            "connectWithNear": {
+                "desc": "Um aplicativo requisitou <b>${accessType}</b> à sua conta NEAR. Selecione a conta à qual deseja se conectar.",
+                "fullAccess": "acesso completo",
+                "limitedAccess": "acesso limitado",
+                "title": "Conectar com NEAR"
+            }
+        }
+    },
+    "minimumBalance": "Este é o saldo mínimo NEAR que sua conta deve manter para permanecer ativa. Este saldo representa o espaço de armazenamento que sua conta está usando no blockchain NEAR (com um pequeno buffer) e aumentará ou diminuirá conforme você usar mais ou menos espaço.",
+    "mobileDeviceAccess": {
+        "importCode": {
+            "desc": "Caso esteja com sessão ativa em um desktop, escaneie seu código de acesso móvel para importar sua conta."
+        },
+        "showCode": {
+            "button": "Ver código de acesso",
+            "desc": "Escaneie o código de acesso para garantir controle completo de sua conta ao seu dispositivo móvel.",
+            "modal": {
+                "desc": "Revele e escaneie o código QR abaixo para importar sua conta em seu dispositivo móvel.",
+                "disclaimer": "<b>Este código contém informação sigilosa e garante acesso completo a sua conta em dispositivos móveis.</b> Cuidado para não compartilhá-lo ou expô-lo, e apenas importe sua conta em dispositivos que lhe pertençam.",
+                "reveal": "Revelar",
+                "title": "Código de acesso móvel"
+            }
+        },
+        "title": "Acessar usando dispositivo móvel"
+    },
+    "networkBanner": {
+        "desc": "Esta carteira (e rede) são apenas para fins de teste. Tokens e outros ativos não têm valor. As contas criadas não podem transferir para a rede principal.",
+        "header": "Carteira de teste NEAR",
+        "title": "Carteira de testes"
+    },
+    "newKeyTransfer": {
+        "activated": {
+            "archive": "Arquivar este registo de transferência",
+            "checkStatus": "Verificar o estado da transferência",
+            "done": "Concluído",
+            "inProgressSubtitle": "As suas novas chaves estão ativas on-chain, mas a Meteor Wallet ainda não terminou de proteger todas as contas. Conclua os passos restantes na Meteor Wallet e depois use Verificar estado. A remoção das chaves antigas fica bloqueada até todas as contas estarem protegidas.",
+            "inProgressTitle": "Chaves ativas — a concluir na Meteor Wallet",
+            "keep": "Manter por enquanto",
+            "listTitle": "Contas protegidas",
+            "loadingTitle": "Estado da transferência",
+            "removalRisk": "Remover uma chave de acesso total é uma ação de alto risco. Faça isso somente depois de confirmar que suas contas foram migradas.",
+            "removalWarning": "Depois de confirmar o acesso às suas contas, você pode remover as chaves de acesso antigas diretamente na Meteor Wallet.",
+            "remove": "Remover contas da MyNearWallet",
+            "sourceKeyRemoved": "Chaves antigas já removidas através da Meteor Wallet: {{count}}",
+            "startUsingMeteor": "Começar a usar a Meteor",
+            "subtitle": "Todas as contas estão protegidas. A Meteor Wallet verificou cada nova chave on-chain, confirmou a frase de recuperação e importou suas contas com sucesso.",
+            "title": "Contas protegidas na Meteor Wallet",
+            "unconfirmedTitle": "Ainda a ser protegidas"
+        },
+        "activation": {
+            "activatedStatusTitle": "Contas ativadas",
+            "activatedTitle": "Chaves da Meteor ativadas",
+            "activateKey": "Ativar chave",
+            "cancel": "Voltar para minha carteira",
+            "checkStatus": "Verificar estado",
+            "finishLater": "Concluir mais tarde",
+            "progress": "{{completed}} de {{total}} concluídas",
+            "retry": "Tentar novamente",
+            "statusTitle": "Status das contas",
+            "subtitle": "As novas chaves da Meteor serão adicionadas às contas selecionadas. Mantenha esta página aberta até que todas as contas estejam confirmadas.",
+            "title": "Ativar as chaves da Meteor",
+            "verifyKey": "Verificar chave",
+            "viewSecured": "Ver contas protegidas ({{count}})"
+        },
+        "activationIssue": {
+            "account_not_in_session": "Esta conta não fazia parte da transferência sobre a qual a Meteor Wallet foi consultada.",
+            "activation_not_found": "A nova chave da Meteor não foi encontrada nesta conta.",
+            "activation_not_full_access": "A nova chave da Meteor foi adicionada sem acesso total.",
+            "invalid_add_key_transaction": "A transação que adicionou a chave da Meteor não pôde ser verificada.",
+            "rpc_lookup_failed": "A Meteor Wallet não conseguiu acessar a blockchain NEAR para confirmar esta conta. Tente novamente em instantes.",
+            "session_not_found": "A Meteor Wallet não reconhece mais esta transferência. Inicie-a novamente.",
+            "source_signer_mismatch": "A chave da Meteor foi adicionada por uma chave diferente daquela com que esta transferência começou.",
+            "unknown": "A Meteor Wallet não conseguiu confirmar esta conta."
+        },
+        "activationStatus": {
+            "added": "Chave adicionada",
+            "adding": "Adicionando a chave…",
+            "confirmed": "Protegida",
+            "failed": "Falhou",
+            "pendingWallet": "A concluir na Meteor Wallet…",
+            "verifying": "Confirmando com a Meteor…",
+            "waiting": "Aguardando"
+        },
+        "advancedDescription": "Avançado: envia o material criptografado das chaves existentes pelo fluxo de ponte antigo. Use o método de nova chave acima sempre que possível.",
+        "continueDescription": "Uma transferência anterior foi interrompida antes de terminar. Continue-a — a Meteor Wallet retoma exatamente de onde parou.",
+        "continueExistingSecret": "Continuar com a transferência de chaves existentes",
+        "continueTitle": "Continuar a transferência para a Meteor Wallet",
+        "description": "A Meteor cria uma única nova chave para todas as contas selecionadas; nenhuma chave privada ou frase de recuperação sai desta carteira.",
+        "easiest": "Mais fácil",
+        "eligibility": {
+            "algorithmUnsupported": "Somente chaves de origem Ed25519 são suportadas.",
+            "ledgerUnsupported": "Contas de origem com Ledger não são suportadas por esta transferência.",
+            "noLocalKey": "Não há uma chave de assinatura local simples disponível.",
+            "notFullAccess": "Chave de acesso total não encontrada.",
+            "notFunded": "Esta conta implícita ainda não foi financiada.",
+            "twoFactorUnsupported": "Contas com 2FA/multiassinatura não são suportadas. Desative a 2FA primeiro ou use a exportação manual.",
+            "verificationFailed": "Não foi possível verificar as chaves da conta neste momento (problema de rede) — nada foi alterado na conta. Tente novamente em instantes."
+        },
+        "error": {
+            "addKeyAccountMismatch": "Esta transferência não abrange essa conta, portanto nenhuma chave foi alterada. Inicie a transferência novamente pela sua lista de contas.",
+            "addKeyChainRequired": "A MyNearWallet não conseguiu acessar a rede NEAR para assinar a alteração de chave. Verifique sua conexão e tente novamente.",
+            "browserStorageFull": "Este navegador não tem mais espaço de armazenamento para a MyNearWallet, por isso a transferência não conseguiu salvar seu progresso neste dispositivo. Suas contas e chaves estão seguras. A MyNearWallet já liberou o espaço que podia liberar com segurança; o restante está ocupado por outros dados salvos para este site. Entre em contato com o suporte informando o código abaixo ou use “Exportar chaves privadas em vez disso”. Não limpe os dados deste site a menos que todas as contas tenham backup, pois isso apaga as chaves armazenadas neste navegador.",
+            "clientIdConflict": "Esta transferência foi iniciada com outras contas. Inicie-a novamente pela sua lista de contas.",
+            "insufficientBalanceForAddKeys": "Algumas contas selecionadas não têm NEAR disponível suficiente para adicionar a chave da Meteor. Carregue-as ou desmarque-as e tente novamente.",
+            "journalCorrupt": "O registro da transferência armazenado neste dispositivo não pôde ser lido com segurança.",
+            "journalRetentionRequired": "O histórico de transferências neste dispositivo está cheio. Arquive uma transferência concluída e tente novamente.",
+            "noAccountsReady": "Nenhuma conta desta transferência está pronta para ativação.",
+            "orphanedAddKey": "Há uma alteração de chave parcialmente enviada registrada neste dispositivo, que precisa ser resolvida antes de iniciar outra transferência. Entre em contato com o suporte informando a referência abaixo.",
+            "recoveryRequired": "Esta transferência já adicionou chaves na blockchain NEAR, portanto não pode simplesmente ser descartada.",
+            "refusedSourceKeyRemoval": "Por segurança, uma etapa de limpeza foi recusada porque apontava para a própria chave de acesso desta conta. Nenhuma chave foi alterada. Contate o suporte e cite o código abaixo.",
+            "resolveNow": "Resolver esta transferência",
+            "revokeAccountMismatch": "Essa conta não faz parte desta transferência, portanto nada foi alterado.",
+            "revokeChainRequired": "A MyNearWallet não conseguiu acessar a rede NEAR para confirmar a remoção da chave. Nada foi alterado — tente novamente quando estiver online.",
+            "revokedAccountsRequired": "Nenhuma conta foi indicada para remoção, portanto nada foi alterado.",
+            "revokeDestinationKeyPresent": "A chave da Meteor Wallet ainda está na conta, portanto esta transferência ainda não pode ser encerrada. Remova a chave, aguarde a confirmação da rede NEAR e tente novamente.",
+            "sessionNotFound": "Esta transferência não está mais disponível. Inicie-a novamente pela sua lista de contas.",
+            "sessionNotTerminal": "Esta transferência ainda tem contas por concluir e ainda não pode ser arquivada.",
+            "startOverSecuredRows": "Algumas contas já estão protegidas na Meteor Wallet, então esta transferência já não pode ser descartada daqui. Use Verificar estado para concluí-la e depois arquive — você pode remover as contas na Meteor Wallet depois.",
+            "startOverUnresolvable": "Os registros desta transferência estão incompletos, então ela não pode ser descartada automaticamente com segurança. Contate o suporte citando o código abaixo.",
+            "startResultConflict": "Ainda há outra transferência registrada neste dispositivo. Conclua-a ou resolva-a antes de iniciar uma nova.",
+            "startResultDiscardFailed": "O registro da transferência neste dispositivo não pôde ser limpo com segurança e foi mantido intacto. Resolva-o antes de iniciar outra transferência.",
+            "startResultMissing": "O registro de ativação desta transferência está ausente, portanto ela não pode ser retomada com segurança. Inicie-a novamente pela sua lista de contas.",
+            "startResultReferenced": "As chaves preparadas desta transferência ainda são referenciadas por uma transferência ativa e não podem ser descartadas.",
+            "unavailable": "As transferências para a Meteor Wallet não estão disponíveis nesta versão.",
+            "verificationProofMissing": "Falta a prova necessária para confirmar esta transferência com a Meteor Wallet. Inicie-a novamente pela sua lista de contas.",
+            "verifyBeforeAddKeyIntent": "A nova chave desta conta ainda não foi adicionada na blockchain NEAR, portanto não pode ser confirmada com a Meteor Wallet.",
+            "verifyHashMismatch": "A ativação a verificar não corresponde ao registo on-chain desta transferência. Contacte o suporte com o código abaixo.",
+            "verifySessionUpdateFailed": "A Meteor Wallet respondeu, mas guardar o resultado neste dispositivo falhou. Execute Verificar estado novamente para concluir.",
+            "versionSkew": "Esta página está a executar uma versão da MyNearWallet mais antiga do que a esperada pelo serviço de transferência. Atualize a página (ou feche e reabra este separador) e tente novamente — a sua transferência está segura e será retomada.",
+            "walletBindingMissing": "A Meteor Wallet não se identificou ao responder. Inicie a transferência novamente.",
+            "walletConnectionMissing": "Falta a ligação desta transferência à Meteor Wallet. Use Verificar estado para religar através de uma nova sessão."
+        },
+        "existingSecret": {
+            "declined": "A transferência da conta foi recusada na Meteor Wallet.",
+            "expired": "A transferência da conta expirou. Você pode tentar novamente.",
+            "startFailed": "A MyNearWallet não conseguiu iniciar a transferência da conta."
+        },
+        "genericError": "Não foi possível continuar a transferência.",
+        "hideAdvanced": "Ocultar transferência avançada com chaves existentes",
+        "ineligible": "{{accountId}} não pode ser transferida agora. {{reason}}",
+        "issue": {
+            "account_not_found": "A Meteor Wallet não encontrou esta conta na blockchain NEAR.",
+            "key_generation_failed": "A Meteor Wallet não conseguiu criar uma nova chave para esta conta.",
+            "pending_transfer_conflict": "Esta conta já tem uma transferência inacabada na Meteor Wallet. Conclua-a ou descarte-a lá e tente novamente.",
+            "rpc_lookup_failed": "A Meteor Wallet não conseguiu acessar a blockchain NEAR para verificar esta conta. Tente novamente em instantes.",
+            "secure_storage_failed": "A Meteor Wallet não conseguiu armazenar com segurança a nova chave desta conta.",
+            "source_key_not_found": "A chave desta carteira para esta conta não está mais na conta.",
+            "source_key_not_full_access": "A chave desta carteira para esta conta não é uma chave de acesso total.",
+            "unknown": "A Meteor Wallet não conseguiu preparar esta conta."
+        },
+        "journalError": {
+            "broadcastAmbiguous": "A resposta da rede foi ambígua. Nada se perdeu — tente novamente e a carteira reconcilia o que já tiver chegado.",
+            "chainDataInvalid": "A rede devolveu dados que esta carteira não conseguiu verificar em segurança. Nada foi alterado — tente novamente daqui a pouco.",
+            "conflict": "Os registos desta transferência entram em conflito com os de outra. Tente novamente; se se repetir, contacte o suporte com o código abaixo.",
+            "destinationKeyUnproven": "Há uma chave Meteor nesta conta sem prova de que pertence a esta transferência. Resolva-a no ecrã de recuperação antes de continuar.",
+            "persistFailed": "Falhou a gravação do progresso da transferência neste dispositivo. Liberte armazenamento do navegador e tente novamente — nada se perdeu.",
+            "sourceKeyUnavailable": "A chave de assinatura exata desta conta já não está disponível nesta carteira, pelo que este passo não pode ser assinado aqui.",
+            "unreadable": "O registo desta transferência neste dispositivo não pôde ser lido em segurança. Nada foi alterado — contacte o suporte com o código abaixo."
+        },
+        "livenessConfirmed": "transferência de teste confirmada",
+        "loading": "Carregando a transferência…",
+        "manualDescription": "Revele e copie suas chaves privadas.",
+        "manualTitle": "Exportar manualmente",
+        "methodHeading": "Como você quer exportar?",
+        "methodSubheading": "Escolha como acessar e exportar suas contas.",
+        "pending": {
+            "importIncomplete": "A Meteor Wallet ainda está a concluir a importação desta conta. Use Verificar estado daqui a pouco.",
+            "livenessCheckFailed": "A transação de teste da Meteor Wallet para esta conta falhou. Use Verificar estado para tentar novamente."
+        },
+        "progressLabel": "Progresso da transferência de contas",
+        "progressSteps": {
+            "activated": "Verificar chaves",
+            "activating": "Ativar chaves",
+            "ready": "Início",
+            "secured": "Concluído"
+        },
+        "ready": {
+            "acceptedTitle": "Contas prontas para ativação",
+            "activate": "Ativar as novas chaves",
+            "cancel": "Voltar para minha carteira",
+            "cancelTransfer": "Cancelar esta transferência",
+            "finishLater": "Concluir mais tarde",
+            "noneSubtitle": "A Meteor Wallet não conseguiu preparar nenhuma das contas selecionadas. Resolva os motivos abaixo e tente novamente.",
+            "noneTitle": "Nenhuma conta pôde ser preparada",
+            "refusedTitle": "Não incluídas nesta transferência",
+            "startOver": "Voltar para a seleção de contas",
+            "subtitle": "A Meteor Wallet criou uma nova chave de acesso para cada conta abaixo. A ativação adiciona a nova chave da Meteor a cada conta na blockchain NEAR. Suas chaves existentes nunca são enviadas e continuam funcionando até que você escolha removê-las.",
+            "title": "As chaves da Meteor estão prontas"
+        },
+        "recommended": "Recomendado",
+        "recovery": {
+            "archive": "Encerrar este registro",
+            "archiveRefused": "A chave da Meteor Wallet ainda está na conta. Aguarde a blockchain NEAR confirmar a remoção e tente novamente.",
+            "check": "Verificar na blockchain NEAR",
+            "continue": "Voltar para a seleção de contas",
+            "detail": {
+                "access_keys_unreadable": "Não foi possível ler as chaves da conta na blockchain NEAR.",
+                "signed_transaction_may_still_land": "A alteração de chave assinada ainda pode ser aceita pela blockchain NEAR, portanto não é seguro encerrar este registro agora.",
+                "transaction_expiry_unknown": "A MyNearWallet não conseguiu determinar se a alteração de chave assinada ainda pode ser aceita."
+            },
+            "fieldDestinationKey": "Chave da Meteor Wallet",
+            "fieldSourceKey": "Sua chave de assinatura",
+            "fieldTransaction": "Transação",
+            "finishLater": "Concluir mais tarde",
+            "journalUnreadable": "O registro da transferência armazenado neste dispositivo não pôde ser lido, portanto as contas afetadas não podem ser listadas aqui. Entre em contato com o suporte informando a referência abaixo — não limpe os dados do navegador, eles guardam o único registro do que aconteceu.",
+            "removeKey": "Remover a chave da Meteor Wallet",
+            "resolvedSubtitle": "Este dispositivo não tem alterações de chave inacabadas. Você pode iniciar uma transferência novamente.",
+            "resolvedTitle": "Nada a resolver",
+            "status": {
+                "ambiguous": "A blockchain NEAR não conseguiu confirmar nem descartar agora. Nada foi alterado — tente novamente em instantes.",
+                "destination_key_absent": "A alteração de chave nunca teve efeito e não pode mais ser aceita. Este registro pode ser encerrado.",
+                "destination_key_present_unproven": "A chave da Meteor Wallet está nesta conta, mas nada comprova que esta transferência a colocou lá. Remova-a com sua própria chave para encerrar isso.",
+                "finalized": "A alteração de chave foi concluída na blockchain NEAR. Esta transferência pode continuar pela sua lista de contas.",
+                "not_found": "Já resolvido."
+            },
+            "statusUnchecked": "Ainda não verificado. A verificação apenas lê a blockchain NEAR — nada é assinado nem enviado.",
+            "subtitle": "Uma alteração de chave foi assinada neste dispositivo, mas nunca foi confirmada. Ela precisa ser resolvida antes de iniciar outra transferência.",
+            "supportExplainer": "Se nenhuma das etapas acima resolver, entre em contato com o suporte e informe a referência. Iniciar uma nova transferência continuará sendo recusado até que esta seja resolvida.",
+            "supportReferenceLabel": "Referência de suporte",
+            "title": "Resolver uma alteração de chave inacabada"
+        },
+        "selectedAccounts": "Contas selecionadas",
+        "showAdvanced": "Mostrar transferência avançada com chaves existentes",
+        "start": "Iniciar transferência",
+        "starting": "Abrindo a Meteor Wallet…",
+        "startOver": {
+            "confirm": "Remover as novas chaves e recomeçar",
+            "discardPending": "Descartar a transferência interrompida e começar de novo",
+            "keep": "Manter esta transferência",
+            "link": "Cancelar esta transferência e recomeçar",
+            "removing": "Removendo as novas chaves… ({{completed}}/{{total}})",
+            "warningBody": "Isto remove a chave de acesso da nova carteira de cada conta desta transferência, assinando com a chave que você já guarda aqui. Suas contas e chaves existentes permanecem exatamente como estão. Depois você pode iniciar uma nova transferência para qualquer carteira.",
+            "warningTitle": "Remover as novas chaves e recomeçar?"
+        },
+        "supportCode": "Código de suporte: {{code}}",
+        "supportReference": "Referência de suporte: {{id}}",
+        "title": "Transferir para a Meteor Wallet"
+    },
+    "NFTDetail": {
+        "attributes": "Atributos",
+        "description": "Descrição",
+        "owner": "PROPRIETÁRIO",
+        "transfer": "Transferir"
+    },
+    "NFTs": {
+        "emptyState": "Parece que você ainda não tem nenhum colecionável.",
+        "loadMore": "Carregar mais"
+    },
+    "NFTTransfer": {
+        "youSent": "You sent <span class='color-blue'>${title}</span> to <span class='color-green'>${receiverId}</span>"
+    },
+    "nodeDetails": {
+        "pageText": "Atualize os detalhes do seu nó.",
+        "pageTitle": "Detalhes do nó"
+    },
+    "nodeStaking": {
+        "nodes": {
+            "noNode": {
+                "text": "Isso conecta o seu nó à sua carteira.",
+                "title": "Já possui a configuração de seus nós? Adicione-a aqui."
+            },
+            "title": "Nós"
+        },
+        "pageText": "nodeandstaking.near",
+        "pageTitle": "Nó e Staking",
+        "staking": {
+            "title": "Staking",
+            "youAreStaking": "Você está com staking"
+        },
+        "steps": {
+            "one": {
+                "desc": "Instruções disponíveis na documentação",
+                "title": "1. Configurar e executar um nó via CLI"
+            },
+            "three": {
+                "desc": "Faça stake daqui ou no CLI. Veja a documentação para obter ajuda.",
+                "title": "3. Começar o Staking"
+            },
+            "title": "Para executar um nó ou stake, por favor siga estas etapas:",
+            "two": {
+                "desc": "Um nó fora de sincronia não pode produzir ou validar",
+                "title": "2. Aguarde a sincronização do nó"
+            }
+        }
+    },
+    "of": "de",
+    "ofTotal": "do total",
+    "or": "OU",
+    "profile": {
+        "account": {
+            "available": "Disponível",
+            "availableToTransfer": "Disponível para transferência",
+            "availableToWithdraw": "Disponível para saque",
+            "inStakingPools": "Em staking pools",
+            "pendingRelease": "Aguardando liberação",
+            "reservedForStorage": "Reservado para armazenamento",
+            "reservedForTransactions": "Reservado para transações",
+            "staked": "Em Stake",
+            "staking": "Staking",
+            "unstaked": "Unstake",
+            "walletBalance": "Saldo da carteira",
+            "walletId": "ID da carteira"
+        },
+        "authorizedApps": {
+            "title": "Apps Autorizados"
+        },
+        "details": {
+            "availableBalance": "Saldo disponível",
+            "locked": "Bloqueado",
+            "lockPopup": {
+                "createAnotherAccount": "criar outra conta",
+                "text": "O ID da sua conta é o seu identificador exclusivo no sistema e não pode ser alterado porque os dados e a propriedade do ativo estão vinculados a ele. No entanto, você pode acessar ${link} com o nome desejado e transferir os ativos conforme necessário.",
+                "title": "Por que isso está bloqueado?"
+            },
+            "minBalance": "Saldo mínimo",
+            "profile": "PERFIL",
+            "public": "Público",
+            "qrDesc": "Use o app de câmera do seu telefone para enviar para este endereço",
+            "staked": "Em Stake",
+            "totalBalance": "Saldo total",
+            "unlocked": "Desbloqueado",
+            "unvested": "Unvested",
+            "username": "ID da Conta",
+            "visibleTo": "VISÍVEL PARA"
+        },
+        "lockup": {
+            "locked": "Bloqueado",
+            "lockupBalance": "Saldo Bloqueado",
+            "lockupId": "ID de Bloqueio",
+            "unlocked": "Desbloqueado"
+        },
+        "lockupBanner": {
+            "cta": "Transferir para Carteira",
+            "title": "Você tem <b>${amount}</b> disponível para retirada do seu bloqueio!"
+        },
+        "pageTitle": {
+            "default": "Detalhes da Conta",
+            "loading": "Carregando...",
+            "notFound": "Conta ${accountId} não encontrada"
+        },
+        "security": {
+            "lessSecure": "Menos seguro",
+            "lessSecureDesc": "Estas opções são recomendadas para contas com pequenas quantidades de NEAR e outros ativos. São convenientes, mas apresentam riscos adicionais comparado a opções mais seguras. Se sua conta de e-mail ou mensagens SMS estiverem comprometidas, seus fundos podem estar em risco.",
+            "mostSecure": "Mais seguro (recomendado)",
+            "mostSecureDesc": "Ledger é a opção mais segura. Frase-semente podem ser seguras se usadas corretamente (elas devem ser escritas e armazenadas com segurança).",
+            "title": "Segurança e Recuperação"
+        },
+        "twoFactor": "Autenticação de Dois Fatores",
+        "twoFactorDesc": "Autenticar com SMS ou e-mail ao autorizar transações e/ou fazer login em sua conta."
+    },
+    "reCAPTCHA": {
+        "disclaimer": "Este site é protegido com reCAPTCHA. A <a href='https://policies.google.com/privacy' target='_blank' rel='noopener noreferrer'>Política de Privacidade</a> e <a href='https://policies.google.com/terms' target='_blank' rel='noopener noreferrer'>Termos de Serviço</a> do Google se aplicam.",
+        "fail": {
+            "desc": "Validar reCAPTCHA é necessário para autorizar a criação de nova conta NEAR.",
+            "link": "Fundar uma conta?",
+            "title": "Falha ao carregar reCAPTCHA."
+        },
+        "loading": "Carregando reCAPTCHA..."
+    },
+    "receivePage": {
+        "addressTitle": "Seu endereço",
+        "copyAddressLinkLong": "Copie a URL",
+        "copyAddressLinkShort": "COPIAR",
+        "qrCodeTitle": "Escaneie o código QR",
+        "snackbarCopySuccess": "URL copiada!"
+    },
+    "recoverAccount": {
+        "actionRequired": "Esta mensagem contém um link mágico. Clique no link para começar a recuperação!",
+        "actionType": "Recuperação",
+        "cannotResend": "Esta mensagem foi enviada quando você ativou a recuperação de e-mail/telefone. Somente enviamos esta mensagem uma vez e não podemos reenviá-la.",
+        "email": {
+            "desc": "Verifique seu e-mail para uma mensagem de near.org com o assunto:",
+            "subject": "\"Important: Near Wallet Recovery Email\".",
+            "title": "E-mail"
+        },
+        "ledger": {
+            "desc": "Certifique-se de que sua Ledger está conectada com segurança e que o aplicativo NEAR está aberto no dispositivo.",
+            "title": "Ledger"
+        },
+        "pageText": "Se você configurou um ou mais métodos de recuperação de conta, siga as instruções abaixo para importar sua conta.",
+        "pageTitle": "Importar conta",
+        "phone": {
+            "desc": "Verifique o registro de seu telefone para uma mensagem SMS de",
+            "number": "+14086179592.",
+            "title": "Telefone"
+        },
+        "phrase": {
+            "desc": "Certifique-se de que sua frase de recuperação contém 12 palavras e clique abaixo para iniciar o processo de recuperação.",
+            "title": "Frase-semente"
+        },
+        "privateKey": {
+            "desc": "Verifique se a sua chave privada começa com 'ed25519' e, em seguida, clique abaixo para iniciar o processo de recuperação.",
+            "title": "Chave Privada"
+        }
+    },
+    "recoverManual": {
+        "buttonImportManually": "Importar manualmente.",
+        "cantFindAccount": "Não consegue encontrar sua conta?",
+        "errorAccessKeyNotMatch": "A chave de acesso não corresponde",
+        "errorAccountNotExist": "Conta não existe",
+        "inputAccountId": "Insira o ID da sua conta aqui para importar sua conta",
+        "pageTitle": "Importação manual de conta"
+    },
+    "recoverPrivateKey": {
+        "pageText": "Digite a chave privada associada à conta.",
+        "pageTitle": "Recuperar usando a Chave Privada",
+        "privateKeyInput": {
+            "title": "Chave Privada"
+        }
+    },
+    "recoverSeedPhrase": {
+        "pageText": "Digite a frase-semente de backup associada à conta.",
+        "pageTitle": "Recuperar usando Frase-semente",
+        "seedPhraseInput": {
+            "placeholder": "correct horse battery staple...",
+            "title": "Frase-semente (12 palavras)"
+        }
+    },
+    "recoverWithLink": {
+        "errorP": "Verifique seu e-mail ou telefone pela mensagem mais recente. Os links de todas as mensagens anteriores são inválidos.",
+        "errorTitle": "Link Expirado",
+        "pOne": "Clique em \"Continuar\" para restaurar sua conta:",
+        "pTwo": "Se este não for o seu navegador preferido, copie a URL e complete este processo no navegador a sua escolha.",
+        "snackbarCopySuccess": "URL de Recuperação copiada",
+        "title": "Restaurar conta"
+    },
+    "recoveryMgmt": {
+        "disableInputPlaceholder": "Insira o ID da sua conta para confirmar",
+        "disableNo": "Não, manter",
+        "disableNotAllowed": "As contas devem ter pelo menos um método de recuperação ativo. Ative primeiro um método de recuperação alternativo para continuar.",
+        "disableTextPhrase": "Sua frase-semente atual será permanentemente desativada.",
+        "disableTitle": "Tem certeza de que deseja desativar este método?",
+        "enabled": "Ativado",
+        "methodTitle": {
+            "email": "E-mail",
+            "phone": "Telefone",
+            "phrase": "Frase-Semente"
+        },
+        "noRecoveryMethod": "Você não tem nenhum método para recuperar sua conta. Por favor, adicione um método abaixo.",
+        "recoveryLinkSent": "Link de Recuperação Enviado!",
+        "resend": {
+            "email": "Reenviar e-mail",
+            "phone": "Reenviar SMS"
+        },
+        "title": "Métodos de Recuperação"
+    },
+    "reduxActions": {
+        "ADD_ACCESS_KEY": {
+            "error": "Ocorreu um erro ao aprovar esta ação. Por favor, tente novamente!",
+            "success": "${title} está autorizado a usar sua conta."
+        },
+        "ADD_ACCESS_KEY_SEED_PHRASE": {
+            "error": "Ocorreu um erro ao configurar a recuperação da frase-semente. Por favor, tente novamente!",
+            "success": "A configuração da recuperação da frase-semente está completa."
+        },
+        "ADD_LEDGER_ACCOUNT_ID": {
+            "error": "O acesso a uma das contas foi rejeitado. Nenhuma conta foi recuperada.<br>Para continuar, você deve autorizar o acesso de leitura para cada conta em seu dispositivo Ledger. Por favor, tente novamente.",
+            "success": ""
+        },
+        "CHECK_ACCOUNT_AVAILABLE": {
+            "error": "Usuário não encontrado.",
+            "success": "Usuário encontrado."
+        },
+        "CHECK_IS_NEW": {
+            "error": "Essa conta já existe. Por favor, tente novamente.",
+            "success": "Parabéns! ${accountId} está disponível."
+        },
+        "CHECK_NEW_ACCOUNT": {
+            "error": "Essa conta já existe. Por favor, tente novamente.",
+            "success": "Parabéns! ${accountId} está disponível."
+        },
+        "CREATE_ACCOUNT_WITH_SEED_PHRASE": {
+            "error": "",
+            "success": ""
+        },
+        "CREATE_NEW_ACCOUNT": {
+            "error": "Essa conta já existe. Por favor, tente novamente.",
+            "success": "Parabéns! ${accountId} está disponível."
+        },
+        "default": {
+            "error": "Desculpe, um erro ocorreu. Tente novamente.",
+            "success": ""
+        },
+        "DELETE_RECOVERY_METHOD": {
+            "error": "",
+            "success": ""
+        },
+        "DEPLOY_MULTISIG": {
+            "error": "",
+            "success": ""
+        },
+        "Deserialization": "",
+        "GET_LEDGER_ACCOUNT_IDS": {
+            "error": "O acesso com chave pública foi rejeitado. Nenhuma conta foi recuperada.<br/>Para continuar, você deve permitir que a Carteira NEAR veja sua chave pública. Por favor, tente novamente.",
+            "success": ""
+        },
+        "NotEnoughBalance": "Sua conta não tem saldo o suficiente para essa operação.",
+        "PROMPT_TWO_FACTOR": {
+            "invalidCode": "Código 2FA inválido. Por favor, tente novamente."
+        },
+        "RECOVER_ACCOUNT_SEED_PHRASE": {
+            "error": "Falha ao recuperar conta. Nenhuma conta foi encontrada para esta frase-semente.",
+            "success": "A recuperação usando a frase-semente foi concluída. <br/> <b> ${numberOfAccounts} conta(s) </b> foram recuperadas com sucesso. <br/> Estará ativa a ultima definida."
+        },
+        "REFRESH_ACCOUNT_EXTERNAL": {
+            "error": "Conta <b>${accountId}</b> não encontrada"
+        },
+        "REMOVE_ACCESS_KEY": {
+            "error": "Por favor, verifique se o seu dispositivo está conectado e se o aplicativo NEAR está aberto.",
+            "success": ""
+        },
+        "RetriesExceeded": "Tentativas máximas excedidas para esta transação.",
+        "SAVE_AND_SELECT_LEDGER_ACCOUNTS": {
+            "error": "Por favor, verifique se o seu dispositivo está conectado e se o aplicativo NEAR está aberto.",
+            "success": "Você fez login com sucesso.<br/><b>${numberOfAccounts} conta(s) foram recuperadas.</b> Sua conta criada mais recentemente foi definida como ativa."
+        },
+        "SEND_MONEY": {
+            "error": "Desculpe, ocorreu um erro. Por favor, tente novamente."
+        },
+        "SETUP_RECOVERY_MESSAGE": {
+            "error": "Um erro ocorreu ao configurar o método de recuperação. Por favor, tente novamente!",
+            "success": "A configuração de recuperação está completa."
+        },
+        "SIGN_AND_SEND_TRANSACTIONS": {
+            "error": "",
+            "success": ""
+        },
+        "SunsetCapabilityRetired": "Isto não está mais disponível na MyNearWallet. Mova sua conta para uma carteira compatível.",
+        "TRANSFER_ALL_FROM_LOCKUP": {
+            "error": "Algo deu errado. Por favor, tente novamente.",
+            "success": "Você transferiu tokens bloqueados com sucesso!"
+        },
+        "U2F_4": "Falha ao fazer login com o dispositivo Ledger: U2F DEVICE_INELIGIBLE. Por favor, verifique se o seu dispositivo Ledger está conectado e desbloqueado.",
+        "VERIFY_TWO_FACTOR": {
+            "error": "Configuração da autenticação de dois fatores (2FA) falhou. Por favor, tente novamente.",
+            "success": "Autenticação de dois fatores (2FA) configurada com sucesso!"
+        }
+    },
+    "releaseNotesModal": {
+        "desc": "Você pediu, nós ouvimos! A última atualização traz ajustes na forma como os saldos são mostrados na carteira, e uma forma mais fácil de criar contas novas.",
+        "subText1": "Ao iniciar, agora você poderá usar um número de telefone compatível com SMS para verificar e inicializar sua conta nova. Usuários que não queiram fornecer essa informação ainda poderão inicializar contas novas com um depósito inicial.",
+        "subText2": "Agora o saldo principal mostrado na carteira é o seu 'Saldo disponível', onde antes era o seu 'Saldo Total'. O saldo disponível oferece a maior utilidade aos usuários que querem saber rapidamente o que eles têm disponível para gastar/fazer stake/interagir com o ecossistema; ele não inclui nenhum token que não possa ser gasto de imediato, tais como tokens que estejam em stake. Você ainda pode ver detalhes sobre o saldo de tokens que tem em stake nas telas de 'Conta' e 'Staking'.",
+        "subTitle1": "Novos recursos",
+        "subTitle2": "Aprimoramentos",
+        "title": "Notas de lançamento"
+    },
+    "reservedForFeesInfo": "Até ${data} NEAR são reservados para cobrir o custo das transações.",
+    "selectAccountDropdown": {
+        "account": "Conta",
+        "createAccount": "Criar Nova Conta",
+        "noOtherAccounts": "Você não tem outras contas",
+        "selectAccount": "Selecionar Conta",
+        "switchAccount": "Trocar conta",
+        "switchAccounthNotAllowed": "Esse aplicativo não permite alterações na conta"
+    },
+    "sending": "ENVIANDO",
+    "sendMoney": {
+        "account": {
+            "title": "Enviar para"
+        },
+        "amount": {
+            "available": "Disponível para enviar"
+        },
+        "amountStatusId": {
+            "available": "Saldo disponível:",
+            "howMuch": "Quanto você deseja enviar?",
+            "noMoreThan": "NÃO MAIS QUE 5 CASAS DECIMAIS",
+            "notEnoughTokens": "Você deve deixar pelo menos ${amount} NEAR na sua conta",
+            "sending": "Enviando:"
+        },
+        "banner": {
+            "insufficient": "Você está tentando enviar todo o seu saldo disponível. Pelo menos <b>${data} NEAR</b> deve ser reservado para cobrir as taxas de transação.",
+            "useMax": "Uma pequena porção (${data} NEAR) do seu saldo disponível foi reservada para cobrir as taxas de transação."
+        },
+        "button": {
+            "confirm": "Confirmar e Enviar",
+            "dashboard": "Ir para Painel",
+            "send": "Enviar"
+        },
+        "confirmModal": {
+            "title": "Confirmar transação"
+        },
+        "onceConfirmed": "Uma vez confirmado, isso não pode ser desfeito.",
+        "subtitle": {
+            "default": "Informe o valor de NEAR para enviar, e a ID da conta para enviar.",
+            "success": "NEAR enviado com sucesso",
+            "to": "para:"
+        },
+        "title": {
+            "default": "Enviar",
+            "success": "Sucesso!"
+        },
+        "to": "para",
+        "wasSentTo": "foi enviado para:",
+        "youAreSending": "Você está enviando"
+    },
+    "sendV2": {
+        "accordionTriggerTitle": {
+            "balanceDetails": "Detalhes do saldo",
+            "transactionDetails": "Detalhes da transação"
+        },
+        "enterAmount": {
+            "bridgedTokenWarning": "Este é um token de ponte. Não o envie para exchanges como a Binance."
+        },
+        "review": {
+            "title": "Você está enviando"
+        },
+        "selectAsset": {
+            "assetInputPlaceholder": "Buscar nome do ativo",
+            "assetListNameTitle": "Nome",
+            "asssetListBalanceTitle": "Disponível para envio",
+            "title": "Selecionar ativo"
+        },
+        "selectReceiver": {
+            "receiverInputLabel": "Enviar para"
+        },
+        "selectTokenButtonTitle": "Selecionar ativo",
+        "success": {
+            "title": "Transação completa!</br>Você enviou <span class='color-blue'>${amount}</span></br>para <span class='color-green'>${receiverId}</span>"
+        },
+        "translateIdInfoTooltip": {
+            "estimatedFees": "Custo estimado de processamento da sua transação.",
+            "estimatedTotal": "Total estimado da sua transação incluindo taxas.",
+            "networkFees": "Valor final pago para cobrir os custos de processamento da sua transação.",
+            "reservedForFees": "Uma porção do seu saldo não pode ser gasto. Esse valor é reservado para custear o armazenamento de sua conta. Para mais informações, visite nossa documentação."
+        },
+        "TXEntry": {
+            "status": {
+                "Failure": "Falhou",
+                "notAvailable": "Status indisponível",
+                "SuccessValue": "Sucesso"
+            },
+            "title": {
+                "amount": "Quantidade",
+                "availableBalance": "Saldo disponível",
+                "availableToSend": "Disponível para envio",
+                "estimatedFees": "Taxas estimadas",
+                "estimatedTotal": "Total estimado",
+                "from": "De",
+                "networkFees": "Taxas da rede",
+                "receiverId": "Enviar para",
+                "reservedForFees": "Reservado para taxas",
+                "status": "Status da transação",
+                "timeStamp": "Data & horário",
+                "to": "Para",
+                "token": "Ativo"
+            }
+        }
+    },
+    "setRecoveryConfirm": {
+        "didNotReceive": "Não recebeu o seu código?",
+        "email": "endereço de e-mail",
+        "inputError": "Por favor forneça o código de verificação!",
+        "inputHeader": "Digitar Código de Verificação",
+        "inputPlaceholder": "Código de Verificação",
+        "or": "ou",
+        "pageText": "Enviamos um código de verificação de 6 dígitos para ",
+        "phone": "número de telefone",
+        "reenter": {
+            "link": "clique aqui",
+            "one": {
+                "email": "Se você ainda não recebeu este e-mail, ou o endereço de e-mail acima está incorreto, ",
+                "phoneNumber": "Se você ainda não recebeu este SMS, ou o número de telefone acima está incorreto, "
+            },
+            "two": {
+                "email": " para reinserir seu e-mail e reenviar.",
+                "phoneNumber": " para reinserir seu número de telefone e reenviar."
+            }
+        },
+        "resendCode": "Reenviar seu código",
+        "resending": "Reenviando...",
+        "sendToDifferent": "Enviar para outro",
+        "title": "Digitar Código de Verificação"
+    },
+    "setupLedger": {
+        "header": "Conecte seu dispositivo Ledger",
+        "one": "Connect your Ledger Nano S or X to your computer or mobile device via USB and <b>open the NEAR application</b>. <br><br>Then, <b>press both buttons</b> at the 'Pending Ledger Review' screen.",
+        "two": "Se você ainda não tiver instalado o aplicativo NEAR Ledger, siga",
+        "twoLink": "estas instruções"
+    },
+    "setupLedgerSteps": {
+        "header": "Instale o NEAR no seu dispositivo Ledger",
+        "one": "Abra <a href='https://www.ledger.com/ledger-live' target='_blank'>Ledger Live,</a> instale qualquer atualização de firmware disponível.",
+        "three": "Sob <span class='color-black'>Recursos Experimentais</span>, certifique-se de que o <span class='color-black'>Modo de Desenvolvedor</span> esteja ativado <span class='color-black'>em</span>.",
+        "two": "Navegue até as <span class='color-black'>Configurações</span>."
+    },
+    "setupLedgerSuccess": {
+        "header": "Ledger protegeu sua conta!",
+        "nextStep": {
+            "header": {
+                "keep": "Manter chaves existentes?",
+                "remove": "Confirmar remoção de chave"
+            },
+            "one": {
+                "keep": "<span class='color-red'>Manter vários métodos e dispositivos de recuperação aumenta a vulnerabilidade de sua conta.</span>",
+                "remove": "Antes de remover suas chaves e métodos de recuperação existentes, certifique-se de ter gravado e armazenado com segurança sua frase-semente do Ledger."
+            },
+            "two": {
+                "remove": "Se você perder o acesso à sua frase-semente, a NEAR Inc. não poderá ajudá-lo a recuperar sua conta e seus fundos."
+            }
+        },
+        "one": "Recomendamos que remova todas as chaves existentes (métodos de recuperação e dispositivos).",
+        "primaryCta": "Remover Chaves e Métodos de Recuperação existentes",
+        "secondaryCta": "Manter chaves existentes",
+        "two": "Manter várias chaves e métodos de recuperação (incluindo frase-semente) aumenta a vulnerabilidade da sua conta."
+    },
+    "setupPasswordProtection": {
+        "average": "Password media",
+        "changePassword": {
+            "completedDescription": "Você atualizou sua senha com sucesso.",
+            "completedTitle": "Senha Atualizada com Sucesso",
+            "step1Description": "Por favor, confirme sua senha atual para continuar",
+            "step1Title": "Passo 1/2: Confirmar Senha Antiga",
+            "step2Description": "Defina sua nova senha aqui",
+            "step2Title": "Passo 2/2: Definir Nova Senha"
+        },
+        "confirm": "Confirme sua senha",
+        "disableModal": {
+            "description": "Desativar a criptografia de senha irá expor suas contas a um risco maior. Você tem certeza que quer continuar?",
+            "disabledDescription": "Criptografia de senha desativada com sucesso",
+            "disabledTitle": "Criptografia de senha desativada",
+            "instruction": "Insira sua senha aqui para confirmar",
+            "title": "Desativar criptografia de senha"
+        },
+        "enter": "Digite sua senha",
+        "invalidPassword": "Senha incorreta",
+        "lengthError": "Pelo menos 8 caracteres",
+        "matchError": "Senhas são diferentes",
+        "pageText": "Você usará esta senha para desbloquear sua carteira",
+        "pageTitle": "Criar uma senha",
+        "passwordExist": "Senha já existente",
+        "passwordExistDescription": "Você já protegeu sua conta com uma senha",
+        "setPasswordSuccessfully": "Senha definida com sucesso",
+        "setPasswordSuccessfullyButton": "Voltar para início",
+        "setPasswordSuccessfullyDescription": "Agora suas contas estão protegidas por criptografia de senha.",
+        "strong": "Senha forte",
+        "unlockWalletButton": "Desbloquear carteira",
+        "unlockWalletDescription": "Bem-vindo de volta, o mundo web3 espera por você. Digite sua senha para desbloquear sua carteira.",
+        "unlockWalletInputPlaceholder": "Digite sua senha",
+        "unlockWalletTitle": "Desbloquear carteira",
+        "week": "Senha fraca",
+        "withoutPassword": "Continuar sem criar senha"
+    },
+    "setupRecovery": {
+        "advancedSecurity": "Mais seguro (recomendado)",
+        "advancedSecurityDesc": "Escreva 12 palavras para sua frase-semente (de recuperação) ou proteja sua conta com um dispositivo Ledger.",
+        "basicSecurity": "Menos seguro",
+        "basicSecurityDesc": "Digite seu endereço de e-mail ou número de telefone e receba um link mágico",
+        "emailDesc": "Receba um código de verificação e o link de recuperação de conta por email.",
+        "emailPlaceholder": "exemplo@email.com",
+        "emailTitle": "E-mail para recuperação",
+        "header": "Escolher método de segurança",
+        "ledgerDesc": "Faça a segurança de sua conta usando um dispositívo físico Ledger.",
+        "ledgerTitle": "Ledger Nano S ou X",
+        "notSupportedPhone": "Infelizmente, nós não oferecemos SMS para a sua região. Por favor, escolha e-mail.",
+        "phoneDesc": "Digite seu número de telefone abaixo e receba um link mágico de recuperação",
+        "phonePlaceholder": "+1 415 797 8554",
+        "phoneTitle": "Telefone para recuperação",
+        "phraseDesc": "Gerar e guardar em segurança uma frase-semente única.",
+        "phraseTitle": "Frase de Recuperação",
+        "subHeader": "Selecione um método para proteger e recuperar a sua conta. Isso será usado para verificar atividades importantes, recuperar conta e acessar sua conta em outros dispositivos."
+    },
+    "setupSeedPhrase": {
+        "pageText": "Escreva as seguintes palavras em ordem e guarde-as em um lugar seguro. <b>Qualquer pessoa com acesso a ele também terá acesso à sua conta!</b> Em seguida, você será solicitado a verificar sua senha.",
+        "pageTitle": "Consigure sua Frase-semente",
+        "snackbarCopyImplicitAddress": "Endereço do fundação Copiado!",
+        "snackbarCopySuccess": "Frase-semente copiada!"
+    },
+    "setupSeedPhraseSuccess": {
+        "pageText": "Use sua Frase de Recuperação para restaurar sua conta.",
+        "pageTextSecondLine": "Qualquer pessoa com acesso a sua Frase de Recuperação pode acessar seus fundos, portanto, mantenha-o offline, em algum lugar seguro e protegido.",
+        "pageTitle": "A configuração de recuperação está completa"
+    },
+    "setupSeedPhraseVerify": {
+        "pageText": "Digite a seguinte palavra da sua frase de recuperação para completar o processo de configuração.",
+        "pageTitle": "Verifique a frase",
+        "startOverText": "Não anotou?"
+    },
+    "sign": {
+        "accountNotFound": {
+            "body": "${signCallbackUrl} is requesting authorization from a NEAR account that cannot be found: <b>${signTransactionSignerId}</b><br/><br/>To approve any transactions, you’ll first need to import the account.",
+            "title": "Conta nao encontrada"
+        },
+        "ActionWarrning": {
+            "binaryData": "Argumentos contêm dados binários",
+            "deleteAccount": "Você está prestes a excluir sua conta! Seu saldo de NEAR será destruído e todos os seus dados de conta serão excluídos.",
+            "deployContract": "Você está prestes a implantar um contrato para a sua conta! Este contrato pode acessar seu saldo de NEAR e interagir com outros contratos em seu nome.",
+            "functionCall": "Nenhuma descrição especificada para essa função.",
+            "stake": "Você está prestes a fazer stake dos tokens NEAR. Esses tokens serão bloqueadas e correm o risco de serem perdidas se seu validador não responder."
+        },
+        "authorizationRequestSuccessful": "Autorização solicitada com sucesso",
+        "authorizing": "Autorizando",
+        "availableBalance": "Saldo disponível",
+        "availableToTransfer": "Disponível para transferência",
+        "contract": "Contrato:",
+        "details": {
+            "detailedDescription": "Descrição detalhada da transação",
+            "forContract": "Para o contrato",
+            "gasLimit": "Limite de Gás",
+            "gasPriceUnavailable": "Estimativa de preço do gás indisponível",
+            "transactionFees": "Taxas de transação"
+        },
+        "hereAreSomeDetails": "Aqui estão alguns detalhes que ajudarão você.",
+        "insufficientFunds": "Fundos insuficientes",
+        "invalidTransaction": {
+            "body": "The request is invalid and cannot be signed.",
+            "title": "Invalid Transaction"
+        },
+        "isRequesting": {
+            "authorization": "está solicitando autorização",
+            "transferOf": "está solicitando a transferência de"
+        },
+        "multipleAccountsError": {
+            "body": "<a href='${signCallbackUrl}' target='_blank' rel='noreferrer'>${signCallbackUrl}</a> has requested authorization from more than one account.<br/><br/>NEAR Wallet may only authorize transactions for a single account at a time.",
+            "title": "Batch Transaction Error"
+        },
+        "nothingHasBeenTransferred": "Nada foi transferido.",
+        "transactionCancelled": "Transação cancelada",
+        "transferring": "Transferindo",
+        "unexpectedStatus": "Situação inesperada",
+        "unknownApp": "App desconhecido",
+        "wasTransferredSuccessfully": "foi transferida com sucesso"
+    },
+    "signInLedger": {
+        "advanced": {
+            "desc": "Especifique o caminho no disco para importar suas contas vinculadas.",
+            "setPath": "Definir caminho no disco",
+            "subTitle": "Caminho no disco",
+            "title": "Opções avançadas"
+        },
+        "firefoxBanner": {
+            "desc": "No momento só há suporte para o Ledger no <a href='https://www.mozilla.org/' rel='noopener noreferrer' target='_blank'><b>Mozilla Firefox</b></a>. O suporte para outros navegadores será restaurado em breve."
+        },
+        "header": "Faça o login com o seu dispositivo Ledger",
+        "modal": {
+            "accountsApproved": "conta(s) aprovada(s)",
+            "confirmPublicKey": "Confirmar chave pública",
+            "ledgerMustAdd": "O Ledger deve adicionar uma chave de acesso para cada conta protegida pelo seu dispositivo:",
+            "status": {
+                "confirm": "Confirmar",
+                "error": "Erro",
+                "pending": "Pendente",
+                "rejected": "Recusado",
+                "success": "Aprovado",
+                "waiting": "A seguir"
+            }
+        },
+        "one": "Certifique-se de que seu Ledger esteja conectado de forma segura e que o aplicativo NEAR esteja aberto no dispositivo."
+    },
+    "stagingBanner": {
+        "desc": "Aviso: Esta é uma versão de pré-lançamento da NEAR Wallet. Pode haver bugs, e esses bugs podem levar à perda de fundos. Ao continuar a usar esta versão, você concorda que entende e aceita esses riscos, e entende que a equipe da NEAR Wallet não poderá ajudá-lo.",
+        "title": "Aviso: Essa é uma versão de pré-lançamento da Carteira. Use a seu próprio risco!"
+    },
+    "stakedBalance": "Este NEAR está sendo usado ativamente para apoiar um validador e proteger a rede. Quando você decidir fazer unstake deste NEAR, levará algum tempo para ser mostrado em seu Saldo Disponível, já que NEAR leva 4 épocas (~ 52-65 horas) para unstake.",
+    "staking": {
+        "alertBanner": {
+            "button": "Ver validador atual",
+            "title": "Você deve primeiro retirar e fazer unstake dos seus tokens de seu validador atual para apostar com um novo validador."
+        },
+        "amountStakingInput": {
+            "placeholder": "exemplo: 15",
+            "title": "Digite o valor a ser utilizado no stake"
+        },
+        "balanceBanner": {
+            "currency": "NEAR",
+            "title": "Saldo de bloqueio disponível"
+        },
+        "balanceBox": {
+            "available": {
+                "button": "Sacar",
+                "info": "Esses tokens foram removidos de stake e estão disponíveis para serem sacados.",
+                "title": "Disponível para saque"
+            },
+            "farm": {
+                "button": "Claim",
+                "info": "This validator grants staking rewards in a token other than NEAR."
+            },
+            "pending": {
+                "info": "Esses tokens foram removidos de stake, mas ainda não estão disponíveis para serem sacados. Tokens ficam disponíveis entre 28 a 48 horas após a remoção.",
+                "title": "Aguardando liberação"
+            },
+            "staked": {
+                "button": "Unstake",
+                "info": "Tokens NEAR atualmente em staking com validadores. Estes tokens estão acumulando recompensas. Para acessar esses tokens, você deve primeiro retirar do stake e então sacá-los.",
+                "title": "Quantidade total em stake"
+            },
+            "unclaimed": {
+                "info": "Rewards that have been earned, but not withdrawn. NEAR token rewards are  <a target='_blank' href='https://www.investopedia.com/terms/c/compoundinterest.asp'>compounding</a> and are automatically re-staked.",
+                "title": "Recompensas ganhas",
+                "unavailable": {
+                    "cta": "Saber mais",
+                    "modalDescOne": "No momento não podemos calcular recompensas quando a Autenticação de Dois Fatores estiver ativada. Esperamos permitir esta funcionalidade no futuro próximo.",
+                    "modalDescTwo": "Enquanto isso, você poderá ver suas recompensas acumuladas em \"Quantidade total em stake\". Este saldo crescerá enquanto seus tokens estiverem em stake, já que suas recompensas serão automaticamente reinvestidas com seu validador atual.",
+                    "modalTitle": "Não é possível mostrar recompensas de stake ganhas",
+                    "title": "Não é possível mostrar recompensas ganhas."
+                }
+            }
+        },
+        "noValidators": {
+            "title": "No momento, você não está fazendo stake com nenhum validador."
+        },
+        "pageText": "Configure seu nó via CLI, então adicione-o aqui.",
+        "pageTitle": "Staking",
+        "stake": {
+            "accounts": "Se você bloqueou NEAR, você pode escolher fazer stake com o NEAR bloqueado (lockup.near) ou com o NEAR desbloqueado (nome da sua conta). Você verá apenas as posições de stake para a conta selecionada. Se você não bloqueou NEAR, você pode ignorar esta seção",
+            "amount": "Quantidade",
+            "banner": {
+                "insufficientBalance": "Você está tentando fazer stake de todo seu saldo disponível. Pelo menos <b>${data} NEAR</b> deve ser reservado para cobrir as taxas de transação.",
+                "stakeMax": "Uma pequena parte (${data} NEAR) de seu saldo disponível foi reservada para cobrir as taxas de transação."
+            },
+            "button": "Submeter Stake",
+            "confirm": "Você está com staking",
+            "desc": "Digite a quantidade que você gostaria de efetuar stake com o validador escolhido.",
+            "from": "de",
+            "input": {
+                "availableBalance": "Disponível para fazer staking",
+                "near": "NEAR"
+            },
+            "ledgerDisclaimer": "Nota: Como esta é a primeira vez que você efetua staking com esse validador, você precisará confirmar duas transações.",
+            "stakeWith": "Stake com",
+            "title": "Quantidade em Stake",
+            "useMax": "Usar o máximo",
+            "with": "com"
+        },
+        "stakeSuccess": {
+            "button": "Voltar ao Painel",
+            "desc": "seu stake foi delegado com sucesso ao validador escolhido:",
+            "descTwo": "Agora você pode ver sua delegação e recompensas de staking em seu painel de staking.",
+            "title": "Sucesso!"
+        },
+        "staking": {
+            "available": "Disponível",
+            "button": "Fazer stake meus tokens",
+            "currentValidators": "Seus validadores atuais",
+            "desc": "Faça stake de seus tokens NEAR com um validador",
+            "noValidators": "Você ainda não fez staking com um validador.",
+            "selectAccount": "Staking de",
+            "title": "Staking",
+            "totalStaked": "Total em stake"
+        },
+        "unstake": {
+            "beforeUnstakeDisclaimer": "Os tokens unstaked ficarão disponíveis dependendo de um período de lançamento de ~ 52-65 horas (4 épocas).",
+            "button": "Unstake Tokens",
+            "confirm": "Você está unstaking",
+            "desc": "Digite a quantidade que você gostaria de remover do stake com o validador escolhido.",
+            "input": {
+                "availableBalance": "Available to unstake",
+                "near": "NEAR"
+            },
+            "stakeWith": "Remover stake de",
+            "title": "Unstake Tokens"
+        },
+        "unstakeSuccess": {
+            "button": "Voltar ao Painel",
+            "desc": "<b>${amount}</b> foi retirado com sucesso deste validador:",
+            "descTwo": "Seus tokens aguardam liberação e serão disponibilizados em aproximadamente 52-65 horas (4 períodos).",
+            "title": "Sucesso!"
+        },
+        "validator": {
+            "button": "Efetuar stake com validador",
+            "desc": "Esta é a taxa paga ao validador para apostar em seu nome. Essa taxa é cobrada apenas em suas recompensas.",
+            "fee": "Taxa do validador",
+            "title": "Validador: <br/>${validator}",
+            "unstake": "Você está unstaking",
+            "withdraw": "Você está sacando",
+            "withdrawalDisclaimer": "Os fundos pendentes de liberação serão disponibilizados após ~ 52-65 horas (4 épocas)"
+        },
+        "validatorBox": {
+            "cta": "Selecionar",
+            "fee": "Taxa",
+            "near": "NEAR",
+            "staking": "Staking",
+            "state": {
+                "active": "ativo",
+                "inactive": "inativo"
+            },
+            "with": "com"
+        },
+        "validators": {
+            "available": "Validadores disponíveis",
+            "button": "Visualizar validador",
+            "desc": {
+                "account": "Insira um validador conhecido ou selecione um validador da lista para fazer stake de seus tokens NEAR.",
+                "lockup": "Insira um validador conhecido ou selecione um validador da lista para fazer stake de seus tokens NEAR. Você só pode fazer stake com um único validador em um determinado momento.",
+                "unstake": "Selecione o validador ao qual deseja fazer unstake de seus tokens.",
+                "withdraw": "Selecione o validador ao qual deseja fazer um saque de seus tokens."
+            },
+            "inputLabel": "ID da conta do validador",
+            "inputPlaceholder": "validador-name.near",
+            "search": {
+                "error": "Nenhum validador correspondente.",
+                "success": "Validador encontrado!"
+            },
+            "title": "Selecione um validador"
+        }
+    },
+    "stakingPoolUnstaked": "Este NEAR está atualmente em uma pool de stake, mas unstaked. Pode, por exemplo, estar em um estado de liberação pendente.",
+    "success": "Sucesso",
+    "sunset": {
+        "autoImport": {
+            "tryAnotherMethod": "Tentar outro método de importação"
+        },
+        "banner": {
+            "cta": "Migrar contas",
+            "phase2": {
+                "description": "Envios, staking e aprovações de apps param em {{date}}. Mova suas contas para a Meteor Wallet agora para manter o acesso completo. Seus fundos estão seguros.",
+                "title": "A MyNearWallet entra em modo limitado em {{date}}"
+            },
+            "phase3": {
+                "description": "Você pode ver saldos, exportar suas chaves e mover suas contas. Seus fundos estão seguros.",
+                "title": "A MyNearWallet agora está em modo limitado"
+            }
+        },
+        "bar": {
+            "cta": "Migrar agora",
+            "import": {
+                "description": "Sua frase de recuperação, chave privada ou dispositivo Ledger funciona diretamente na Meteor Wallet.",
+                "title": "Você não precisa da MyNearWallet para acessar sua conta."
+            },
+            "phase2": {
+                "description": "A partir daí, envios, staking e aprovações de apps param. Mova suas contas agora.",
+                "title": "A MyNearWallet entra em modo limitado em {{date}}."
+            },
+            "phase3": {
+                "description": "Você pode ver saldos, exportar suas chaves e mover suas contas.",
+                "title": "A MyNearWallet está em modo limitado."
+            },
+            "reload": {
+                "cta": "Recarregar",
+                "description": "Recarregue a página para continuar com a versão mais recente.",
+                "title": "A MyNearWallet foi atualizada."
+            }
+        },
+        "common": {
+            "backToWallet": "Voltar à carteira",
+            "exportKeys": "Exportar minhas chaves",
+            "getMeteor": "Obter a Meteor Wallet",
+            "learnMore": "Saiba mais",
+            "migrate": "Migrar minhas contas",
+            "resume": "Retomar transferência",
+            "retry": "Tentar novamente",
+            "whyIsThisHappening": "Por que isso está acontecendo?"
+        },
+        "dapp": {
+            "approval": {
+                "body": "A MyNearWallet está sendo descontinuada e não aprova mais solicitações de apps.",
+                "bodyWithHost": "{{host}} enviou uma solicitação, mas a MyNearWallet está sendo descontinuada e não aprova mais solicitações de apps.",
+                "title": "A MyNearWallet não pode mais aprovar solicitações de apps"
+            },
+            "cli": {
+                "body": "O login no NEAR CLI com a MyNearWallet não é mais suportado, pois a MyNearWallet está sendo descontinuada.",
+                "hint": "Exporte sua chave privada da MyNearWallet e importe-a no NEAR CLI, ou faça login no NEAR CLI com outra carteira.",
+                "title": "O login no NEAR CLI não é mais suportado"
+            },
+            "closeWindow": "Você pode fechar esta janela.",
+            "errorMessage": "A MyNearWallet está sendo descontinuada e não aceita mais esta solicitação. Escolha outra carteira.",
+            "hint": "Suas contas e fundos estão seguros. Escolha outra carteira no app, ou mova primeiro sua conta para a Meteor Wallet e conecte-se com ela.",
+            "hintWithHost": "Suas contas e fundos estão seguros. Escolha outra carteira em {{host}}, ou mova primeiro sua conta para a Meteor Wallet e conecte-se com ela.",
+            "login": {
+                "body": "A MyNearWallet está sendo descontinuada e não aceita mais novas conexões de apps.",
+                "bodyWithHost": "{{host}} pediu para se conectar, mas a MyNearWallet está sendo descontinuada e não aceita mais novas conexões de apps.",
+                "title": "A MyNearWallet não pode mais se conectar a apps"
+            },
+            "returningToApp": "Voltando ao app…",
+            "returningToHost": "Voltando para {{host}}…",
+            "returnToApp": "Voltar ao app",
+            "returnToHost": "Voltar para {{host}}",
+            "signedOut": {
+                "body": "Nenhuma conta MyNearWallet está conectada neste navegador, e a MyNearWallet está sendo descontinuada, então não pode aprovar esta solicitação aqui.",
+                "bodyWithHost": "{{host}} enviou uma solicitação, mas nenhuma conta MyNearWallet está conectada neste navegador. A MyNearWallet está sendo descontinuada, então não pode aprovar esta solicitação aqui.",
+                "hint": "Suas contas e fundos estão seguros. Sua frase de recuperação, chave privada ou dispositivo Ledger funciona diretamente na Meteor Wallet: adicione sua conta lá e depois escolha a Meteor Wallet no app.",
+                "hintWithHost": "Suas contas e fundos estão seguros. Sua frase de recuperação, chave privada ou dispositivo Ledger funciona diretamente na Meteor Wallet: adicione sua conta lá e depois escolha a Meteor Wallet em {{host}}.",
+                "title": "Nenhuma conta MyNearWallet neste navegador"
+            }
+        },
+        "existingAccountGate": {
+            "checking": "Verificando sua conta…",
+            "errorBody": "Não foi possível acessar a rede NEAR para confirmar esta conta. Nada foi alterado. Tente novamente.",
+            "errorTitle": "Não foi possível verificar esta conta"
+        },
+        "guidance": {
+            "actions": {
+                "exportKey": "Exportar chave",
+                "openMeteor": "Abrir a Meteor Wallet",
+                "turnOff2fa": "Desativar 2FA"
+            },
+            "algorithmUnsupported": "Este tipo de chave não pode ser transferido automaticamente. Exporte a chave e importe-a em uma carteira compatível.",
+            "ledger": "Esta conta é protegida pelo seu dispositivo Ledger. Conecte o mesmo Ledger na Meteor Wallet ou em qualquer carteira NEAR compatível com Ledger. Nenhuma chave precisa ser movida.",
+            "noLocalKey": "A MyNearWallet não guarda uma chave para esta conta neste navegador. Use sua frase de recuperação ou dispositivo original na nova carteira.",
+            "notFullAccess": "A chave deste navegador não consegue controlar totalmente esta conta. Use sua frase de recuperação original na nova carteira.",
+            "notFunded": "Este endereço nunca recebeu fundos, então ainda não há nada para transferir. Exporte a chave para manter o acesso caso fundos cheguem depois.",
+            "twoFactor": "Desative a 2FA nas configurações da conta e depois volte para mover esta conta. Se você configurou uma frase de recuperação de 12 palavras para ela, essa frase ainda tem acesso total e funciona diretamente na Meteor Wallet."
+        },
+        "importBlocked": {
+            "checkFailed": "Não foi possível acessar a rede NEAR para verificar esta conta. Nada foi alterado. Tente novamente.",
+            "noAccount": "Nenhuma conta NEAR foi encontrada para esta frase de recuperação ou chave. A MyNearWallet não pode mais criar novas contas. Verifique se você a digitou corretamente. Ela também funciona na Meteor Wallet e em outras carteiras NEAR."
+        },
+        "inline": {
+            "dappApproval": "As aprovações de apps na MyNearWallet terminam em {{date}}. Mova sua conta para uma carteira compatível para continuar usando apps.",
+            "dappApprovalWithHost": "As aprovações de apps na MyNearWallet terminam em {{date}}. Mova sua conta para continuar usando {{host}}.",
+            "migrateLink": "Migrar agora",
+            "staking": "Novos stakings foram encerrados. Você ainda pode fazer unstake e sacar aqui até {{date}}. Seus NEAR em staking continuam na sua conta e podem ser gerenciados pela nova carteira. O unstake leva cerca de 2–3 dias.",
+            "stakingEnded": "As ações de staking na MyNearWallet foram encerradas. Seu staking está seguro e continua visível aqui. Gerencie-o pela nova carteira depois de mover sua conta."
+        },
+        "landing": {
+            "existingAccount": "Já tem uma conta? Sua frase de recuperação, chave privada ou dispositivo Ledger funciona diretamente na Meteor Wallet.",
+            "limitedMode": {
+                "description": "Envios, staking e aprovações de apps foram encerrados. Suas contas e fundos continuam seguros na NEAR.",
+                "title": "A MyNearWallet está em modo limitado"
+            },
+            "noNewAccounts": "A MyNearWallet não cria mais novas contas. Novo na NEAR? Comece com a Meteor Wallet.",
+            "otherWallets": "Outras carteiras NEAR"
+        },
+        "manualExport": {
+            "findingAccounts": "Procurando as contas cujas chaves esta carteira guarda…",
+            "howToImport": "Na sua nova carteira, escolha Importar chave privada e cole a chave privada abaixo (ela começa com ed25519:).",
+            "noKeys": "Este navegador não guarda nenhuma chave privada para exportar.",
+            "notes": {
+                "notFullAccess": "Esta chave não consegue controlar totalmente a conta. Use sua frase de recuperação original na nova carteira, se a tiver.",
+                "notFunded": "Este endereço nunca recebeu fundos, então ainda não existe na NEAR. A chave continua controlando-o se fundos chegarem depois.",
+                "twoFactor": "Esta conta tem 2FA ativada, então esta chave pode não conseguir movê-la sozinha. Desative a 2FA primeiro ou use sua frase de recuperação de 12 palavras, se tiver configurado uma. Guarde esta chave com o mesmo cuidado que uma frase de recuperação."
+            },
+            "recoveryPhraseStillWorks": "Se você salvou uma frase de recuperação de 12 palavras ao criar uma conta, essa frase também continua funcionando em qualquer carteira NEAR."
+        },
+        "nav": {
+            "migrate": "Migrar"
+        },
+        "notice": {
+            "antiPhishing": "Nunca pediremos sua frase de recuperação ou chave privada por e-mail, mensagem direta ou em qualquer outro site. A migração acontece somente dentro de app.mynearwallet.com.",
+            "continue": "Continuar",
+            "learnMore": "Saiba mais",
+            "migrateNow": "Migrar agora",
+            "phase1": {
+                "p1": "A MyNearWallet será descontinuada gradualmente como parte da transição do ecossistema NEAR.",
+                "p2": "Seus fundos continuam seguros e nenhuma ação imediata é necessária.",
+                "p3": "Nos próximos meses ofereceremos opções de migração guiada para carteiras NEAR compatíveis.",
+                "title": "A MyNearWallet será descontinuada"
+            },
+            "phase2": {
+                "p1": "A criação de contas, as trocas, a compra de NEAR, novos stakings e novas conexões de apps foram desativados.",
+                "p2": "A partir de {{date}}, envios, staking e aprovações de apps também param. Você ainda poderá ver seus saldos, exportar suas chaves e mover suas contas.",
+                "p3": "Seus fundos estão seguros. Mova suas contas para a Meteor Wallet agora para manter o acesso completo.",
+                "title": "A MyNearWallet entra em modo limitado em {{date}}"
+            },
+            "phase3": {
+                "p1": "Envios, staking e aprovações de apps foram encerrados. Seus fundos estão seguros, e você ainda pode ver seus saldos e mover suas contas para a Meteor Wallet.",
+                "title": "A MyNearWallet agora está em modo limitado"
+            }
+        },
+        "retired": {
+            "addRecoveryMethod": {
+                "hint": "Sua frase de recuperação e suas chaves atuais continuam funcionando. Depois de mover sua conta, você pode gerenciar as chaves dela na nova carteira.",
+                "title": "Não é mais possível adicionar chaves e métodos de recuperação"
+            },
+            "body": "A MyNearWallet está sendo descontinuada. Este recurso foi desativado para que você possa se concentrar em mover suas contas para uma carteira compatível. Seus fundos estão seguros na sua conta na NEAR.",
+            "buy": {
+                "hint": "Depois que sua conta for movida, você pode comprar NEAR na Meteor Wallet ou em uma corretora.",
+                "title": "A compra de NEAR não está mais disponível"
+            },
+            "createAccount": {
+                "fundedHint": "Começou a criar uma conta e já depositou fundos nela? Importe-a na Meteor Wallet com sua frase de recuperação. Seus fundos estão seguros.",
+                "hint": "Novo na NEAR? Você pode criar uma carteira com a Meteor Wallet.",
+                "title": "A criação de novas contas foi encerrada"
+            },
+            "enableTwoFactor": {
+                "hint": "Ativar a 2FA agora tornaria mais difícil mover sua conta. A segurança atual da sua conta não muda.",
+                "title": "A autenticação de dois fatores não pode mais ser ativada"
+            },
+            "explore": {
+                "hint": "Depois de mover sua conta, você pode descobrir apps NEAR pela Meteor Wallet.",
+                "title": "A página Explore não está mais disponível"
+            },
+            "linkdropClaim": {
+                "hint": "Resgate este link com a Meteor Wallet ou outra carteira NEAR. Até ser resgatado, os fundos continuam vinculados ao link.",
+                "title": "Links NEAR não podem mais ser resgatados aqui"
+            },
+            "manageLedger": {
+                "hint": "Se sua conta já é protegida por um Ledger, conecte o mesmo Ledger na Meteor Wallet ou em qualquer carteira NEAR compatível com Ledger. Nenhuma chave precisa ser movida.",
+                "title": "A configuração do Ledger não está mais disponível"
+            },
+            "phase3Body": "A MyNearWallet agora está em modo limitado.",
+            "receive": {
+                "hint": "O recebimento pela MyNearWallet foi encerrado. Sua conta continua existindo na NEAR, então tudo o que for enviado a ela chega on-chain e fica disponível na carteira para a qual você se mudar.",
+                "title": "A página Receber não está mais disponível"
+            },
+            "send": {
+                "hint": "Depois de mover sua conta, você pode enviar NEAR e tokens pela Meteor Wallet. Até lá, seus fundos ficam seguros na sua conta.",
+                "title": "Os envios não estão mais disponíveis"
+            },
+            "stakeDeposit": {
+                "hint": "Seu staking atual está seguro. Você ainda pode fazer unstake e sacar na MyNearWallet até {{date}}, ou gerenciar seu staking pela nova carteira a qualquer momento.",
+                "phase3Hint": "Seu staking atual está seguro na sua conta. Depois de mover sua conta, você pode gerenciá-lo pela nova carteira.",
+                "title": "Novos stakings não estão mais disponíveis"
+            },
+            "stakeManage": {
+                "hint": "Seu staking está seguro na sua conta e você ainda pode vê-lo na MyNearWallet. Depois de mover sua conta, você pode fazer unstake, sacar e resgatar recompensas pela nova carteira.",
+                "title": "As ações de staking não estão mais disponíveis"
+            },
+            "swap": {
+                "hint": "Depois de mover sua conta, você pode trocar tokens na Meteor Wallet.",
+                "title": "As trocas não estão mais disponíveis"
+            }
+        },
+        "select": {
+            "exportKeysInstead": "Exportar chaves privadas em vez disso"
+        }
+    },
+    "swap": {
+        "available": "Disponivel: ${amount} ${symbol}",
+        "confirm": "Confirmar & Trocar",
+        "details": "Detalhes da transação",
+        "error": "Erro de troca",
+        "errorToFetchData": "Erro ao carregar dados para o exchange",
+        "failTitle": "Falha na troca!",
+        "fee": "Taxas estimadas",
+        "from": "From",
+        "inputTooLow": "O valor inserido é muito baixo",
+        "insufficientBalanceForAmountAndFee": "Saldo insuficiente para pagar o montante da contribuição e a taxa de swap",
+        "insufficientBalanceForFee": "Saldo insuficiente para pagar a taxa de swap",
+        "max": "Maximo: ${amount} ${symbol}",
+        "minReceived": "Mínimo recebido",
+        "noPoolAvailable": "Nenhum pool disponível para fazer uma troca de ${tokenIn} -> ${tokenOut}",
+        "price": "Preco",
+        "priceImpact": "Impacto dos preços",
+        "review": "Swap De Revisão",
+        "reviewInfo": "Você está trocando",
+        "slippage": "Tolerância ao deslizamento",
+        "success": "Swap bem sucedido",
+        "successTitle": "Troca completa!</br>You swapped <span class='color-blue space'>${amountFrom}</span></br>to <span class='color-green'>${amountTo}</span>",
+        "title": "Swap",
+        "to": "To",
+        "translateIdInfoTooltip": {
+            "fee": "O custo estimado de processamento da sua transação.",
+            "minimumReceived": "O valor mínimo que você receberá da negociação.",
+            "priceImpact": "A diferença entre o preço de mercado e o preço estimado devido à dimensão do comércio.",
+            "slippage": "A percentagem que o preço pode aumentar antes de a operação falhar.",
+            "swapFee": "Taxa para os fornecedores de liquidez tomada sobre o montante pago."
+        }
+    },
+    "swapping": "Swapping",
+    "sync": "Sincronizar",
+    "tokenBox": {
+        "priceUnavailable": "Preço indisponível",
+        "swapTo": "para"
+    },
+    "topLevelAccounts": {
+        "body": "Nomes de contas são similares a nomes de domínio. Apenas a conta ${suffix} pode criar contas como seunome.${suffix}, e apenas seunome.${suffix} pode criar app.seunome.${suffix}. Todas as contas criadas nesta carteira usam a Conta Top Level (TLA) .${suffix} . Para saber mais sobre nomes de conta e criar sua própria TLA, visite a <a rel='noopener noreferrer' href='https://docs.nearprotocol.com/docs/concepts/account'>documentação</a>.",
+        "header": "Contas Top Level"
+    },
+    "total": "total",
+    "totalBalance": "Seu saldo total representa todos os tokens NEAR sob seu controle. Em muitos casos, você não terá acesso imediato a todo o saldo (por exemplo, se estiver bloqueado, delegado ou em stake). Verifique seu saldo disponível para o NEAR que você pode usar, transferir, delegar e fazer stake ativamente.",
+    "transaction": {
+        "status": {
+            "checkingStatus": "verificando status",
+            "Failure": "Falhou",
+            "notAvailable": "Status indisponível",
+            "NotStarted": "Não iniciado",
+            "Started": "Iniciada",
+            "SuccessValue": "Bem-sucedida"
+        },
+        "steps": "Etapas ${currentStepCount} de ${totalStepCount}",
+        "TransactionHash": "Hash de transação"
+    },
+    "transfer": {
+        "estimatedFees": "Taxas estimadas",
+        "from": "De",
+        "to": "Para"
+    },
+    "twoFactor": {
+        "active": "Ativo",
+        "alertBanner": {
+            "button": "Saber mais",
+            "title": "Quando ativado, <b>${data}</b> será bloqueado para cobrir os custos de armazenamento do contrato de autenticação de dois fatores."
+        },
+        "checkBox": "Eu concordo que, ao habilitar a autenticação de dois fatores, será feita a reserva de ${amount} para cobrir o custo de armazenamento do contrato.",
+        "desc": "Proteja sua conta exigindo confirmação via SMS ou e-mail ao autorizar transações.",
+        "disable": {
+            "desc": "Tenha em mente que as transações não precisarão ser confirmadas com 2FA quando ele estiver desativado.",
+            "disable": "Desativar 2FA",
+            "keep": "Não, manter 2FA",
+            "title": "Tem certeza que deseja desativar a 2FA?"
+        },
+        "email": "Endereço de e-mail",
+        "enable": "Habilitar Autenticação de Dois Fatores (2FA)",
+        "notEnabled": "2FA Inativo",
+        "notEnoughBalance": "Para ativar o 2FA, sua conta requer um saldo mínimo disponível de ${amount}",
+        "phone": "Número de Telefone",
+        "promptDesc": "Recomendamos que você configure um método de Autenticação de Dois Fatores para aumentar a segurança de sua conta",
+        "select": "Selecione o Método de Autenticação",
+        "since": "desde",
+        "subHeader": "Two factor authentication adds an extra layer of security to your account. <b>Passphrase and Ledger keys continue to allow full access to your account.</b>",
+        "title": "Autenticação de Dois Fatores",
+        "verify": {
+            "desc": "Um código de verificação de 6 dígitos foi enviado para:",
+            "didntReceive": "Não recebeu o seu código?",
+            "inputLabel": "Digite o seu código de verificação de 6 dígitos",
+            "placeholder": "Código de Verificação",
+            "resend": "Reenviar",
+            "resending": "Enviando...",
+            "resent": "Código enviado!",
+            "title": "Digite o Código de Verificação de Dois Fatores (2FA)"
+        }
+    },
+    "unlockedAvailTransfer": "Este NEAR está desbloqueado e pode ser transferido de seu contrato de bloqueio.",
+    "unlockedBalance": "Este NEAR ainda está em um contrato de bloqueio, mas desbloqueado.",
+    "unvestedBalance": "O NEAR não investido está reservado a você, mas ainda não está sob sua propriedade. Você ainda pode delegar ou fazer stake deste NEAR, e as recompensas serão inteiramente suas. Conforme seu NEAR é adquirido, ele aparecerá em seu saldo Bloqueado ou Desbloqueado.",
+    "verifyAccount": {
+        "desc": "Para prevenir spam de novas contas, nós precisamos validar sua operação. Você pode verificar através de um código de utilização única ou através de um pequeno depósito inicial.",
+        "modal": {
+            "email": {
+                "desc": "Você precisará usar um email diferente ou selecionar um método alternativo para verificar esta conta. Você ainda pode usar esse endereço como método de recuperação.",
+                "title": "Esse endereço de email já foi usado para verificar uma conta diferente."
+            },
+            "phone": {
+                "desc": "Você precisará usar um número diferente ou selecionar um método alternativo para verificar esta conta. Você ainda pode usar esse número como um método de recuperação.",
+                "title": "Esse número de telefone já foi usado para verificar uma conta diferente.."
+            }
+        },
+        "option": {
+            "creditCard": {
+                "desc": "Compre NEAR através do MoonPay para ser usado como depósito inicial.",
+                "title": "Depósito com um cartão de crédito"
+            },
+            "email": {
+                "desc": "Receba um código de verificação por email.",
+                "title": "Email"
+            },
+            "existingAccount": {
+                "desc": "Use uma conta existente para depositar e inicializar sua nova conta.",
+                "title": "Depósito com uma conta existente"
+            },
+            "manualDeposit": {
+                "desc": "Envie um depósito manualmente para um endereço de financiamento único.",
+                "title": "Depósito manual"
+            },
+            "phone": {
+                "desc": "Receba um código de verificação por SMS.",
+                "title": "Telefone"
+            }
+        },
+        "options": {
+            "initialDeposit": "Depósito inicial",
+            "passCode": "Código de verificação"
+        },
+        "title": "Quase lá! Verifique sua nova conta."
+    },
+    "wallet": {
+        "availableBalance": "Saldo disponível",
+        "balance": "Saldo",
+        "balances": "Saldos",
+        "balanceTitle": "Saldo da carteira",
+        "collectibles": "Colecionáveis",
+        "dateAndTime": "Data & Hora",
+        "depositNear": {
+            "desc": "Você precisará de tokens NEAR para realizar transações com sua carteira.",
+            "title": "Deposite NEAR"
+        },
+        "recommendToSetPassword": "Recomenda-se configurar uma senha para sua conta para melhorar a segurança de suas chaves privadas ou frase de segurança.",
+        "setUpPasswordBtn": "Configurar senha",
+        "status": "Status",
+        "tokens": "Tokens",
+        "totalBalance": "Saldo total",
+        "totalBalanceTitle": "Saldo total",
+        "yourPortfolio": "Seu portfólio"
+    },
+    "walletErrorCodes": {
+        "addAccessKey": {
+            "error": "Um erro ocorreu.<br />Para acessar sua conta, por favor, digite abaixo a frase-semente do passo anterior."
+        },
+        "addAccessKeySeedPhrase": {
+            "errorSecond": "Ocorreu um erro.<br />A frase-semente não foi adicionada à sua conta. Por favor, tente novamente."
+        },
+        "addLedgerAccountId": {
+            "errorRpc": "Ocorreu um erro ao recuperar a conta."
+        },
+        "createNewAccount": {
+            "accountCreated": {
+                "error": "A criação da conta foi bem sucedida mas houve um erro. Por favor importe sua conta."
+            },
+            "accountExists": {
+                "error": "A criação da conta falhou. A conta já existe."
+            },
+            "error": "A criação da conta falhou. Tente novamente."
+        },
+        "emailProviderInvalid": "${domainName} não pode ser usado para verificação da conta. Por favor, informe um e-mail diferente.",
+        "getLedgerAccountIds": {
+            "aborted": "A ação foi interrompida.",
+            "noAccounts": "Nenhuma conta foi encontrada para esse dispositivo Ledger. Por favor, confirme se você tem uma conta associada com essa Ledger.",
+            "noAccountsAccepted": "Nenhuma conta foi aceita.",
+            "U2FNotSupported": "O navegador com suporte a extensão U2F é necessário para a Ledger. Por favor, use Chrome, Opera ou Firefox com a extensão U2F."
+        },
+        "invalidRecaptchaCode": "Código reCAPTCHA inválido; Tente novamente!",
+        "lockup": {
+            "transferAllWithStakingPoolBalance": "Unstake e retire todos os fundos do pool de staking para transferir seu saldo bloqueado restante para a carteira."
+        },
+        "promptTwoFactor": {
+            "userCancelled": "Código 2FA não foi verificado corretamente."
+        },
+        "recoverAccountPrivateKey": {
+            "errorPKNotValid": "A chave privada fornecida não é válida. Por favor, verifique a sua chave privada e tente novamente."
+        },
+        "recoverAccountSeedPhrase": {
+            "errorInvalidSeedPhrase": "Nenhuma conta foi encontrada para essa frase-semente."
+        },
+        "recoveryMethods": {
+            "lastMethod": "Não foi possível deletar seu último método de recuperação. A menos que você tenha habilitado a Ledger, você precisa manter pelo menos um método de recuperação ativo para garantir a capacidade de recuperação de sua conta.",
+            "setupMethod": "Ocorreu um erro. Por favor, verifique seu método de recuperação."
+        },
+        "sendFungibleToken": {
+            "error": "Um erro ocorreu. A transação enviada foi cancelada."
+        },
+        "setupRecoveryMessage": {
+            "error": "Um erro ocorreu ao configurar o método de recuperação. Por favor, tente novamente!"
+        },
+        "setupRecoveryMessageNewAccount": {
+            "invalidCode": "Código inválido"
+        },
+        "signAndSendTransactions": {
+            "notEnoughTokens": "Tokens insuficientes."
+        },
+        "staking": {
+            "noLockup": "Nenhum contrato de bloqueio para a conta",
+            "noWithdraw": "Incapaz de retirar o saldo pendente do validador"
+        }
+    },
+    "warning": "Atenção"
+}
