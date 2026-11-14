@@ -59,6 +59,7 @@ export function explainError(err: unknown): string {
   const parsed = parseContractError(text);
   const known: Record<string, string> = {
     NAME_TAKEN: "That name is already taken.",
+    PAYMENT_REQUIRED: "This contract only lets its admin or relayer claim without paying, and this account is neither.",
     NAME_INVALID: "That name is not allowed",
     NAME_NOT_FOUND: "The contract has no record for that name.",
     NOT_OWNER: "The connected NEAR account does not own this name.",

@@ -212,6 +212,33 @@ const completeClaim = () =>
     }
   });
 
+/**
+ * Claims by calling the contract's `claim` from the connected wallet. The
+ * contract allows this without payment only for its admin or relayer account;
+ * for anyone else it rejects the call.
+ */
+const claimWithWallet = () =>
+  run("complete", async () => {
+    const n = normalizeName(checkout.value?.name ?? "", settings.suffix);
+    if (!n.ok) throw new Error("Start the claim again.");
+    try {
+      await registryWrite.claim(n.name);
+    } catch (err) {
+      // The deployed contract can lose its panic text and report a bare trap.
+      if (/unreachable/i.test(explainError(err))) throw new Error("PAYMENT_REQUIRED");
+      throw err;
+    }
+    const onChain = (await registry.getRecord(n.name))?.owner === nearAccount.value;
+    claimOutcome.value = { onChain, ref: "" };
+    if (onChain) {
+      newName.value = "";
+      await loadNames();
+    }
+  });
+
+/** The resolver's no-payment demo claim only exists on testnet. */
+const demoClaim = settings.network === "testnet";
+
 /** Applies a waiting destination change through the resolver's admin key, then re-reads the contract. */
 const approveNow = () =>
   run("apply", async () => {
@@ -361,7 +388,7 @@ onUnmounted(() => {
         <dd>{{ checkout.amountFormatted }} on {{ checkout.chainName }}</dd>
       </dl>
 
-      <template v-if="!claimOutcome">
+      <template v-if="!claimOutcome && demoClaim">
         <p class="note warn">
           Demo only. Paying from another chain is not switched on here, because nothing collects funds from the
           resolver's deposit address yet. This button asks the resolver to claim the name without a payment.
@@ -372,12 +399,26 @@ onUnmounted(() => {
           </button>
         </div>
       </template>
+      <template v-else-if="!claimOutcome">
+        <p class="note warn">
+          Paying for a name is not available in this widget yet. The contract's admin or relayer account can claim
+          directly without paying; any other account will be refused.
+        </p>
+        <div class="actions">
+          <button type="button" class="btn block" :disabled="busy === 'complete'" @click="claimWithWallet">
+            {{ busy === "complete" ? "Confirm in your wallet…" : "Claim with my NEAR wallet" }}
+          </button>
+        </div>
+      </template>
       <template v-else-if="claimOutcome.onChain">
         <p class="note ok">Claimed. The contract now lists {{ checkout.name }} under your account.</p>
         <div class="actions">
           <button type="button" class="btn block" @click="manage(checkout.name.replace(settings.suffix, ''))">Manage this name</button>
         </div>
       </template>
+      <p v-else-if="!demoClaim" class="note bad">
+        Not claimed. The transaction went through, but the contract does not list this name under your account.
+      </p>
       <p v-else class="note bad">
         Not claimed on-chain. The resolver reported success<span v-if="claimOutcome.ref"> ({{ claimOutcome.ref }})</span>,
         but the contract has no record of this name for your account. The resolver is in mock mode or has no key

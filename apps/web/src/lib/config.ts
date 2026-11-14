@@ -1,4 +1,8 @@
-/** Public settings: Vite env defaults, overridable by the embedding page. */
+/**
+ * Public settings. The defaults are the mainnet deployment and the hosted
+ * resolver; Vite env or the embedding page can override them (see .env.example
+ * for the testnet + local resolver values).
+ */
 const env = import.meta.env;
 
 export interface Settings {
@@ -12,10 +16,10 @@ export interface Settings {
 }
 
 export const settings: Settings = {
-  apiUrl: (env.VITE_API_URL ?? "http://localhost:8000").replace(/\/$/, ""),
-  contractId: env.VITE_CONTRACT_ID ?? "unam-registry.testnet",
-  network: env.VITE_NEAR_NETWORK === "mainnet" ? "mainnet" : "testnet",
-  rpcUrl: env.VITE_NEAR_RPC_URL ?? "https://rpc.testnet.near.org",
+  apiUrl: (env.VITE_API_URL ?? "https://api.unamereg.xyz").replace(/\/$/, ""),
+  contractId: env.VITE_CONTRACT_ID ?? "uname-registry.near",
+  network: env.VITE_NEAR_NETWORK === "testnet" ? "testnet" : "mainnet",
+  rpcUrl: env.VITE_NEAR_RPC_URL ?? "https://rpc.mainnet.near.org",
   suffix: env.VITE_NAME_SUFFIX ?? ".uni",
 };
 

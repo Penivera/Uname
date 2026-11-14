@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from "vue";
+import { settings } from "./lib/config";
 import { isPayFlow, nav, type Screen } from "./lib/nav";
 import OwnerView from "./views/OwnerView.vue";
 import PayView from "./views/PayView.vue";
@@ -44,6 +45,8 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
       <PayView v-show="isPayFlow" :initial-name="initialName" />
       <OwnerView v-show="!isPayFlow" />
     </div>
-    <footer class="foot">Contract on NEAR testnet · routed payments use real funds on mainnet · bank payout is simulated</footer>
+    <footer class="foot">
+      Contract on NEAR {{ settings.network }} · routed payments use real funds on mainnet · bank payout is simulated
+    </footer>
   </section>
 </template>
