@@ -13,10 +13,10 @@ Concept and technical specification for NEAR HACKATHON 2026 · Nov 7, 2026 · @P
   - **Payment Token:** Testnet USDC (`17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e3613760`)
   - **Live Domain:** `peni.uni` &rarr; Owned by `peni.testnet` (Generation 3, with verified EVM address)
 - **Keyless Cross-Chain Callback Abstraction:** Solvers execute `ft_transfer_call` with `{"name": "...", "owner": "..."}`. The contract autonomous callback claims the domain directly to the target buyer with zero relayer private keys to manage.
-- **Multichain Stablecoin & Intent Settlement Guide:** [DOCS_SUPPORTED_STABLES.md](file:///home/peni/Projects/wip/DOCS_SUPPORTED_STABLES.md)
-- **Multichain Wallet Connectivity & WalletConnect Standards:** [DOCS_WALLET_CONNECTIVITY.md](file:///home/peni/Projects/wip/DOCS_WALLET_CONNECTIVITY.md)
-- **Backend Resolver & Router Service:** [resolver-py/README.md](file:///home/peni/Projects/wip/resolver-py/README.md)
-- **License:** [GPLv2 (GNU General Public License v2.0)](file:///home/peni/Projects/wip/LICENSE)
+- **Multichain Stablecoin & Intent Settlement Guide:** [DOCS_SUPPORTED_STABLES.md](DOCS_SUPPORTED_STABLES.md)
+- **Multichain Wallet Connectivity & WalletConnect Standards:** [DOCS_WALLET_CONNECTIVITY.md](DOCS_WALLET_CONNECTIVITY.md)
+- **Backend Resolver & Router Service:** [resolver-py/README.md](resolver-py/README.md)
+- **License:** [GPLv2 (GNU General Public License v2.0)](LICENSE)
 
 ## Standards alignment
 
@@ -344,4 +344,4 @@ Added for the Chain Signatures fallback: [Chain Signatures overview](https://doc
 
 ## License
 
-This project is free software licensed under the **GNU General Public License Version 2** (`GPL-2.0-only`). See [LICENSE](file:///home/peni/Projects/wip/LICENSE) for the full license terms.
+This project is free software licensed under the **GNU General Public License Version 2** (`GPL-2.0-only`). See [LICENSE](LICENSE) for the full license terms.

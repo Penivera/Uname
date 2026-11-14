@@ -282,4 +282,4 @@ near contract call-function as-transaction \
 
 ## 8. License
 
-This project is licensed under the **GNU General Public License v2.0** (`GPL-2.0-only`). See [LICENSE](file:///home/peni/Projects/wip/LICENSE) for the full license text.
+This project is licensed under the **GNU General Public License v2.0** (`GPL-2.0-only`). See [LICENSE](LICENSE) for the full license text.

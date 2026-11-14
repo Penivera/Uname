@@ -47,4 +47,4 @@ Backend orchestration service for Universal Name (`.uni`). Queries `unam-registr
 
 ## License
 
-This project is licensed under the **GNU General Public License Version 2** (`GPL-2.0-only`). See [LICENSE](file:///home/peni/Projects/wip/LICENSE).
+This project is licensed under the **GNU General Public License Version 2** (`GPL-2.0-only`). See [LICENSE](../LICENSE).

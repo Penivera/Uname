@@ -4,7 +4,7 @@
 
 Universal Name is a chain-agnostic domain name protocol and multichain settlement layer powered by a high-performance smart contract on NEAR Protocol. It maps human-readable names (`.uni`) to verified wallets across 20+ blockchains, automatically executes cross-chain intent settlement via NEAR Intents and NEAR Chain Signatures, and integrates seamlessly into Web3 wallets via client SDKs, wallet forks, and a MetaMask Snap.
 
-> **Product Scope & Requirements**: For the full product specification, user flows (A through E), security invariants, and threat models, see the [PRD (Product Requirements Document)](file:///home/peni/Projects/wip/PRD.md).
+> **Product Scope & Requirements**: For the full product specification, user flows (A through E), security invariants, and threat models, see the [PRD (Product Requirements Document)](PRD.md).
 
 ---
 
@@ -31,7 +31,7 @@ Universal Name is a chain-agnostic domain name protocol and multichain settlemen
 │   └── registry/              # NEAR smart contract (Rust + near-sdk v5, NEP-141, NEP-297, length tiers)
 ├── resolver-py/               # FastAPI resolver & intent router (1Click API, Chain Signatures, Checkout)
 ├── apps/
-│   └── web/                   # Next.js & Tailwind web app and embeddable widget
+│   └── web/                   # Vue 3 + Vite web app and embeddable widget
 ├── packages/
 │   ├── shared/                # Universal shared types, CAIP-2 mappings, domain normalization
 │   └── snap/                  # Official MetaMask Snap (@uname/snap) for onNameLookup (.uni)
@@ -113,7 +113,7 @@ uv run python main.py           # Starts server on http://localhost:8000
 
 ## 3. Frontend Web Application & Embeddable Widget (`apps/web`)
 
-A modern Next.js and Tailwind web dApp providing an end-to-end user experience for domain search, registration, connected wallet management, and routing configuration.
+A Vue 3 and Vite web app, built as an embeddable popup widget, providing an end-to-end user experience for domain search, registration, connected wallet management, and routing configuration.
 
 ### Features
 - **Instant Search & Registration**: Live domain availability checks with length-tiered pricing.
@@ -156,7 +156,7 @@ await window.ethereum.request({
 });
 ```
 
-See the [MetaMask Snap Documentation](file:///home/peni/Projects/wip/packages/snap/README.md) for full instructions, local testing with MetaMask Flask, and architecture details.
+See the [MetaMask Snap Documentation](packages/snap/README.md) for full instructions, local testing with MetaMask Flask, and architecture details.
 
 ---
 
@@ -166,9 +166,9 @@ Official SDKs are provided for seamless integration into wallets, indexers, bots
 
 | Language | Package | Path | Tests |
 | :--- | :--- | :--- | :--- |
-| **TypeScript / JS** | `@uname/resolver-sdk` | [`sdk/typescript`](file:///home/peni/Projects/wip/sdk/typescript) | 12/12 passing |
-| **Python** | `uname-resolver` | [`sdk/python`](file:///home/peni/Projects/wip/sdk/python) | 5/5 passing |
-| **Rust** | `uname-resolver` | [`sdk/rust`](file:///home/peni/Projects/wip/sdk/rust) | 5/5 passing |
+| **TypeScript / JS** | `@uname/resolver-sdk` | [`sdk/typescript`](sdk/typescript) | 12/12 passing |
+| **Python** | `uname-resolver` | [`sdk/python`](sdk/python) | 5/5 passing |
+| **Rust** | `uname-resolver` | [`sdk/rust`](sdk/rust) | 5/5 passing |
 
 ### TypeScript Quickstart
 ```typescript
@@ -195,7 +195,7 @@ let resolver = UnameResolver::default();
 let address = resolver.resolve_address("peni.uni", "base").await?;
 ```
 
-See [sdk/README.md](file:///home/peni/Projects/wip/sdk/README.md) for complete SDK guides.
+See [sdk/README.md](sdk/README.md) for complete SDK guides.
 
 ---
 
@@ -203,11 +203,11 @@ See [sdk/README.md](file:///home/peni/Projects/wip/sdk/README.md) for complete S
 
 To provide out-of-the-box support in native crypto wallets:
 1. **MyNearWallet Fork (`wallets/my-near-wallet`)**:
-   - Live, working fork of [MyNearWallet](https://github.com/mynearwallet/my-near-wallet) in [`wallets/my-near-wallet`](file:///home/peni/Projects/wip/wallets/my-near-wallet).
+   - Live, working fork of [MyNearWallet](https://github.com/mynearwallet/my-near-wallet) in [`wallets/my-near-wallet`](wallets/my-near-wallet).
    - Resolves `.uni` names directly in the Send flow for NEAR and NEP-141 tokens.
-   - See [wallets/my-near-wallet/UNAME_INTEGRATION.md](file:///home/peni/Projects/wip/wallets/my-near-wallet/UNAME_INTEGRATION.md).
+   - See [wallets/my-near-wallet/UNAME_INTEGRATION.md](wallets/my-near-wallet/UNAME_INTEGRATION.md).
 2. **Rabby Wallet & Taho Fork Blueprints**:
-   - Step-by-step guides and exact code diffs in [`docs/wallet-forks/`](file:///home/peni/Projects/wip/docs/wallet-forks/).
+   - Step-by-step guides and exact code diffs in [`docs/wallet-forks/`](docs/wallet-forks/).
 
 ---
 
@@ -242,14 +242,14 @@ node --test wallets/my-near-wallet/packages/frontend/test/uname_resolver.test.js
 
 ## Additional Documentation
 
-- [PRD (Product Requirements Document)](file:///home/peni/Projects/wip/PRD.md) — Comprehensive technical specification, user flows, and security model.
-- [DOCS_SUPPORTED_STABLES.md](file:///home/peni/Projects/wip/DOCS_SUPPORTED_STABLES.md) — Multichain stablecoins and settlement guide.
-- [DOCS_WALLET_CONNECTIVITY.md](file:///home/peni/Projects/wip/DOCS_WALLET_CONNECTIVITY.md) — Wallet connectivity and standards.
-- [MetaMask Snap Guide](file:///home/peni/Projects/wip/packages/snap/README.md) — Building and publishing `@uname/snap`.
-- [Wallet Forks Guide](file:///home/peni/Projects/wip/docs/wallet-forks/README.md) — Native integration for open-source wallets.
+- [PRD (Product Requirements Document)](PRD.md) — Comprehensive technical specification, user flows, and security model.
+- [DOCS_SUPPORTED_STABLES.md](DOCS_SUPPORTED_STABLES.md) — Multichain stablecoins and settlement guide.
+- [DOCS_WALLET_CONNECTIVITY.md](DOCS_WALLET_CONNECTIVITY.md) — Wallet connectivity and standards.
+- [MetaMask Snap Guide](packages/snap/README.md) — Building and publishing `@uname/snap`.
+- [Wallet Forks Guide](docs/wallet-forks/README.md) — Native integration for open-source wallets.
 
 ---
 
 ## License
 
-This project is licensed under the **GNU General Public License Version 2** (`GPL-2.0-only`). See [LICENSE](file:///home/peni/Projects/wip/LICENSE).
+This project is licensed under the **GNU General Public License Version 2** (`GPL-2.0-only`). See [LICENSE](LICENSE).
