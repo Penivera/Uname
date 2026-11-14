@@ -1,0 +1,31 @@
+{
+  "name": "@uname/resolver-sdk",
+  "version": "0.1.0",
+  "description": "Universal Name (.uni) cross-chain domain resolver SDK for Web3 wallets and dApps",
+  "license": "GPL-2.0-only",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "npx tsx test/resolver.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@unam/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "typescript": "^5.5.0"
+  }
+}

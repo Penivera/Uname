@@ -1,0 +1,16 @@
+[package]
+name = "uname-resolver"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-2.0-only"
+description = "Universal Name (.uni) cross-chain domain resolver SDK in Rust"
+
+[dependencies]
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["sync", "time"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }

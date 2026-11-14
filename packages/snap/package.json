@@ -1,0 +1,23 @@
+{
+  "name": "@uname/snap",
+  "version": "0.1.0",
+  "description": "MetaMask Snap for Universal Name (.uni) cross-chain domain resolution",
+  "license": "GPL-2.0-only",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "snap.manifest.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@unam/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "typescript": "^5.5.0"
+  }
+}

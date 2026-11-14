@@ -197,7 +197,7 @@ class NearContractClient:
             "method": "query",
             "params": {
                 "request_type": "call_function",
-                "finality": "optimistic",
+                "finality": "final",
                 "account_id": settings.REGISTRY_CONTRACT_ID,
                 "method_name": method_name,
                 "args_base64": args_b64,

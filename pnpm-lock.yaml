@@ -48,6 +48,32 @@ importers:
         specifier: ^2.1.0
         version: 2.1.9(@types/node@22.20.5)(lightningcss@1.33.0)
 
+  packages/snap:
+    dependencies:
+      '@unam/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.5
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+
+  sdk/typescript:
+    dependencies:
+      '@unam/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+    devDependencies:
+      '@types/node':
+        specifier: ^22.5.0
+        version: 22.20.5
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+
 packages:
 
   '@babel/helper-string-parser@7.29.14':
