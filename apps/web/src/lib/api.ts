@@ -32,7 +32,7 @@ async function request(path: string, init?: RequestInit): Promise<{ status: numb
   try {
     res = await fetch(settings.apiUrl + path, init);
   } catch {
-    throw new Error(`Cannot reach the resolver at ${settings.apiUrl}. Is resolver-py running?`);
+    throw new Error(`Cannot reach the resolver at ${settings.apiUrl}. Check the resolver is running and VITE_API_URL is right.`);
   }
   return { status: res.status, body: await res.json().catch(() => null) };
 }

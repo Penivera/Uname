@@ -339,6 +339,31 @@ const completeClaim = () =>
     }
   });
 
+/**
+ * Claims by calling the contract's `claim` from the connected NEAR wallet.
+ * The contract allows this without payment only for its admin or relayer
+ * account; anyone else is refused.
+ */
+const claimWithWallet = () =>
+  run("complete", async () => {
+    const n = normalizeName(checkout.value?.name ?? "", settings.suffix);
+    if (!n.ok) throw new Error("Start the claim again.");
+    if (!nearAccount.value) throw new Error("Connect the NEAR wallet that should own the name.");
+    try {
+      await registryWrite.claim(n.name);
+    } catch (err) {
+      // The deployed contract can lose its panic text and report a bare trap.
+      if (/unreachable/i.test(explainError(err))) throw new Error("PAYMENT_REQUIRED");
+      throw err;
+    }
+    const onChain = (await registry.getRecord(n.name))?.owner === nearAccount.value;
+    claimOutcome.value = { onChain, ref: "" };
+    if (onChain) {
+      newName.value = "";
+      await loadNames();
+    }
+  });
+
 const approveNow = () =>
   run("apply", async () => {
     await api.approvePolicy(selected.value);
@@ -635,6 +660,16 @@ onUnmounted(() => {
             </button>
           </div>
         </template>
+
+        <!-- Contract admin or relayer: claim without paying -->
+        <div v-if="isMainnet && nearAccount" style="margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 12px">
+          <p class="muted" style="margin-bottom: 8px">
+            The contract's admin or relayer account can claim without paying. Any other account is refused.
+          </p>
+          <button type="button" class="btn secondary small block" :disabled="busy === 'complete'" @click="claimWithWallet">
+            {{ busy === "complete" ? "Confirm in your wallet…" : "Claim as contract admin (no payment)" }}
+          </button>
+        </div>
 
         <!-- Fallback testnet demo button -->
         <div v-if="!isMainnet" style="margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 12px">
