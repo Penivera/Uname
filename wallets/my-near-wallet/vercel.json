@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd packages/frontend && NEAR_WALLET_ENV=mainnet yarn bundle",
+  "buildCommand": "cd packages/frontend && yarn build",
   "outputDirectory": "packages/frontend/dist",
   "rewrites": [
     {
