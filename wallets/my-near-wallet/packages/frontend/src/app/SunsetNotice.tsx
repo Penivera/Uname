@@ -122,88 +122,83 @@ export default function SunsetNotice() {
 }
 
 function SunsetNoticeModal({ onClose }) {
-    const { t } = useTranslation();
-    const history = useHistory();
-    const migration = useMigrationEntry();
-    const phase3Date = usePhase3Date();
-    const isSignedIn = !!useSelector(selectAccountLocalStorageAccountId);
-    const copy = `sunset.notice.phase${SUNSET_PHASE}`;
-    const variant = `phase${SUNSET_PHASE}`;
-    const paragraphs = ['p1', 'p2', 'p3']
-        .map((key) => t(`${copy}.${key}`, { date: phase3Date, defaultValue: '' }))
-        .filter(Boolean);
-    const offerMigration = SUNSET_PHASE >= 2 && isSignedIn;
-
     return (
         // @ts-ignore — Modal is a JS component without full prop typings
         <Modal id='modal-sunset-notice' isOpen onClose={onClose} modalSize='sm'>
             <Container>
-                <SunsetIcon />
-                <h3 className='title'>{t(`${copy}.title`, { date: phase3Date })}</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '8px' }}>
+                    <div
+                        style={{
+                            width: '42px',
+                            height: '42px',
+                            borderRadius: '50%',
+                            backgroundColor: '#e6f7f2',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#008d6a',
+                            fontSize: '18px',
+                            fontWeight: 700,
+                            border: '1px solid #a7f3d0',
+                        }}
+                    >
+                        .uni
+                    </div>
+                    <div>
+                        <h3 className='title' style={{ margin: 0, fontSize: '19px' }}>
+                            Universal Name Edition
+                        </h3>
+                        <span style={{ fontSize: '13px', color: '#008d6a', fontWeight: 500 }}>
+                            MyNearWallet Community Fork
+                        </span>
+                    </div>
+                </div>
                 <hr className='divider' />
                 <div className='body'>
-                    {paragraphs.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                    ))}
+                    <p>
+                        This is an active open-source fork of MyNearWallet updated with native{' '}
+                        <strong>Universal Name (<code>.uni</code>)</strong> cross-chain domain resolution.
+                    </p>
+                    <p>
+                        You can send NEAR and Fungible Tokens directly to human-readable domain names (e.g.,{' '}
+                        <strong>peni.uni</strong>, <strong>alice.uni</strong>). The wallet resolves recipient addresses in real-time using our smart contract on NEAR (
+                        <strong>uname-registry.near</strong>).
+                    </p>
+                    <p>
+                        Powered by the Universal Name Resolver API (
+                        <a
+                            href='https://api.unamereg.xyz'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            style={{ color: '#008d6a', fontWeight: 500 }}
+                        >
+                            api.unamereg.xyz
+                        </a>
+                        ) with decentralized on-chain JSON-RPC fallback.
+                    </p>
                 </div>
-                {SUNSET_PHASE >= 2 && (
-                    <p className='anti-phishing'>{t('sunset.notice.antiPhishing')}</p>
-                )}
                 <FormButtonGroup>
                     <FormButton
                         color='gray-blue'
                         className='border'
                         onClick={() => {
-                            trackSunsetNoticeCtaClicked({ variant, cta: 'learn_more' });
                             window.open(
-                                SUNSET_LEARN_MORE_URL,
+                                'https://github.com/Penivera/Uname',
                                 '_blank',
                                 'noopener,noreferrer'
                             );
                         }}
                     >
-                        {t('sunset.notice.learnMore')}
+                        View on GitHub
                     </FormButton>
-                    {offerMigration ? (
-                        <FormButton
-                            onClick={() => {
-                                trackSunsetNoticeCtaClicked({ variant, cta: 'migrate' });
-                                onClose();
-                                history.push(migration.to);
-                            }}
-                        >
-                            {t(
-                                migration.isResume
-                                    ? 'sunset.common.resume'
-                                    : 'sunset.notice.migrateNow'
-                            )}
-                        </FormButton>
-                    ) : (
-                        <FormButton
-                            onClick={() => {
-                                trackSunsetNoticeCtaClicked({ variant, cta: 'continue' });
-                                onClose();
-                            }}
-                        >
-                            {t('sunset.notice.continue')}
-                        </FormButton>
-                    )}
+                    <FormButton
+                        onClick={() => {
+                            onClose();
+                        }}
+                    >
+                        Continue to Wallet
+                    </FormButton>
                 </FormButtonGroup>
-                {offerMigration && (
-                    // The backdrop is unreachable once the modal goes full screen on a phone.
-                    <div className='not-now'>
-                        <FormButton
-                            className='link'
-                            color='gray'
-                            onClick={() => {
-                                trackSunsetNoticeCtaClicked({ variant, cta: 'continue' });
-                                onClose();
-                            }}
-                        >
-                            {t('sunset.notice.continue')}
-                        </FormButton>
-                    </div>
-                )}
             </Container>
         </Modal>
     );

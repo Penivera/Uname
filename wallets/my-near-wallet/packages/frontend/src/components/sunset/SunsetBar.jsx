@@ -186,29 +186,23 @@ function SunsetImportBar({ t }) {
 }
 
 // Split out so the transfer journal is only read on pages that show the bar.
-function SunsetBarContent({ t, phase3Date }) {
-    const migration = useMigrationEntry();
-    const copy = SUNSET_PHASE >= 3 ? 'sunset.bar.phase3' : 'sunset.bar.phase2';
-
+function SunsetBarContent() {
     return (
         <BarContainer>
-            <Bar role='note'>
-                <SunsetIcon size={32} />
-                <p className='bar-text'>
-                    <strong>{t(`${copy}.title`, { date: phase3Date })}</strong>{' '}
-                    {t(`${copy}.description`)}
+            <Bar role='note' style={{ backgroundColor: '#f0fdf4', borderColor: '#bbf7d0' }}>
+                <span style={{ fontSize: '20px', marginRight: '6px' }}>🌐</span>
+                <p className='bar-text' style={{ color: '#166534' }}>
+                    <strong>Universal Name (.uni) Enabled:</strong> Send NEAR & tokens directly to .uni domains powered by uname-registry.near.
                 </p>
-                <Link
+                <a
                     className='bar-cta'
-                    to={migration.to}
-                    onClick={() =>
-                        trackSunsetBarCtaClicked({
-                            entry: migration.isResume ? 'resume' : 'start',
-                        })
-                    }
+                    href='https://api.unamereg.xyz'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ backgroundColor: '#008d6a', color: '#fff', textDecoration: 'none' }}
                 >
-                    {t(migration.isResume ? 'sunset.common.resume' : 'sunset.bar.cta')}
-                </Link>
+                    API Docs
+                </a>
             </Bar>
         </BarContainer>
     );
