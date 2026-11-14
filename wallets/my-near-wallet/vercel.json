@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd packages/frontend && NEAR_WALLET_ENV=mainnet yarn bundle",
+  "outputDirectory": "packages/frontend/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
