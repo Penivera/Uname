@@ -2,6 +2,8 @@
 
 The **pay** and **my names** screens for Universal Name (`.uni`), built as an embeddable widget and standalone web app. It connects to the Universal Name Resolver API (`api.unamereg.xyz`) and reads the registry contract directly from NEAR Mainnet (`uname-registry.near`).
 
+**Live demo:** [unamereg.xyz](https://unamereg.xyz/). It's hosted on Heroku; see [Deploying](#deploying) below.
+
 ## Key Features
 
 - **Pay a name:** Send cross-chain payments directly to any `.uni` name. Automatically binds your connected wallet (EVM, NEAR, Solana) as the sender and refund recipient—no manual address typing needed.
@@ -71,3 +73,17 @@ Run from the repository root:
 - Claiming goes through the resolver's checkout (`/v1/checkout/*`). The widget shows the price, then offers "Claim without payment (demo)" and checks the contract afterwards. For that to write on-chain, the resolver needs `USE_MOCK_CONTRACT="false"`, `ALLOW_DEMO_ENDPOINTS="true"`, the `near` CLI on its PATH, and `ADMIN_PRIVATE_KEY` set in `resolver-py/.env` to a key the contract accepts as relayer or admin. Without the key the resolver returns an error and the widget shows it.
 - "Apply now (admin)" on a waiting destination change uses the resolver's admin endpoint. It is refused if the resolver has `ADMIN_API_TOKEN` set, since the widget does not hold that token.
 - Paying for a name is not offered in the widget yet. The resolver rejects payments from other chains, and paying in USDC on NEAR needs the contract to accept that token first.
+
+## Deploying
+
+The live demo runs on Heroku (app `wip-near-web`), deployed from the repository root:
+
+- `Procfile` starts `apps/web/server.mjs`, a dependency-free static server for the built files.
+- The root `package.json` builds the web app in `heroku-postbuild`.
+- The buildpack is `heroku/nodejs`.
+
+```bash
+git push heroku main
+```
+
+`VITE_*` settings are read at build time. Set them with `heroku config:set` before pushing, and push again (an empty commit is fine) after changing one.

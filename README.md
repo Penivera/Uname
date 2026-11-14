@@ -4,6 +4,8 @@
 
 Universal Name is a chain-agnostic domain name protocol and multichain settlement layer powered by a high-performance smart contract on NEAR Protocol. It maps human-readable names (`.uni`) to verified wallets across 20+ blockchains, automatically executes cross-chain intent settlement via NEAR Intents and NEAR Chain Signatures, and integrates seamlessly into Web3 wallets via client SDKs, wallet forks, and a MetaMask Snap.
 
+**Live demo: [unamereg.xyz](https://unamereg.xyz/)** — the pay and "my names" screens, running against the mainnet contract and the hosted resolver.
+
 > **Product Scope & Requirements**: For the full product specification, user flows (A through E), security invariants, and threat models, see the [PRD (Product Requirements Document)](PRD.md).
 
 ---
@@ -12,6 +14,7 @@ Universal Name is a chain-agnostic domain name protocol and multichain settlemen
 
 | Network / Component | Target / Address | Status | Explorer / Live Link |
 | :--- | :--- | :--- | :--- |
+| **Web App (Live Demo)** | `https://unamereg.xyz` | Live on Production | [Open the demo](https://unamereg.xyz/) |
 | **NEAR Mainnet Contract** | `uname-registry.near` | Live on Mainnet | [NEAR Explorer](https://explorer.near.org/accounts/uname-registry.near) |
 | **Production Resolver API** | `https://api.unamereg.xyz` | Live on Production | [Health / Status](https://api.unamereg.xyz/v1/checkout/pricing?name=peni.uni) |
 | **Mainnet Relayer** | `uname-registry.near` | Active | Self-relaying with NEP-141 callback abstraction |
@@ -113,7 +116,7 @@ uv run python main.py           # Starts server on http://localhost:8000
 
 ## 3. Frontend Web Application & Embeddable Widget (`apps/web`)
 
-A Vue 3 and Vite web app, built as an embeddable popup widget, providing an end-to-end user experience for domain search, registration, connected wallet management, and routing configuration.
+**Live at [unamereg.xyz](https://unamereg.xyz/).** A Vue 3 and Vite web app, built as an embeddable popup widget, providing an end-to-end user experience for domain search, registration, connected wallet management, and routing configuration.
 
 ### Features
 - **Instant Search & Registration**: Live domain availability checks with length-tiered pricing.
