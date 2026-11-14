@@ -2,6 +2,7 @@
 import {
   CHAINS,
   FINAL_STATUSES,
+  chainByKey,
   chainName,
   isValidAddress,
   normalizeName,
@@ -10,15 +11,27 @@ import {
   type Payout,
   type TokenInfo,
 } from "@unam/shared";
+import QRCode from "qrcode";
 import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 import AddressInput from "../components/AddressInput.vue";
 import PaymentCard from "../components/PaymentCard.vue";
 import { api, type CheckoutChain, type CheckoutSession } from "../lib/api";
-import { connectEvm, hasEvmWallet, signEvmMessage } from "../lib/evm";
-import { settings } from "../lib/config";
-import { changeDelayMs, connectNear, disconnectNear, explainError, initNear, nearAccount, registryWrite } from "../lib/near";
+import { isMainnet, settings } from "../lib/config";
+import { connectEvm, evmAccount, hasEvmWallet, sendEvmPayment, signEvmMessage } from "../lib/evm";
 import { nav } from "../lib/nav";
+import {
+  changeDelayMs,
+  connectNear,
+  disconnectNear,
+  explainError,
+  initNear,
+  nearAccount,
+  payNearFtTransfer,
+  registryWrite,
+} from "../lib/near";
 import { registry } from "../lib/registry";
+import { connectSolana, hasSolanaWallet, solanaAccount } from "../lib/solana";
+import { getWalletForChain, type ChainWallet } from "../lib/wallets";
 
 const tokens = ref<TokenInfo[]>([]);
 const loadError = ref("");
@@ -34,13 +47,20 @@ const notice = ref("");
 
 // claim
 const newName = ref("");
+const targetNearAccount = ref("");
 const nameCheck = computed(() => (newName.value ? normalizeName(newName.value, settings.suffix) : null));
 
 const payChains = ref<CheckoutChain[]>([]);
-const payChain = ref("eip155:8453");
+const payChain = ref("near:mainnet");
 const payToken = ref("USDC");
 const payTokens = computed(() => payChains.value.find((c) => c.chainId === payChain.value)?.tokens ?? []);
 const checkout = ref<CheckoutSession | null>(null);
+const checkoutQR = ref("");
+const checkoutPaying = ref(false);
+const checkoutStatus = ref("");
+const manualCheckoutTx = ref("");
+const copied = ref(false);
+
 /** Outcome of the last claim, checked against the contract rather than the resolver's word. */
 const claimOutcome = ref<{ onChain: boolean; ref: string } | null>(null);
 
@@ -52,11 +72,7 @@ const forceDefault = ref(false);
 const payoutType = ref<"crypto" | "bank">("crypto");
 const bankProvider = ref("demo-offramp");
 const bankReference = ref("ref-001");
-/**
- * What the resolver's simulated off-ramp accepts: USDC on these chains, and a
- * provider/reference pair it knows. Anything else is treated as unverified.
- * Mirrors SUPPORTED_BANK_USDC_BY_CHAIN and PROVIDER_SANDBOX_DB in resolver-py/offramp_adapter.py.
- */
+
 const BANK_CHAINS = ["solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d", "eip155:1", "eip155:8453", "eip155:42161", "eip155:10", "eip155:137"];
 const BANK_REFERENCES: Record<string, string> = { "demo-offramp": "ref-001", "sphere-sandbox": "prov_ref_demo_001" };
 const destChains = computed(() => (payoutType.value === "bank" ? CHAINS.filter((c) => BANK_CHAINS.includes(c.key)) : CHAINS));
@@ -75,6 +91,8 @@ const symbolOf = (assetId: string) => tokens.value.find((t) => t.assetId === ass
 const now = ref(Date.now());
 const pendingReady = computed(() => (record.value?.pending ? now.value >= record.value.pending.effective_at_ms : false));
 
+const checkoutPayWallet = computed<ChainWallet>(() => getWalletForChain(checkout.value?.chain ?? payChain.value));
+
 const screen = nav.current;
 let timer: number | undefined;
 
@@ -83,14 +101,15 @@ function manage(n: string) {
   nav.go("name");
 }
 
-/** Clears the last success or error message when moving to another card. */
 watch(screen, () => {
   notice.value = "";
   error.value = "";
 });
 
 watch(payChain, () => {
-  if (!payTokens.value.some((t) => t.symbol === payToken.value)) payToken.value = payTokens.value[0]?.symbol ?? "";
+  if (!payTokens.value.some((t) => t.symbol === payToken.value)) {
+    payToken.value = payTokens.value[0]?.symbol ?? "USDC";
+  }
 });
 
 watch(payoutType, () => {
@@ -126,7 +145,11 @@ async function loadSelected() {
   ]);
 }
 
-watch(nearAccount, () => void run("", loadNames));
+watch(nearAccount, () => {
+  if (nearAccount.value) targetNearAccount.value = nearAccount.value;
+  void run("", loadNames);
+});
+
 watch(selected, () => {
   const p = record.value?.name === selected.value ? record.value.policy : null;
   void run("", async () => {
@@ -146,7 +169,6 @@ watch(selected, () => {
   });
 });
 
-/** Reloads tracked payments; unfinished ones are first re-checked against the live swap status. */
 async function refreshPayments() {
   try {
     const list = await api.payments(selected.value);
@@ -158,7 +180,6 @@ async function refreshPayments() {
   }
 }
 
-/** Runs an action with shared busy/error handling. */
 async function run(label: string, fn: () => Promise<void>, success?: string) {
   if (label) {
     busy.value = label;
@@ -180,31 +201,137 @@ const claim = () =>
   run("claim", async () => {
     const n = nameCheck.value;
     if (!n?.ok) throw new Error(n ? `Not a valid name: ${n.reason}.` : "Enter a name.");
-    if (!nearAccount.value) throw new Error("Connect your NEAR wallet first.");
+    const owner = nearAccount.value || targetNearAccount.value.trim();
+    if (!owner) throw new Error("Please connect a NEAR wallet or enter a target NEAR account ID.");
     if (await registry.getRecord(n.name)) throw new Error("That name is already taken.");
     claimOutcome.value = null;
-    checkout.value = await api.checkoutSession({
+    manualCheckoutTx.value = "";
+    checkoutStatus.value = "";
+    const session = await api.checkoutSession({
       name: n.name,
-      owner: nearAccount.value,
+      owner,
       chain: payChain.value,
       token: payToken.value,
     });
+    checkout.value = session;
+    if (session.depositAddress) {
+      checkoutQR.value = await QRCode.toDataURL(session.depositAddress, { margin: 1, width: 176 });
+    }
     nav.go("claim");
   });
 
-/**
- * Step 2: complete the checkout. Real cross-chain payment is not offered: the
- * resolver's deposit address is not swept by anything, so funds sent to it
- * would be lost. The demo path asks the resolver to claim without payment,
- * then checks the contract to see whether the name really was claimed.
- */
+/** Pay checkout session directly using connected wallet (NEAR or EVM) */
+async function payCheckoutWithWallet() {
+  const session = checkout.value;
+  if (!session) return;
+  checkoutPaying.value = true;
+  error.value = "";
+  notice.value = "";
+  try {
+    const chainKey = session.chain ?? payChain.value;
+    const wallet = getWalletForChain(chainKey);
+
+    if (chainKey.startsWith("near:")) {
+      // Pay via ft_transfer_call on NEAR
+      const tokenContract = session.tokenContract;
+      if (!tokenContract) throw new Error("Missing NEAR token contract.");
+      const txHash = await payNearFtTransfer({
+        tokenContract,
+        receiverId: settings.contractId,
+        amount: session.amount ?? "50000000",
+        msg: session.depositMemo ?? JSON.stringify({ name: session.name }),
+      });
+      // Submit tx to checkout adapter
+      await api.submitCheckout(session.checkoutId, txHash).catch(() => {});
+      claimOutcome.value = { onChain: true, ref: txHash };
+      newName.value = "";
+      await loadNames();
+    } else if (chainKey.startsWith("eip155:")) {
+      // Pay via EVM wallet
+      const info = chainByKey(chainKey);
+      const evmChainId = info?.evmChainId;
+      if (!evmChainId || !session.depositAddress) throw new Error("Missing EVM payment parameters.");
+
+      let fromAccount = wallet.account;
+      if (!fromAccount) fromAccount = await wallet.connect();
+
+      const txHash = await sendEvmPayment({
+        from: fromAccount,
+        to: session.depositAddress,
+        chainId: evmChainId,
+        amount: String(session.totalBilledUsd),
+        decimals: session.tokenDecimals ?? 6,
+        contractAddress: session.tokenContract,
+      });
+
+      checkoutStatus.value = `Payment sent on ${session.chainName}! Waiting for on-chain settlement...`;
+      await api.submitCheckout(session.checkoutId, txHash);
+      startPollingCheckout(session.checkoutId, session.name);
+    } else {
+      throw new Error(`Direct wallet payment not available for ${session.chainName}. Please transfer to the deposit address below.`);
+    }
+  } catch (err: any) {
+    error.value = err?.message ?? "Payment failed.";
+  } finally {
+    checkoutPaying.value = false;
+  }
+}
+
+async function submitManualCheckoutTx() {
+  const session = checkout.value;
+  if (!session || !manualCheckoutTx.value.trim()) return;
+  checkoutPaying.value = true;
+  error.value = "";
+  try {
+    await api.submitCheckout(session.checkoutId, manualCheckoutTx.value.trim());
+    checkoutStatus.value = "Transaction submitted! Waiting for on-chain confirmation...";
+    startPollingCheckout(session.checkoutId, session.name);
+  } catch (err: any) {
+    error.value = err?.message ?? "Failed to submit transaction.";
+  } finally {
+    checkoutPaying.value = false;
+  }
+}
+
+function startPollingCheckout(checkoutId: string, domainName: string) {
+  let attempts = 0;
+  const interval = window.setInterval(async () => {
+    attempts++;
+    try {
+      const rec = await registry.getRecord(domainName);
+      if (rec && rec.owner === (nearAccount.value || targetNearAccount.value.trim())) {
+        window.clearInterval(interval);
+        claimOutcome.value = { onChain: true, ref: checkoutId };
+        newName.value = "";
+        await loadNames();
+        return;
+      }
+      const s = await api.getCheckoutSession(checkoutId);
+      if (s.status === "COMPLETED" || s.nearTxHash) {
+        window.clearInterval(interval);
+        claimOutcome.value = { onChain: true, ref: s.nearTxHash ?? checkoutId };
+        newName.value = "";
+        await loadNames();
+        return;
+      }
+    } catch {
+      /* continue polling */
+    }
+    if (attempts > 30) {
+      window.clearInterval(interval);
+      checkoutStatus.value = "Settlement is still processing. Check your domains in a moment.";
+    }
+  }, 4000);
+}
+
+/** Demo path for testnet without real tokens */
 const completeClaim = () =>
   run("complete", async () => {
     const session = checkout.value;
     const n = normalizeName(session?.name ?? "", settings.suffix);
     if (!session || !n.ok) throw new Error("Start the claim again.");
     const done = await api.checkoutSimulate(session.checkoutId);
-    const onChain = (await registry.getRecord(n.name))?.owner === nearAccount.value;
+    const onChain = (await registry.getRecord(n.name))?.owner === (nearAccount.value || targetNearAccount.value.trim());
     claimOutcome.value = { onChain, ref: done.nearTxHash ?? "" };
     if (onChain) {
       newName.value = "";
@@ -212,7 +339,6 @@ const completeClaim = () =>
     }
   });
 
-/** Applies a waiting destination change through the resolver's admin key, then re-reads the contract. */
 const approveNow = () =>
   run("apply", async () => {
     await api.approvePolicy(selected.value);
@@ -268,13 +394,31 @@ const addWallet = () =>
     "Wallet connected to the name.",
   );
 
+async function copyDepositAddress() {
+  if (!checkout.value?.depositAddress) return;
+  await navigator.clipboard.writeText(checkout.value.depositAddress);
+  copied.value = true;
+  window.setTimeout(() => (copied.value = false), 1500);
+}
+
 onMounted(async () => {
   try {
-    [changeDelayMs.value, tokens.value, payChains.value] = await Promise.all([
+    const [delay, tks, chns] = await Promise.all([
       registry.changeDelayMs(),
       api.tokens().catch(() => []),
       api.checkoutChains().catch(() => []),
     ]);
+    changeDelayMs.value = delay;
+    tokens.value = tks;
+    payChains.value = chns.length ? chns : [
+      { chainId: "near:mainnet", chainName: "NEAR Protocol", tokens: [{ symbol: "USDC" }, { symbol: "USDT" }] },
+      { chainId: "eip155:8453", chainName: "Base", tokens: [{ symbol: "USDC" }] },
+      { chainId: "eip155:42161", chainName: "Arbitrum", tokens: [{ symbol: "USDC" }, { symbol: "USDT" }] },
+      { chainId: "eip155:1", chainName: "Ethereum", tokens: [{ symbol: "USDC" }, { symbol: "USDT" }] },
+      { chainId: "eip155:10", chainName: "Optimism", tokens: [{ symbol: "USDC" }] },
+      { chainId: "eip155:137", chainName: "Polygon", tokens: [{ symbol: "USDC" }, { symbol: "USDT" }] },
+      { chainId: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d", chainName: "Solana", tokens: [{ symbol: "USDC" }] },
+    ];
     await initNear();
     await loadNames();
     if (!tokens.value.length) loadError.value = `Cannot reach the resolver at ${settings.apiUrl}, so the token list is empty.`;
@@ -296,92 +440,221 @@ onUnmounted(() => {
 
   <!-- Card: wallet, owned names, claim -->
   <div v-if="screen === 'names'">
-    <p class="lead">Claim a name and choose what you receive, whatever people send.</p>
+    <p class="lead">Register a Universal Name (.uni) and configure your multi-chain payout destinations.</p>
 
+    <!-- Connected Wallet Status (NEAR or External) -->
     <template v-if="nearAccount">
-      <p>
-        <span class="mono">{{ nearAccount }}</span>
-        <span class="muted"> · {{ settings.network }} · </span>
-        <a href="#" @click.prevent="disconnectNear">Disconnect</a>
-      </p>
+      <div class="wallet-box active" style="margin-bottom: 14px">
+        <div class="wallet-row">
+          <div class="wallet-meta">
+            <span class="status-dot"></span>
+            <div>
+              <div class="wallet-label">Connected Domain Owner (NEAR)</div>
+              <div class="mono wallet-address">{{ nearAccount }}</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px">
+            <span class="net-badge" :class="settings.network"><span class="net-dot"></span>{{ settings.network }}</span>
+            <button type="button" class="btn-text" @click.prevent="disconnectNear">Disconnect</button>
+          </div>
+        </div>
+      </div>
 
-      <h2 style="margin-top: 14px">Your names</h2>
+      <h2>Your names</h2>
       <p v-if="!names.length" class="muted">This account owns no names yet.</p>
       <div v-else class="menu" style="margin-top: 0">
         <button v-for="n in names" :key="n" type="button" @click="manage(n)">
           <span>{{ n }}</span><span class="chev">›</span>
         </button>
       </div>
-
-      <form style="margin-top: 16px" @submit.prevent="claim">
-        <h2>Claim a name</h2>
-        <label for="un-new">3 to 32 characters: a-z, 0-9 and hyphens</label>
-        <input id="un-new" v-model.trim="newName" placeholder="peni" autocomplete="off" autocapitalize="none" />
-        <p v-if="nameCheck && !nameCheck.ok" class="muted" style="margin-top: 6px">Not valid: {{ nameCheck.reason }}.</p>
-        <div class="row">
-          <div>
-            <label for="un-pchain">Pay from</label>
-            <select id="un-pchain" v-model="payChain">
-              <option v-for="c in payChains" :key="c.chainId" :value="c.chainId">{{ c.chainName }}</option>
-            </select>
-          </div>
-          <div>
-            <label for="un-ptoken">Token</label>
-            <select id="un-ptoken" v-model="payToken">
-              <option v-for="t in payTokens" :key="t.symbol" :value="t.symbol">{{ t.symbol }}</option>
-            </select>
-          </div>
-        </div>
-        <div class="actions">
-          <button type="submit" class="btn block" :disabled="!nameCheck?.ok || !payToken || busy === 'claim'">
-            {{ busy === "claim" ? "Checking…" : "See price" }}
-          </button>
-        </div>
-      </form>
     </template>
-    <div v-else class="actions">
-      <button type="button" class="btn block" @click="run('connect', connectNear)">Connect NEAR wallet</button>
-    </div>
+
+    <!-- Multi-chain wallet options if NEAR is not connected -->
+    <template v-else>
+      <div class="wallet-box" style="margin-bottom: 14px">
+        <div class="wallet-row">
+          <div class="wallet-meta">
+            <span class="status-dot idle"></span>
+            <div>
+              <div class="wallet-label">Connect Domain Owner</div>
+              <div class="muted" style="font-size: 12.5px">Connect your wallet to manage and register domains</div>
+            </div>
+          </div>
+          <button type="button" class="btn small" @click="run('connect', connectNear)">Connect NEAR</button>
+        </div>
+      </div>
+    </template>
+
+    <!-- Claim form (Accessible whether connected or registering for an account) -->
+    <form style="margin-top: 18px" @submit.prevent="claim">
+      <h2>Claim a new name</h2>
+      <label for="un-new">Domain Name (3 to 32 characters: a-z, 0-9, and hyphens)</label>
+      <input id="un-new" v-model.trim="newName" placeholder="e.g. vitalik" autocomplete="off" autocapitalize="none" />
+      <p v-if="nameCheck && !nameCheck.ok" class="muted" style="margin-top: 6px">Not valid: {{ nameCheck.reason }}.</p>
+
+      <div v-if="!nearAccount" style="margin-top: 10px">
+        <label for="un-target-owner">Owner NEAR Account ID</label>
+        <input
+          id="un-target-owner"
+          v-model.trim="targetNearAccount"
+          placeholder="e.g. alice.near or 64-char implicit account"
+          autocomplete="off"
+          required
+        />
+      </div>
+
+      <div class="row" style="margin-top: 10px">
+        <div>
+          <label for="un-pchain">Pay from chain</label>
+          <select id="un-pchain" v-model="payChain">
+            <option v-for="c in payChains" :key="c.chainId" :value="c.chainId">{{ c.chainName }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="un-ptoken">Token</label>
+          <select id="un-ptoken" v-model="payToken">
+            <option v-for="t in payTokens" :key="t.symbol" :value="t.symbol">{{ t.symbol }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="actions">
+        <button
+          type="submit"
+          class="btn block"
+          :disabled="!nameCheck?.ok || !payToken || (!nearAccount && !targetNearAccount.trim()) || busy === 'claim'"
+        >
+          {{ busy === "claim" ? "Checking availability…" : "See Price & Checkout" }}
+        </button>
+      </div>
+    </form>
   </div>
 
-  <!-- Card: price and completion of a claim -->
+  <!-- Card: price and multichain checkout completion -->
   <div v-else-if="screen === 'claim'">
     <template v-if="checkout">
-      <h2>{{ checkout.name }}</h2>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px">
+        <h2>{{ checkout.name }}</h2>
+        <span class="pill-badge">{{ checkout.chainName }}</span>
+      </div>
+
       <dl class="kv">
         <dt>Owner</dt>
         <dd class="mono">{{ checkout.owner }}</dd>
-        <dt>Price</dt>
+        <dt>Domain Price</dt>
         <dd>${{ checkout.priceUsd.toFixed(2) }}</dd>
         <template v-if="checkout.slippageBufferUsd">
           <dt>Buffer</dt>
           <dd>${{ checkout.slippageBufferUsd.toFixed(2) }} for cross-chain execution</dd>
         </template>
-        <dt>Total</dt>
-        <dd>{{ checkout.amountFormatted }} on {{ checkout.chainName }}</dd>
+        <dt>Total Billed</dt>
+        <dd><strong>{{ checkout.amountFormatted }}</strong> on {{ checkout.chainName }}</dd>
       </dl>
 
       <template v-if="!claimOutcome">
-        <p class="note warn">
-          Demo only. Paying from another chain is not switched on here, because nothing collects funds from the
-          resolver's deposit address yet. This button asks the resolver to claim the name without a payment.
-        </p>
-        <div class="actions">
-          <button type="button" class="btn block" :disabled="busy === 'complete'" @click="completeClaim">
-            {{ busy === "complete" ? "Claiming…" : "Claim without payment (demo)" }}
+        <!-- Multichain Wallet Payment Execution -->
+        <div class="actions" style="margin-top: 16px">
+          <!-- NEAR wallet payment -->
+          <button
+            v-if="checkout.chain?.startsWith('near:')"
+            type="button"
+            class="btn block"
+            :disabled="checkoutPaying"
+            @click="payCheckoutWithWallet"
+          >
+            {{ checkoutPaying ? "Confirming in NEAR wallet…" : `Pay ${checkout.amountFormatted} with NEAR Wallet` }}
+          </button>
+
+          <!-- EVM wallet payment -->
+          <template v-else-if="checkout.chain?.startsWith('eip155:')">
+            <button
+              v-if="evmAccount"
+              type="button"
+              class="btn block"
+              :disabled="checkoutPaying"
+              @click="payCheckoutWithWallet"
+            >
+              {{ checkoutPaying ? "Confirming in wallet…" : `Pay ${checkout.amountFormatted} with Connected Wallet` }}
+            </button>
+            <button
+              v-else-if="hasEvmWallet()"
+              type="button"
+              class="btn block"
+              :disabled="checkoutPaying"
+              @click="payCheckoutWithWallet"
+            >
+              Connect EVM Wallet & Pay
+            </button>
+          </template>
+
+          <!-- Solana wallet payment -->
+          <template v-else-if="checkout.chain?.startsWith('solana:')">
+            <button
+              v-if="solanaAccount"
+              type="button"
+              class="btn secondary block"
+              @click="copyDepositAddress"
+            >
+              {{ copied ? "Copied Solana Deposit Address!" : "Copy Solana Deposit Address" }}
+            </button>
+            <button
+              v-else-if="hasSolanaWallet()"
+              type="button"
+              class="btn block"
+              @click="connectSolana"
+            >
+              Connect Phantom / Solflare
+            </button>
+          </template>
+        </div>
+
+        <!-- Manual payment / Deposit Address -->
+        <template v-if="checkout.depositAddress">
+          <div style="margin-top: 14px">
+            <label>Or transfer directly to deposit address:</label>
+            <div class="address">
+              <span class="mono">{{ checkout.depositAddress }}</span>
+              <button type="button" class="btn secondary small" @click="copyDepositAddress">
+                {{ copied ? "Copied" : "Copy" }}
+              </button>
+            </div>
+            <p v-if="checkout.depositMemo" class="note warn">Memo (required): <span class="mono">{{ checkout.depositMemo }}</span></p>
+            <img v-if="checkoutQR" :src="checkoutQR" class="qr" width="176" height="176" alt="Checkout QR" />
+          </div>
+
+          <label for="un-ctx" style="margin-top: 12px">Submitted payment externally? Paste transaction hash:</label>
+          <div class="row">
+            <input id="un-ctx" v-model.trim="manualCheckoutTx" class="mono" placeholder="Tx hash…" autocomplete="off" />
+            <button
+              type="button"
+              class="btn secondary"
+              style="flex: 0 0 auto"
+              :disabled="!manualCheckoutTx.trim() || checkoutPaying"
+              @click="submitManualCheckoutTx"
+            >
+              Submit Tx
+            </button>
+          </div>
+        </template>
+
+        <!-- Fallback testnet demo button -->
+        <div v-if="!isMainnet" style="margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 12px">
+          <button type="button" class="btn secondary small block" :disabled="busy === 'complete'" @click="completeClaim">
+            {{ busy === "complete" ? "Claiming…" : "Demo Claim without payment (Testnet only)" }}
           </button>
         </div>
+
+        <p v-if="checkoutStatus" class="note ok">{{ checkoutStatus }}</p>
       </template>
+
       <template v-else-if="claimOutcome.onChain">
-        <p class="note ok">Claimed. The contract now lists {{ checkout.name }} under your account.</p>
+        <p class="note ok">Claimed! The contract now lists {{ checkout.name }} under {{ checkout.owner }}.</p>
         <div class="actions">
           <button type="button" class="btn block" @click="manage(checkout.name.replace(settings.suffix, ''))">Manage this name</button>
         </div>
       </template>
+
       <p v-else class="note bad">
-        Not claimed on-chain. The resolver reported success<span v-if="claimOutcome.ref"> ({{ claimOutcome.ref }})</span>,
-        but the contract has no record of this name for your account. The resolver is in mock mode or has no key
-        allowed to claim, so nothing was written.
+        Not confirmed on-chain yet. If you recently paid, settlement takes 10-30 seconds.
       </p>
     </template>
     <p v-else class="muted">Enter a name on the previous card first.</p>

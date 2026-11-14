@@ -1,58 +1,25 @@
-# Universal Name web widget
+# Universal Name Web App & Embeddable Widget
 
-The pay and "my names" screens for Universal Name, built as a popup that can be embedded in any page. It needs the Python resolver (`resolver-py`) running for token lists, payment details and payment status. It reads the registry contract directly from NEAR.
+The **Universal Pay Portal** and **Domain Dashboard** for Universal Name (`.uni`), built as an embeddable widget and standalone web portal. It connects to the Universal Name Resolver API (`api.unamereg.xyz`) and reads the registry contract directly from NEAR Mainnet (`uname-registry.near`).
 
-## What you need
+## Key Features
 
-- Node 22 and [pnpm](https://pnpm.io) 9
-- [uv](https://docs.astral.sh/uv/) for the Python resolver (it installs Python 3.13 for you)
-
-## 1. Start the resolver
-
-From the repository root:
-
-```bash
-cd resolver-py
-uv sync
-uv run python main.py
-```
-
-It serves on http://localhost:8000.
-
-By default it reads the live contract, `unam-registry.testnet`. To try the screens with built-in sample names instead (`peni`, `demo`, `routed`, `bank`):
-
-```bash
-cp .env.example .env
-# set USE_MOCK_CONTRACT="true" in .env, then restart the resolver
-```
-
-Do not send real funds to the sample names. Their addresses are examples, not wallets anyone on the team controls.
-
-## 2. Start the web app
-
-In a second terminal, from the repository root:
-
-```bash
-pnpm install
-pnpm dev:web
-```
-
-Open the address Vite prints (http://localhost:5173 unless that port is taken). The page is a stand-in for a host site, with the popup open on top of it.
-
-- `?name=peni` pre-fills the name on the pay card.
-- `?start=names` opens on the owner's cards.
+- **Universal Pay Portal:** Send cross-chain payments directly to any `.uni` name. Automatically binds your connected wallet (EVM, NEAR, Solana) as the sender and refund recipient—no manual address typing needed.
+- **Multichain Checkout:** Purchase `.uni` domains directly from any supported chain (Ethereum, Base, Arbitrum, Optimism, Polygon, Solana, NEAR) using connected wallets.
+- **Dynamic Network Adapting:** Automatically adapts between Mainnet (`uname-registry.near`) and Testnet (`unam-registry.testnet`) based on environment configuration.
+- **Embeddable Modal:** Embed anywhere with a single script tag and `UniversalName.open()`.
 
 ## Settings
 
-The defaults work for local development. To change them, copy `.env.example` to `.env.local` in `apps/web`:
+The defaults point to production NEAR Mainnet and hosted resolver `https://api.unamereg.xyz`. To customize, create `.env.local` in `apps/web`:
 
-| Variable | Default | What it is |
-|---|---|---|
-| `VITE_API_URL` | `http://localhost:8000` | The Python resolver |
-| `VITE_CONTRACT_ID` | `unam-registry.testnet` | Registry contract |
-| `VITE_NEAR_NETWORK` | `testnet` | NEAR network for the owner's wallet |
-| `VITE_NEAR_RPC_URL` | `https://rpc.testnet.near.org` | NEAR RPC used to read the contract |
-| `VITE_NAME_SUFFIX` | `.uni` | Suffix stripped from names |
+| Variable | Default (Mainnet) | Testnet Override | Purpose |
+|---|---|---|---|
+| `VITE_API_URL` | `https://api.unamereg.xyz` | `http://localhost:8000` | Universal Name Resolver API |
+| `VITE_CONTRACT_ID` | `uname-registry.near` | `unam-registry.testnet` | Registry smart contract |
+| `VITE_NEAR_NETWORK` | `mainnet` | `testnet` | NEAR network for wallet connections |
+| `VITE_NEAR_RPC_URL` | `https://rpc.mainnet.near.org` | `https://rpc.testnet.near.org` | NEAR RPC endpoint |
+| `VITE_NAME_SUFFIX` | `.uni` | `.uni` | Universal Name suffix |
 
 Everything here is shipped to the browser, so put no secrets in it.
 

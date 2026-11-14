@@ -1,29 +1,53 @@
 /** Minimal injected EVM wallet (EIP-1193) helper: connect, switch chain, send, sign. */
 import { parseUnits } from "@unam/shared";
+import { ref } from "vue";
+
+export const evmAccount = ref<string | null>(null);
 
 interface Eip1193 {
   request(args: { method: string; params?: unknown[] }): Promise<unknown>;
+  on?(event: string, callback: (...args: any[]) => void): void;
 }
 
 function provider(): Eip1193 {
   const eth = (window as unknown as { ethereum?: Eip1193 }).ethereum;
-  if (!eth) throw new Error("No EVM wallet found in this browser. Install one, or pay by copying the address.");
+  if (!eth) throw new Error("No EVM wallet found in this browser. Install MetaMask, Rabby, or Coinbase Wallet.");
   return eth;
 }
 
 export const hasEvmWallet = () => Boolean((window as unknown as { ethereum?: unknown }).ethereum);
 
+if (typeof window !== "undefined" && (window as any).ethereum?.on) {
+  try {
+    (window as any).ethereum.on("accountsChanged", (accounts: string[]) => {
+      evmAccount.value = accounts && accounts[0] ? accounts[0] : null;
+    });
+  } catch {
+    /* ignore */
+  }
+}
+
 export async function connectEvm(): Promise<string> {
   const accounts = (await provider().request({ method: "eth_requestAccounts" })) as string[];
   if (!accounts[0]) throw new Error("The wallet returned no account.");
+  evmAccount.value = accounts[0];
   return accounts[0];
 }
 
-async function switchChain(chainId: number): Promise<void> {
+export function disconnectEvm(): void {
+  evmAccount.value = null;
+}
+
+export async function switchChain(chainId: number): Promise<void> {
   const hex = "0x" + chainId.toString(16);
   const current = (await provider().request({ method: "eth_chainId" })) as string;
   if (current.toLowerCase() === hex) return;
-  await provider().request({ method: "wallet_switchEthereumChain", params: [{ chainId: hex }] });
+  try {
+    await provider().request({ method: "wallet_switchEthereumChain", params: [{ chainId: hex }] });
+  } catch (switchError: any) {
+    // If the chain is not added to MetaMask, we can notify the user
+    throw switchError;
+  }
 }
 
 const pad32 = (hex: string) => hex.replace(/^0x/, "").toLowerCase().padStart(64, "0");

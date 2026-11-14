@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from "vue";
+import { isMainnet, settings } from "./lib/config";
 import { isPayFlow, nav, type Screen } from "./lib/nav";
 import OwnerView from "./views/OwnerView.vue";
 import PayView from "./views/PayView.vue";
@@ -8,15 +9,15 @@ defineProps<{ initialName: string; backdrop: boolean }>();
 const emit = defineEmits<{ close: [] }>();
 
 const TITLES: Record<Screen, string> = {
-  pay: "Pay a name",
-  "pay-details": "Payment details",
-  "pay-status": "Payment status",
-  names: "My names",
-  claim: "Claim a name",
-  name: "Manage name",
-  destination: "What you receive",
-  wallets: "Direct wallets",
-  payments: "Incoming payments",
+  pay: "Payment Portal",
+  "pay-details": "Confirm & Send",
+  "pay-status": "Payment Status",
+  names: "Domain Dashboard",
+  claim: "Claim & Register",
+  name: "Manage Domain",
+  destination: "Payout Settings",
+  wallets: "Direct Wallets",
+  payments: "Incoming Payments",
 };
 const title = computed(() => TITLES[nav.current.value]);
 
@@ -33,9 +34,15 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
     <header class="bar">
       <button class="icon" type="button" aria-label="Back" :disabled="!nav.canBack.value" @click="nav.back()">‹</button>
       <button class="icon" type="button" aria-label="Forward" :disabled="!nav.canForward.value" @click="nav.forward()">›</button>
-      <span class="title">{{ title }}</span>
+      <div class="title-group">
+        <span class="title">{{ title }}</span>
+        <span class="net-badge" :class="settings.network">
+          <span class="net-dot"></span>
+          {{ settings.network }}
+        </span>
+      </div>
       <button class="switch" type="button" @click="nav.go(isPayFlow ? 'names' : 'pay')">
-        {{ isPayFlow ? "My names" : "Pay" }}
+        {{ isPayFlow ? "Domains" : "Pay Portal" }}
       </button>
       <button class="icon" type="button" aria-label="Close" @click="emit('close')">×</button>
     </header>
@@ -44,6 +51,10 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
       <PayView v-show="isPayFlow" :initial-name="initialName" />
       <OwnerView v-show="!isPayFlow" />
     </div>
-    <footer class="foot">Contract on NEAR testnet · routed payments use real funds on mainnet · bank payout is simulated</footer>
+    <footer class="foot">
+      <span>Contract: <strong class="mono">{{ settings.contractId }}</strong></span>
+      <span> · Network: <strong :style="{ color: isMainnet ? 'var(--ok)' : 'var(--warn)' }">{{ settings.network.toUpperCase() }}</strong></span>
+      <span> · Universal Name (.uni)</span>
+    </footer>
   </section>
 </template>
