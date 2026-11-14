@@ -7,6 +7,11 @@
     "build:web": "pnpm --filter @unam/web build",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
-    "build:embed": "pnpm --filter @unam/web build:embed"
+    "build:embed": "pnpm --filter @unam/web build:embed",
+    "heroku-postbuild": "pnpm --filter @unam/web build",
+    "start": "node apps/web/server.mjs"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }
